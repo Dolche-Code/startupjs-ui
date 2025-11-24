@@ -1,8 +1,11 @@
 import React, { useMemo } from 'react'
 import { pug, observer, setDefaultVariables } from 'startupjs'
-import ToastProvider from './components/toast/ToastProvider'
-import DialogsProvider from './components/dialogs/DialogsProvider'
-import Portal from './components/Portal'
+// TODO: move to Toast/plugin
+// import ToastProvider from './components/toast/ToastProvider'
+// TODO: move to Dialogs/plugin
+// import DialogsProvider from './components/dialogs/DialogsProvider'
+// TODO: move to Portal/plugin
+// import Portal from './components/Portal'
 import CssVariables from './theming/CssVariables'
 import defaultPalette from './theming/defaultPalette'
 import defaultVariables from './theming/defaultUiVariables'
@@ -48,9 +51,10 @@ export default observer(function UiProvider ({ children, style, palette, colors,
       CssVariables(meta=cssVariablesMeta)
 
     StyleContext.Provider(value=style)
-      Portal.Provider
-        ToastProvider
-        = children
-      DialogsProvider
+      = children
+      // Portal.Provider
+      //   ToastProvider
+      //   = children
+      // DialogsProvider
   `
 })
