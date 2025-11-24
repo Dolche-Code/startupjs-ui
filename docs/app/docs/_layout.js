@@ -10,7 +10,7 @@ export default observer(({ children }) => {
     View.root
       ScrollView.sidebar
         each component in DOC_COMPONENT_NAMES
-          Item= component
+          Item(key=component)= component
       ScrollView.contentWrapper
         View.content
           Slot
