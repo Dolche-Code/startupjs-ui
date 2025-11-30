@@ -59,13 +59,60 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - The Sandbox section appears at the bottom.
     - The props table in Sandbox shows the correct types and **descriptions**.
 
-## Progress
+## Refactoring Order & Progress
 
-Keep this list updated as you complete components.
+Work through the components in the following order to ensure dependencies are ready when needed.
+
+### Level 0: Independent Components
+These components have no internal dependencies (or only depend on utils/core).
 
 - [x] **Span** (`packages/span`)
-- [ ] **Button**
-- [ ] (Add other components here as you discover them)
+- [ ] **Div**
+- [ ] **Icon**
+- [ ] **Loader**
+- [ ] **Br**
+- [ ] **Portal**
+- [ ] **Layout**
+
+### Level 1: Base Components
+These depend only on Level 0 components.
+
+- [ ] **Button** (depends on Div, Icon, Loader, Span)
+- [ ] **Badge** (depends on Div, Icon, Span)
+- [ ] **Avatar** (depends on Div, Icon, Span)
+- [ ] **Tag** (depends on Div, Icon, Span)
+- [ ] **Card** (depends on Div)
+- [ ] **Tooltip** (depends on Div)
+- [ ] **Alert** (depends on Div, Icon)
+- [ ] **Content** (depends on Div)
+- [ ] **Row** (depends on Div)
+- [ ] **Breadcrumbs** (depends on Div, Icon, Span)
+- [ ] **Menu** (depends on Div, Icon, Span)
+- [ ] **Progress** (depends on Div, Span)
+- [ ] **Rating** (depends on Div, Icon)
+- [ ] **Tabs** (depends on Div, Span)
+
+### Level 2: Intermediate Components
+These depend on Level 1 components.
+
+- [ ] **Link** (depends on Button, Div, Span)
+- [ ] **Pagination** (depends on Button, Div, Icon, Span)
+- [ ] **User** (depends on Avatar)
+- [ ] **Modal** (depends on Portal, Layout, Button)
+- [ ] **Sidebar**
+- [ ] **DrawerSidebar**
+- [ ] **Collapse**
+- [ ] **Carousel**
+
+### Level 3: Complex Components
+These have deep dependency chains.
+
+- [ ] **Item** (depends on Link)
+- [ ] **SmartSidebar** (depends on Sidebar, DrawerSidebar)
+- [ ] **AutoSuggest**
+- [ ] **Select**
+- [ ] **Table**
+- [ ] **Dialogs**
 
 ## Updating this Guide
 
