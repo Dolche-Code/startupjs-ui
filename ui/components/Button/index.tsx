@@ -48,7 +48,8 @@ export interface ButtonProps {
   /** onPress handler */
   onPress?: (event: any) => void | Promise<void>
 }
-async function Button ({
+// eslint-disable-next-line @typescript-eslint/promise-function-async
+function Button ({
   style,
   iconStyle,
   textStyle,
@@ -150,7 +151,7 @@ async function Button ({
   rootStyle.paddingLeft = padding
   rootStyle.paddingRight = padding
 
-  return await pug`
+  return pug`
     Div.root(
       row
       shape=shape
