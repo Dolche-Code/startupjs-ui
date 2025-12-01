@@ -141,7 +141,6 @@ async function Div ({
   const [hover, setHover] = useState(false)
   const [active, setActive] = useState(false)
 
-  let extraStyle: StyleProp<ViewStyle> = {}
   const viewRef = useRef()
 
   useImperativeHandle(ref, () => viewRef.current, [])
@@ -162,11 +161,11 @@ async function Div ({
 
       props.onPressIn = (...args) => {
         setActive(true)
-        onPressIn && onPressIn(...args)
+        onPressIn?.(...args)
       }
       props.onPressOut = (...args) => {
         setActive(false)
-        onPressOut && onPressOut(...args)
+        onPressOut?.(...args)
       }
 
       if (isWeb && !disabled) {
@@ -219,6 +218,7 @@ async function Div ({
 
   // hover or active state styles
   // active state takes precedence over hover state
+  let extraStyle: StyleProp<ViewStyle> = {}
   if (active) {
     extraStyle = activeStyle ?? getDefaultStyle(style, 'active', variant)
   } else if (hover) {

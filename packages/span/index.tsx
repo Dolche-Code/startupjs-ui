@@ -1,12 +1,12 @@
 import type React from 'react'
-import { Platform, Text, type TextStyle, type StyleProp } from 'react-native'
+import { Platform, Text, type TextStyle, type StyleProp, type TextProps } from 'react-native'
 import { pug, observer } from 'startupjs'
 import { themed } from '@startupjs-ui/core'
 import './index.styl'
 
 export const _PropsJsonSchema = {/* SpanProps */ }
 
-export interface SpanProps {
+export interface SpanProps extends TextProps {
   style?: StyleProp<TextStyle>
   children?: React.ReactNode
   /** @deprecated use h1-h6 props instead */
