@@ -28,8 +28,9 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - **Do NOT** fully type the implementation. Keep it loose and do NOT add any types besides what's needed to define the props interface itself (e.g., `SpanProps`).
     - **MUST** define a single TypeScript interface for props (e.g., `SpanProps`).
     - **MUST** add JSDoc descriptions to each prop in the interface. This is used by the Sandbox to generate documentation tables.
-    - Add defaults into the props destructuring of the component itself and remove the Component.defaultProps
+    - Add defaults into the props destructuring of the component itself and remove the Component.defaultProps.
     - Remove the Component.propTypes (the interface handles it now).
+    - Specify the return type of the component function to be React.ReactNode.
     - Export `_PropsJsonSchema` for docs generation: `export const _PropsJsonSchema = {/* ComponentProps */}`.
 - **Styles**:
     - Do not change the styles, keep them as is.
@@ -39,6 +40,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
 - Move `Component.en.mdx` to the new package and rename it to `README.mdx`.
 - Update imports to point to the new component.
 - Ensure the `Sandbox` component is used and linked to the component and its schema - import _PropsJsonSchema from the component and pass it to Sandbox as propsJsonSchema prop.
+- In the docs on where to import the component from change it from '@startupjs/ui' to instead be 'startupjs-ui' (that's the new meta-library which will re-export all individual packages for each component).
 
 ### 4. Register in Docs App
 - Edit `docs/clientHelpers/docComponents.js`.
