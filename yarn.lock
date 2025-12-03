@@ -4531,6 +4531,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/loader@workspace:packages/loader":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/loader@workspace:packages/loader"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/span@workspace:packages/span":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/span@workspace:packages/span"
@@ -5518,6 +5530,13 @@ __metadata:
     "@types/ms": "npm:*"
     "@types/node": "npm:*"
   checksum: 10c0/0688ac8fb75f809201cb7e18a12b9d80ce539cb9dd27e1b01e11807cb1a337059e899b8ee3abc3f2c9417f02e363a3069d9eab9ef9724b1da1f0e10713514f94
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "@types/lodash@npm:4.17.21"
+  checksum: 10c0/73cb006e047d8871e9d63f3a165543bf16c44a5b6fe3f9f6299e37cb8d67a7b1d55ac730959a81f9def510fd07232ff7e30e05413e5d5a12793baad84ebe36c3
   languageName: node
   linkType: hard
 
@@ -19072,6 +19091,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@auto-it/conventional-commits": "npm:^11.3.0"
+    "@types/lodash": "npm:^4.17.21"
     "@types/react": "npm:~19.1.0"
     auto: "npm:^11.3.0"
     eslint: "npm:^8.56.0"
