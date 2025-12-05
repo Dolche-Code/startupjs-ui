@@ -1,8 +1,7 @@
-import { useRef, useState, useImperativeHandle } from 'react'
-import type React from 'react'
+import { useState, type ReactNode, type RefObject } from 'react'
 import {
   View,
-  TouchableWithoutFeedback,
+  Pressable,
   Platform,
   StyleSheet,
   type StyleProp,
@@ -12,8 +11,6 @@ import {
 } from 'react-native'
 import { pug, observer, u, useDidUpdate } from 'startupjs'
 import { colorToRGBA, getCssVariable, themed } from '@startupjs-ui/core'
-import pick from 'lodash/pick'
-import omit from 'lodash/omit'
 // TODO: bring back tooltip after AbstractPopover is refactored
 // import useTooltip from './useTooltip'
 import STYLES from './index.styl'
@@ -33,10 +30,12 @@ const {
 export const _PropsJsonSchema = {/* DivProps */ }
 
 export interface DivProps extends ViewProps {
+  /** Ref to access underlying <View> or <Pressable> */
+  ref?: RefObject<any>
   /** Custom styles applied to the root view */
   style?: StyleProp<ViewStyle>
   /** Content rendered inside Div */
-  children?: React.ReactNode
+  children?: ReactNode
   /** Visual feedback variant @default 'opacity' */
   variant?: 'opacity' | 'highlight'
   /** Render children in a horizontal row */
@@ -81,12 +80,14 @@ export interface DivProps extends ViewProps {
   onPressIn?: (e: any) => void
   /** onPressOut handler */
   onPressOut?: (e: any) => void
-  /** Whether view is accessible (false disables role) */
+  /** Whether view is accessible and focusable (if you can press it it's focusable by default) */
   accessible?: boolean
-  /** Accessibility role passed to native view */
+  /** Accessibility role passed to native view (if you can press it it's a 'button') */
   accessibilityRole?: AccessibilityRole
   /** Deprecated custom tooltip renderer */
   renderTooltip?: any // Deprecated
+  /** Test ID for testing purposes */
+  'data-testid'?: string
 }
 function Div ({
   style = [],
@@ -112,90 +113,37 @@ function Div ({
   tooltip,
   tooltipStyle,
   renderTooltip,
+  ref,
   ...props
-}: DivProps, ref: any): React.ReactNode {
-  if (DEPRECATED_PUSHED_VALUES.includes(pushed as string)) {
-    console.warn(`[@startupjs/ui] Div: variant='${pushed}' is DEPRECATED, use one of 's', 'm', 'l' instead.`)
-  }
-
-  if (renderTooltip) {
-    console.warn('[@startupjs/ui] Div: renderTooltip is DEPRECATED, use \'tooltip\' property instead.')
-  }
-
-  // TODO:
-  // Check NATIVE
-  // Maybe it is not actual for new RN versions
-  // FIXME: for native apps row-reverse switches margins and paddings
-  if (isNative && reverse) {
-    style = StyleSheet.flatten([style])
-    const { paddingLeft, paddingRight, marginLeft, marginRight } = style
-    style.marginLeft = marginRight
-    style.marginRight = marginLeft
-    style.paddingLeft = paddingRight
-    style.paddingRight = paddingLeft
-  }
-
+}: DivProps): ReactNode {
+  assertDeprecatedValues({ pushed, renderTooltip })
+  style = StyleSheet.flatten(style)
+  // on RN row-reverse switches margins and paddings sides, so we switch them back
+  if (isNative && reverse) style = reverseMarginPaddingSides(style)
   if (gap === true) gap = 2
+  const isPressable = hasPressHandler(props)
 
-  const isClickable = hasPressHandler(props)
-  const [hover, setHover] = useState(false)
-  const [active, setActive] = useState(false)
-
-  const viewRef = useRef(undefined)
-
-  useImperativeHandle(ref, () => viewRef.current, [])
-
-  // If component become not clickable, for example received 'disabled'
-  // prop while hover or active, state wouldn't update without this effect
-  useDidUpdate(() => {
-    if (!isClickable) return
-    if (!disabled) return
-    if (hover) setHover(false)
-    if (active) setActive(false)
-  }, [isClickable, disabled])
-
-  if (isClickable) {
-    // setup hover and active states styles and props
-    if (feedback) {
-      const { onPressIn, onPressOut } = props
-
-      props.onPressIn = (...args) => {
-        setActive(true)
-        onPressIn?.(...args)
-      }
-      props.onPressOut = (...args) => {
-        setActive(false)
-        onPressOut?.(...args)
-      }
-
-      if (isWeb && !disabled) {
-        const { onMouseEnter, onMouseLeave } = props
-
-        props.onMouseEnter = (...args) => {
-          setHover(true)
-          onMouseEnter?.(...args)
-        }
-        props.onMouseLeave = (...args) => {
-          setHover(false)
-          onMouseLeave?.(...args)
-        }
-      }
-    }
-
-    for (const prop of PRESSABLE_PROPS) {
-      const pressHandler = props[prop]
-      if (!pressHandler) continue
-      props[prop] = (...args) => {
-        if (disabled) return
-        pressHandler(...args)
-      }
-    }
-  }
+  let pressableStyle: StyleProp<ViewStyle> = {}
+  ;({
+    props,
+    pressableStyle,
+    accessibilityRole
+  } = useDecoratePressableProps({
+    props,
+    style,
+    activeStyle,
+    hoverStyle,
+    variant,
+    isPressable,
+    disabled,
+    accessibilityRole,
+    feedback
+  }))
 
   // TODO: bring back tooltip after AbstractPopover is refactored
   // const { tooltipElement, tooltipEventHandlers } = useTooltip({
   //   style: tooltipStyle,
-  //   anchorRef: viewRef,
+  //   anchorRef: ref,
   //   tooltip
   // })
 
@@ -209,59 +157,33 @@ function Div ({
   // }
 
   let pushedModifier
+  if (pushed) {
+    if (typeof pushed === 'boolean') pushed = 'm'
+    pushedModifier = `pushed-${pushed}`
+  }
+
   let levelModifier
-  const pushedSize = typeof pushed === 'boolean' && pushed ? 'm' : pushed
-  if (pushedSize) pushedModifier = `pushed-${pushedSize}`
-  // skip level 0 for shadow
-  // because it needed only when you want to override shadow from style sheet
   if (level) levelModifier = `shadow-${level}`
 
-  // hover or active state styles
-  // active state takes precedence over hover state
-  let extraStyle: StyleProp<ViewStyle> = {}
-  if (active) {
-    extraStyle = activeStyle ?? getDefaultStyle(style, 'active', variant)
-  } else if (hover) {
-    extraStyle = hoverStyle ?? getDefaultStyle(style, 'hover', variant)
-  }
+  if (!accessible) accessibilityRole = undefined
 
-  function maybeWrapToClickable (children: React.ReactNode): React.ReactNode {
-    if (isClickable) {
-      const role = accessible !== false ? accessibilityRole ?? 'button' : undefined
-      const touchableProps = pick(props, PRESSABLE_PROPS)
-      return pug`
-        TouchableWithoutFeedback(focusable=accessible accessibilityRole=role ...touchableProps)
-          = children
-      `
-    } else {
-      return children
-    }
-  }
-
-  const viewProps = omit(props, PRESSABLE_PROPS)
-
-  if (!isClickable) {
-    viewProps.accessibilityRole = accessible !== false ? accessibilityRole : undefined
-  }
-
-  const testID = viewProps.testID || viewProps['data-testid']
-  // backgroundColor in style can override extraStyle backgroundColor
-  // so passing the extraStyle to the end is important in this case
-  const divElement = maybeWrapToClickable(pug`
-    View.root(
-      ref=viewRef
+  const Component = isPressable ? Pressable : View
+  const testID = props.testID ?? props['data-testid']
+  const divElement = pug`
+    Component.root(
+      ref=ref
       style=[
         gap ? { gap: u(gap) } : undefined,
         style,
-        extraStyle
+        pressableStyle
       ]
       styleName=[
-        [row ? 'row' : 'column'],
+        row ? 'row' : 'column',
         { wrap, reverse },
         align,
         'v_' + vAlign,
         {
-          clickable: isWeb && isClickable,
+          clickable: isWeb && isPressable,
           bleed,
           full,
           disabled
@@ -270,10 +192,12 @@ function Div ({
         pushedModifier,
         levelModifier
       ]
+      accessible=accessible
+      accessibilityRole=accessibilityRole
       testID=testID
-      ...viewProps
+      ...props
     )= children
-  `)
+  `
 
   return pug`
     = divElement
@@ -282,13 +206,105 @@ function Div ({
   `
 }
 
-function hasPressHandler (props) {
-  return PRESSABLE_PROPS.some(prop => props[prop])
-}
-
 export default observer(themed('Div', Div), { forwardRef: true })
 
-function getDefaultStyle (style, type, variant) {
+function useDecoratePressableProps ({
+  props,
+  style,
+  activeStyle,
+  hoverStyle,
+  variant,
+  isPressable,
+  disabled,
+  accessibilityRole,
+  feedback
+}: {
+  props: Record<string, any>
+  style: StyleProp<ViewStyle>
+  activeStyle: StyleProp<ViewStyle>
+  hoverStyle: StyleProp<ViewStyle>
+  variant: 'opacity' | 'highlight'
+  isPressable: boolean
+  disabled?: boolean
+  accessibilityRole?: AccessibilityRole
+  feedback?: boolean
+}): {
+    props: Record<string, any>
+    pressableStyle?: StyleProp<ViewStyle>
+    accessibilityRole?: AccessibilityRole
+  } {
+  let pressableStyle: StyleProp<ViewStyle> = {}
+  const [hover, setHover] = useState(false)
+  const [active, setActive] = useState(false)
+
+  // If component become not clickable, for example received 'disabled'
+  // prop while hover or active, state wouldn't update without this effect
+  useDidUpdate(() => {
+    if (!isPressable) return
+    if (disabled) {
+      if (hover) setHover(false)
+      if (active) setActive(false)
+    }
+  }, [isPressable, disabled])
+
+  // decorate the element state (hover, active) only if it's pressable
+  if (!isPressable) return { props }
+
+  accessibilityRole ??= 'button'
+  props.focusable ??= true
+
+  // setup hover and active states styles and props
+  if (feedback) {
+    const { onPressIn, onPressOut } = props
+
+    props.onPressIn = (...args: any[]) => {
+      setActive(true)
+      onPressIn?.(...args)
+    }
+    props.onPressOut = (...args: any[]) => {
+      setActive(false)
+      onPressOut?.(...args)
+    }
+
+    if (isWeb && !disabled) {
+      const { onMouseEnter, onMouseLeave } = props
+
+      props.onMouseEnter = (...args: any[]) => {
+        setHover(true)
+        onMouseEnter?.(...args)
+      }
+      props.onMouseLeave = (...args: any[]) => {
+        setHover(false)
+        onMouseLeave?.(...args)
+      }
+    }
+    // hover or active state styles
+    // active state takes precedence over hover state
+    if (active) {
+      pressableStyle = activeStyle ?? getDefaultStyle(style, 'active', variant)
+    } else if (hover) {
+      pressableStyle = hoverStyle ?? getDefaultStyle(style, 'hover', variant)
+    }
+  }
+
+  // if disabled, disable all press handlers
+  for (const prop of PRESSABLE_PROPS) {
+    const pressHandler = props[prop]
+    if (!pressHandler) continue
+    props[prop] = (...args: any[]) => {
+      if (disabled) return
+      pressHandler(...args)
+    }
+  }
+
+  return { props, pressableStyle, accessibilityRole }
+}
+
+function getDefaultStyle (
+  style: StyleProp<ViewStyle>,
+  type: 'hover' | 'active',
+  variant?: 'opacity' | 'highlight'
+): StyleProp<ViewStyle> | undefined {
   if (variant === 'opacity') {
     if (type === 'hover') return { opacity: defaultHoverOpacity }
     if (type === 'active') return { opacity: defaultActiveOpacity }
@@ -299,20 +315,48 @@ function getDefaultStyle (style, type, variant) {
 
     if (type === 'hover') {
       if (backgroundColor) {
-        return { backgroundColor: colorToRGBA(backgroundColor, defaultHoverOpacity) }
+        return { backgroundColor: colorToRGBA(backgroundColor as string, defaultHoverOpacity) }
       } else {
         // If no color exists, we treat it as a light background and just dim it a bit
-        return { backgroundColor: getCssVariable('--Div-hoverBg') }
+        return { backgroundColor: getCssVariable('--Div-hoverBg') as string | undefined }
       }
     }
 
     if (type === 'active') {
       if (backgroundColor) {
-        return { backgroundColor: colorToRGBA(backgroundColor, defaultActiveOpacity) }
+        return { backgroundColor: colorToRGBA(backgroundColor as string, defaultActiveOpacity) }
       } else {
         // If no color exists, we treat it as a light background and just dim it a bit
-        return { backgroundColor: getCssVariable('--Div-activeBg') }
+        return { backgroundColor: getCssVariable('--Div-activeBg') as string | undefined }
       }
     }
   }
+}
+
+function hasPressHandler (props: Record<string, any>): boolean {
+  return PRESSABLE_PROPS.some(prop => props[prop])
+}
+
+function reverseMarginPaddingSides (style: StyleProp<ViewStyle>) {
+  style = StyleSheet.flatten(style)
+  const { paddingLeft, paddingRight, marginLeft, marginRight } = style
+  style.marginLeft = marginRight
+  style.marginRight = marginLeft
+  style.paddingLeft = paddingRight
+  style.paddingRight = paddingLeft
+  return style
+}
+
+function assertDeprecatedValues ({ pushed, renderTooltip }: { pushed?: any, renderTooltip?: any }) {
+  if (DEPRECATED_PUSHED_VALUES.includes(pushed)) console.warn(ERRORS.DEPRECATED_PUSHED(pushed))
+  if (renderTooltip) console.warn(ERRORS.DEPRECATED_RENDER_TOOLTIP)
+}
+
+const ERRORS = {
+  DEPRECATED_PUSHED: (pushed: string) => `
+    [@startupjs/ui] Div: variant='${pushed}' is DEPRECATED, use one of 's', 'm', 'l' instead.
+  `,
+  DEPRECATED_RENDER_TOOLTIP: `
+    [@startupjs/ui] Div: renderTooltip is DEPRECATED, use 'tooltip' property instead.
+  `
 }

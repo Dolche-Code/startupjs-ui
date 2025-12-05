@@ -1,4 +1,4 @@
-import type React from 'react'
+import { type ReactNode } from 'react'
 import { Platform, Text, type TextStyle, type StyleProp, type TextProps } from 'react-native'
 import { pug, observer } from 'startupjs'
 import { themed } from '@startupjs-ui/core'
@@ -8,7 +8,7 @@ export const _PropsJsonSchema = {/* SpanProps */ }
 
 export interface SpanProps extends TextProps {
   style?: StyleProp<TextStyle>
-  children?: React.ReactNode
+  children?: ReactNode
   /** @deprecated use h1-h6 props instead */
   variant?: 'default' | 'description' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   /** bold text */
@@ -51,7 +51,7 @@ function Span ({
   h5,
   h6,
   ...props
-}: SpanProps): React.ReactNode {
+}: SpanProps): ReactNode {
   if (variant && variant !== 'default') {
     if (variant === 'description') {
       console.warn("[@startupjs/ui] Span: variant='description' is DEPRECATED, use prop description instead.")

@@ -30,7 +30,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - **MUST** add JSDoc descriptions to each prop in the interface. This is used by the Sandbox to generate documentation tables.
     - Add defaults into the props destructuring of the component itself and remove the Component.defaultProps.
     - Remove the Component.propTypes (the interface handles it now).
-    - Specify the return type of the component function to be React.ReactNode.
+    - Specify the return type of the component function to be `ReactNode` (import { type ReactNode } from 'react').
     - Export `_PropsJsonSchema` for docs generation: `export const _PropsJsonSchema = {/* ComponentProps */}`.
 - **Styles**:
     - Do not change the styles, keep them as is.

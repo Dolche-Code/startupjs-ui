@@ -1,4 +1,4 @@
-import type React from 'react'
+import { type ReactNode } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { pug, observer } from 'startupjs'
 import { Colors, themed, useColors } from '@startupjs-ui/core'
@@ -17,7 +17,7 @@ export interface LoaderProps {
 function Loader ({
   color = Colors['text-description'],
   size = 'm'
-}: LoaderProps): React.ReactNode {
+}: LoaderProps): ReactNode {
   const getColor = useColors()
   const _color = getColor(color)
   if (!_color) console.error('Loader component: Color for color property is incorrect. Use colors from Colors')
