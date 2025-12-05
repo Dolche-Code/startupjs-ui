@@ -50,7 +50,7 @@ export interface DivProps extends ViewProps {
   vAlign?: 'top' | 'center' | 'bottom'
   /** Spacing between children (true maps to default gap) */
   gap?: boolean | number
-  /** Enable press feedback styles @default true */
+  /** Enable press feedback styles (hover and active states) @default true */
   feedback?: boolean
   /** Custom style for hover state */
   hoverStyle?: StyleProp<ViewStyle>
@@ -62,11 +62,11 @@ export interface DivProps extends ViewProps {
   level?: 0 | 1 | 2 | 3 | 4 | 5
   /** Shape of the container corners */
   shape?: 'squared' | 'rounded' | 'circle'
-  /** Apply raised (pushed) padding preset */
+  /** Add more space from the previous sibling */
   pushed?: boolean | 's' | 'm' | 'l'
   /** Stretch container into negative spacing area */
   bleed?: boolean
-  /** Expand to take full available width */
+  /** Expand to take full available height (or width if 'row' is true) */
   full?: boolean
   /** Simple tooltip text (currently disabled) */
   tooltip?: string
@@ -84,7 +84,7 @@ export interface DivProps extends ViewProps {
   accessible?: boolean
   /** Accessibility role passed to native view (if you can press it it's a 'button') */
   accessibilityRole?: AccessibilityRole
-  /** Deprecated custom tooltip renderer */
+  /** Deprecated custom tooltip renderer @deprecated */
   renderTooltip?: any // Deprecated
   /** Test ID for testing purposes */
   'data-testid'?: string
@@ -105,7 +105,7 @@ function Div ({
   disabled,
   level = 0,
   shape,
-  pushed, // By some reason prop 'push' was ignored
+  pushed, // History: for some reason the prop 'push' was ignored
   bleed,
   full,
   accessible,
