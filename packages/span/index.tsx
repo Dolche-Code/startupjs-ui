@@ -2,7 +2,7 @@ import { type ReactNode, type RefObject } from 'react'
 import { Platform, Text, type TextStyle, type StyleProp, type TextProps } from 'react-native'
 import { pug, observer } from 'startupjs'
 import { themed } from '@startupjs-ui/core'
-import './index.styl'
+import './index.cssx.styl'
 
 export default observer(themed('Span', Span))
 

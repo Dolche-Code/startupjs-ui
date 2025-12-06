@@ -1,10 +1,10 @@
 # Agent Guide: Component Refactoring
 
-This document serves as a guide for Agents refactoring components from the legacy `ui` library to the new `startupjs-ui` monorepo structure.
+This document serves as a guide for Agents refactoring components from the legacy `@startupjs/ui` library to the new `startupjs-ui` monorepo structure.
 
 ## Objective
 
-Refactor each component from the `ui` folder into its own package within `packages/`.
+Refactor each component from the `ui` folder (this is a source code of the old `@startupjs/ui` library) into its own package within `packages/`.
 The goal is to decouple components and introduce TypeScript interfaces for props to generate better documentation.
 
 ## Reference Implementations
@@ -32,6 +32,9 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - Remove the Component.propTypes (the interface handles it now).
     - Specify the return type of the component function to be `ReactNode` (import { type ReactNode } from 'react').
     - Export `_PropsJsonSchema` for docs generation: `export const _PropsJsonSchema = {/* ComponentProps */}`.
+    - `index.d.ts` file will be generated automatically by the build system, don't create it yourself.
+    - Don't change anything in the original `ui/` components folder - they are only there for a reference, they are not used, and will be completely removed after we finish refactoring all components.
+    - If you have to use a component in `.mdx` docs which was not refactored yet, import it from `@startupjs/ui` (the old ui library).
 - **Styles**:
     - Do not change the styles, keep them as is.
     - Ensure `themed` is imported from `@startupjs-ui/core`.
@@ -72,7 +75,7 @@ These components have no internal dependencies (or only depend on utils/core).
 
 - [x] **Span** (`packages/span`)
 - [x] **Div** (`packages/div`)
-- [ ] **Icon**
+- [x] **Icon** (`packages/icon`)
 - [x] **Loader** (`packages/loader`)
 - [ ] **Br**
 - [ ] **Portal**

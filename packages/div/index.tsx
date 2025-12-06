@@ -13,7 +13,7 @@ import { pug, observer, u, useDidUpdate } from 'startupjs'
 import { colorToRGBA, getCssVariable, themed } from '@startupjs-ui/core'
 // TODO: bring back tooltip after AbstractPopover is refactored
 // import useTooltip from './useTooltip'
-import STYLES from './index.styl'
+import STYLES from './index.cssx.styl'
 
 const DEPRECATED_PUSHED_VALUES = ['xs', 'xl', 'xxl']
 const PRESSABLE_PROPS = ['onPress', 'onLongPress', 'onPressIn', 'onPressOut']
