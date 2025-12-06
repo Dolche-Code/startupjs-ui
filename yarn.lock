@@ -4504,6 +4504,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@startupjs-ui/br@workspace:packages/br":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/br@workspace:packages/br"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/button@workspace:packages/button":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/button@workspace:packages/button"
@@ -4562,9 +4574,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/layout@workspace:packages/layout":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/layout@workspace:packages/layout"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/loader@npm:^0.1.0, @startupjs-ui/loader@workspace:packages/loader":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/loader@workspace:packages/loader"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/portal@workspace:packages/portal":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/portal@workspace:packages/portal"
   dependencies:
     "@startupjs-ui/core": "npm:^0.1.1"
   peerDependencies:

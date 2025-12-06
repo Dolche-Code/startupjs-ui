@@ -1,8 +1,11 @@
 # AUTO-GENERATED START (generate-package-dts)
 # DO NOT EDIT MANUALLY. Managed by scripts/generate-package-dts.mjs
+packages/br/index.d.ts
 packages/button/index.d.ts
 packages/div/index.d.ts
 packages/icon/index.d.ts
+packages/layout/index.d.ts
 packages/loader/index.d.ts
+packages/portal/index.d.ts
 packages/span/index.d.ts
 # AUTO-GENERATED END

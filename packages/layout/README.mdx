@@ -1,0 +1,51 @@
+import Div from '@startupjs-ui/div'
+import Layout, { _PropsJsonSchema as LayoutPropsJsonSchema } from './index'
+import Span from '@startupjs-ui/span'
+import { u } from 'startupjs'
+import { Sandbox } from '@startupjs/docs'
+import './index.mdx.cssx.styl'
+
+# Layout
+
+`Layout` serves as the root element of the application. It purpose is to render content within the safe area boundaries of a device. Also it displays a [StatusBar](https://reactnative.dev/docs/statusbar) for `android` & `ios` native apps.
+
+```jsx
+import { Layout } from 'startupjs-ui'
+```
+
+
+## Simple example
+
+```jsx example
+return (
+  <Layout style={{
+    backgroundColor: '#fff',
+    height: u(25),
+    alignItems: 'center',
+    justifyContent: 'center'
+  }}>
+    <Span>Layout area</Span>
+  </Layout>
+)
+```
+
+## Sandbox
+
+<Sandbox
+  Component={Layout}
+  propsJsonSchema={LayoutPropsJsonSchema}
+  props={{
+    style: {
+      backgroundColor: '#f1f1f1',
+      height: u(25),
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    children: (
+      <Div styleName='child'>
+        <Span>Lorem ipsum</Span>
+      </Div>
+    )
+  }}
+  block
+/>
