@@ -7,10 +7,9 @@ import React, {
   useRef,
   useMemo
 } from 'react'
-import { Animated, Easing, Dimensions, StyleSheet } from 'react-native'
+import { Animated, Easing, Dimensions, StyleSheet, View } from 'react-native'
 import { pug, observer } from 'startupjs'
 import PropTypes from 'prop-types'
-import Div from '../Div'
 import Portal from '../Portal'
 import getGeometry from './getGeometry'
 import CONSTANTS from './constants.json'
@@ -152,7 +151,7 @@ const Tether = observer(function TetherComponent ({
       onLayout=calculateGeometry
     )
       if arrow && !!geometry
-        Div.arrow(
+        View.arrow(
           style={
             borderTopColor: style.backgroundColor,
             left: geometry.arrowLeft,

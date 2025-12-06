@@ -3,6 +3,8 @@
 
 import { type ReactNode, type RefObject } from 'react';
 import { type StyleProp, type ViewStyle, type ViewProps, type AccessibilityRole } from 'react-native';
+declare const _default: import("react").ComponentType<DivProps>;
+export default _default;
 export declare const _PropsJsonSchema: {};
 export interface DivProps extends ViewProps {
     /** Ref to access underlying <View> or <Pressable> */
@@ -64,5 +66,3 @@ export interface DivProps extends ViewProps {
     /** Test ID for testing purposes */
     'data-testid'?: string;
 }
-declare const _default: import("react").ComponentType<DivProps>;
-export default _default;

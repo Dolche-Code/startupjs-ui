@@ -5,7 +5,9 @@ import { Colors, themed, useColors } from '@startupjs-ui/core'
 
 const SIZES = { s: 'small', m: 'large' }
 
-export const _PropsJsonSchema = {/* LoaderProps */ }
+export default observer(themed('Loader', Loader))
+
+export const _PropsJsonSchema = {/* LoaderProps */}
 
 export interface LoaderProps {
   /** Color token defined in Colors @default 'text-description' */
@@ -29,5 +31,3 @@ function Loader ({
     )
   `
 }
-
-export default observer(themed('Loader', Loader))

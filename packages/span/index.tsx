@@ -1,16 +1,20 @@
-import { type ReactNode } from 'react'
+import { type ReactNode, type RefObject } from 'react'
 import { Platform, Text, type TextStyle, type StyleProp, type TextProps } from 'react-native'
 import { pug, observer } from 'startupjs'
 import { themed } from '@startupjs-ui/core'
 import './index.styl'
 
-export const _PropsJsonSchema = {/* SpanProps */ }
+export default observer(themed('Span', Span))
+
+export const _PropsJsonSchema = {/* SpanProps */}
 
 export interface SpanProps extends TextProps {
+  /** Ref to access underlying <Text> */
+  ref?: RefObject<any>
+  /** Custom styles applied to the root view */
   style?: StyleProp<TextStyle>
+  /** Content rendered inside Span */
   children?: ReactNode
-  /** @deprecated use h1-h6 props instead */
-  variant?: 'default' | 'description' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   /** bold text */
   bold?: boolean
   /** italic text */
@@ -33,9 +37,12 @@ export interface SpanProps extends TextProps {
   h5?: boolean
   /** h6 header */
   h6?: boolean
+  /** @deprecated use h1-h6 props instead */
+  variant?: 'default' | 'description' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 function Span ({
+  ref,
   style,
   children,
   variant,
@@ -68,6 +75,7 @@ function Span ({
 
   return pug`
     Text.root(
+      ref=ref
       style=style
       styleName=[
         theme,
@@ -80,5 +88,3 @@ function Span ({
     )= children
   `
 }
-
-export default observer(themed('Span', Span))

@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useId } from 'react'
+import { createContext, Fragment, useContext, useEffect, useId } from 'react'
 import { pug, $, observer } from 'startupjs'
 
-const PortalContext = React.createContext()
+const PortalContext = createContext()
 
 const Provider = observer(({ children }) => {
   const $state = $({ order: [], nodes: {} })
@@ -17,7 +17,7 @@ const Host = observer(({ $state }) => {
 
   return pug`
     each componentId in order
-      React.Fragment(key=componentId)
+      Fragment(key=componentId)
         = nodes[componentId]?.()
   `
 })

@@ -1,6 +1,8 @@
 /* eslint-disable */
 // DO NOT MODIFY THIS FILE - IT IS AUTOMATICALLY GENERATED ON COMMITS.
 
+declare const _default: import("react").ComponentType<LoaderProps>;
+export default _default;
 export declare const _PropsJsonSchema: {};
 export interface LoaderProps {
     /** Color token defined in Colors @default 'text-description' */
@@ -8,5 +10,3 @@ export interface LoaderProps {
     /** Component size @default 'm' */
     size?: 's' | 'm';
 }
-declare const _default: import("react").ComponentType<LoaderProps>;
-export default _default;

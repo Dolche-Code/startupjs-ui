@@ -27,7 +27,9 @@ const {
   }
 } = STYLES
 
-export const _PropsJsonSchema = {/* DivProps */ }
+export default observer(themed('Div', Div))
+
+export const _PropsJsonSchema = {/* DivProps */}
 
 export interface DivProps extends ViewProps {
   /** Ref to access underlying <View> or <Pressable> */
@@ -89,6 +91,7 @@ export interface DivProps extends ViewProps {
   /** Test ID for testing purposes */
   'data-testid'?: string
 }
+
 function Div ({
   style = [],
   children,
@@ -205,8 +208,6 @@ function Div ({
     // = tooltipElement
   `
 }
-
-export default observer(themed('Div', Div), { forwardRef: true })
 
 function useDecoratePressableProps ({
   props,
