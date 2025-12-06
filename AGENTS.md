@@ -100,7 +100,7 @@ These depend only on Level 0 components.
 
 - [x] **Button** (depends on Div, Icon, Loader, Span) (`packages/button`)
 - [x] **Badge** (depends on Div, Icon, Span) (`packages/badge`)
-- [ ] **Avatar** (depends on Div, Icon, Span)
+- [x] **Avatar** (depends on Div, Icon, Span) (`packages/avatar`)
 - [ ] **Tag** (depends on Div, Icon, Span)
 - [ ] **Card** (depends on Div)
 - [ ] **Tooltip** (depends on Div)
