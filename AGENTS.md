@@ -73,7 +73,7 @@ These components have no internal dependencies (or only depend on utils/core).
 - [x] **Span** (`packages/span`)
 - [x] **Div** (`packages/div`)
 - [ ] **Icon**
-- [ ] **Loader**
+- [x] **Loader** (`packages/loader`)
 - [ ] **Br**
 - [ ] **Portal**
 - [ ] **Layout**
