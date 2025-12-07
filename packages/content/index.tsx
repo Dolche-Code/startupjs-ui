@@ -8,6 +8,8 @@ const {
   config: { defaultWidth }
 } = STYLES
 
+export default observer(themed('Content', Content))
+
 export const _PropsJsonSchema = {/* ContentProps */}
 
 export interface ContentProps extends Omit<DivProps, 'style' | 'padding' | 'full'> {
@@ -50,5 +52,3 @@ function Content ({
     )= children
   `
 }
-
-export default observer(themed('Content', Content))

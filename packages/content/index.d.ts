@@ -3,6 +3,8 @@
 
 import { type ReactNode } from 'react';
 import { type DivProps } from '@startupjs-ui/div';
+declare const _default: import("react").ComponentType<ContentProps>;
+export default _default;
 export declare const _PropsJsonSchema: {};
 export interface ContentProps extends Omit<DivProps, 'style' | 'padding' | 'full'> {
     /** Custom styles applied to the root view */
@@ -18,5 +20,3 @@ export interface ContentProps extends Omit<DivProps, 'style' | 'padding' | 'full
     /** Remove horizontal paddings */
     pure?: boolean;
 }
-declare const _default: import("react").ComponentType<ContentProps>;
-export default _default;
