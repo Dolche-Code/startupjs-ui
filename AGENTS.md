@@ -105,7 +105,7 @@ These depend only on Level 0 components.
 - [x] **Card** (depends on Div) (`packages/card`)
 - [ ] **Tooltip** (depends on Div)
 - [x] **Alert** (depends on Div, Icon) (`packages/alert`)
-- [ ] **Content** (depends on Div)
+- [x] **Content** (depends on Div) (`packages/content`)
 - [ ] **Row** (depends on Div)
 - [ ] **Breadcrumbs** (depends on Div, Icon, Span)
 - [ ] **Menu** (depends on Div, Icon, Span)

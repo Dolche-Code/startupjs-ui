@@ -6,6 +6,7 @@ packages/badge/index.d.ts
 packages/br/index.d.ts
 packages/button/index.d.ts
 packages/card/index.d.ts
+packages/content/index.d.ts
 packages/div/index.d.ts
 packages/icon/index.d.ts
 packages/layout/index.d.ts

@@ -4590,6 +4590,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/content@workspace:packages/content":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/content@workspace:packages/content"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/core@npm:^0.1.1, @startupjs-ui/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/core@workspace:packages/core"
