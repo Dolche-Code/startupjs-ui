@@ -4562,6 +4562,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/card@workspace:packages/card":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/card@workspace:packages/card"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/core@npm:^0.1.1, @startupjs-ui/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/core@workspace:packages/core"
