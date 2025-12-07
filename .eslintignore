@@ -16,6 +16,7 @@ packages/link/index.d.ts
 packages/loader/index.d.ts
 packages/menu/index.d.ts
 packages/portal/index.d.ts
+packages/rating/index.d.ts
 packages/span/index.d.ts
 packages/tag/index.d.ts
 # AUTO-GENERATED END

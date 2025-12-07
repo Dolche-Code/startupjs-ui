@@ -110,7 +110,7 @@ These depend only on Level 0 components.
 - [x] **Breadcrumbs** (depends on Div, Icon, Span) (`packages/breadcrumbs`)
 - [x] **Menu** (depends on Div, Icon, Span) (`packages/menu`)
 - [ ] **Progress** (depends on Div, Span)
-- [ ] **Rating** (depends on Div, Icon)
+- [x] **Rating** (depends on Div, Icon) (`packages/rating`)
 - [ ] **Tabs** (depends on Div, Span)
 
 ### Level 2: Intermediate Components
