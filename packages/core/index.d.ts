@@ -22,7 +22,7 @@ export interface GetColorOptions {
   convertToString?: boolean
 }
 
-export type ColorValue = string | undefined | Record<string, any>
+export type ColorValue = string | undefined
 
 export type GetColor = (color?: string, options?: GetColorOptions) => ColorValue
 

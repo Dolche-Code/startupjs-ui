@@ -60,7 +60,7 @@ function Badge ({
     badgeStyle
   ]) as StyleProp<ViewStyle>
 
-  const textAndIconColor = getColor(Colors[`text-on-${color}`]) ?? getColor(Colors['text-on-color'])
+  const textAndIconColor = getColor(`text-on-${color}`) ?? getColor('text-on-color')
 
   const hasLabel = useMemo(() => {
     return variant === 'default'

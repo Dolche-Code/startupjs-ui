@@ -14,6 +14,7 @@ packages/item/index.d.ts
 packages/layout/index.d.ts
 packages/link/index.d.ts
 packages/loader/index.d.ts
+packages/menu/index.d.ts
 packages/portal/index.d.ts
 packages/span/index.d.ts
 packages/tag/index.d.ts

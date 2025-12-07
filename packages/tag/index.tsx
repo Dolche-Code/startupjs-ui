@@ -83,7 +83,7 @@ function Tag ({
   }
 
   const isFlat = variant === 'flat'
-  const _color = getColor(color)
+  const _color = getColor(color) ?? color
   const rootStyle: StyleProp<ViewStyle> = {}
   let extraHoverStyle
   let extraActiveStyle
@@ -103,18 +103,18 @@ function Tag ({
 
   switch (variant) {
     case 'flat':
-      rootStyle.backgroundColor = _color as string
+      rootStyle.backgroundColor = _color
       break
     case 'outlined':
-      rootStyle.borderColor = colorToRGBA(_color as string, 0.5)
-      extraHoverStyle = { backgroundColor: colorToRGBA(_color as string, 0.05) }
-      extraActiveStyle = { backgroundColor: colorToRGBA(_color as string, 0.25) }
+      rootStyle.borderColor = colorToRGBA(_color, 0.5)
+      extraHoverStyle = { backgroundColor: colorToRGBA(_color, 0.05) }
+      extraActiveStyle = { backgroundColor: colorToRGBA(_color, 0.25) }
       break
     case 'outlined-bg':
-      rootStyle.borderColor = _color as string
-      rootStyle.backgroundColor = colorToRGBA(_color as string, 0.15)
-      extraHoverStyle = { backgroundColor: colorToRGBA(_color as string, 0.05) }
-      extraActiveStyle = { backgroundColor: colorToRGBA(_color as string, 0.25) }
+      rootStyle.borderColor = _color
+      rootStyle.backgroundColor = colorToRGBA(_color, 0.15)
+      extraHoverStyle = { backgroundColor: colorToRGBA(_color, 0.05) }
+      extraActiveStyle = { backgroundColor: colorToRGBA(_color, 0.25) }
       break
   }
 

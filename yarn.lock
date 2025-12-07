@@ -4661,7 +4661,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/item@workspace:packages/item":
+"@startupjs-ui/item@npm:^0.1.0, @startupjs-ui/item@workspace:packages/item":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/item@workspace:packages/item"
   dependencies:
@@ -4709,6 +4709,22 @@ __metadata:
   resolution: "@startupjs-ui/loader@workspace:packages/loader"
   dependencies:
     "@startupjs-ui/core": "npm:^0.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/menu@workspace:packages/menu":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/menu@workspace:packages/menu"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/icon": "npm:^0.1.0"
+    "@startupjs-ui/item": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
   peerDependencies:
     react: "*"
     react-native: "*"
