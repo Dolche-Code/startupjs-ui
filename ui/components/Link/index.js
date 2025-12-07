@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform, Linking } from 'react-native'
 import { pug, observer } from 'startupjs'
-import useRouter from '@startupjs/utils/useRouter'
+import useRouter from 'startupjs/useRouter'
 import PropTypes from 'prop-types'
 import Div from './../Div'
 import Button from './../Button'

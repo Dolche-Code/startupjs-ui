@@ -9276,7 +9276,7 @@ __metadata:
     react-native-svg: "npm:15.12.1"
     react-native-web: "npm:~0.21.0"
     react-native-worklets: "npm:0.5.1"
-    startupjs: "npm:^0.60.0-canary.18"
+    startupjs: "npm:^0.60.0-canary.19"
     typescript: "npm:~5.9.2"
   languageName: unknown
   linkType: soft
@@ -20211,9 +20211,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"startupjs@npm:^0.60.0-canary.18":
-  version: 0.60.0-canary.18
-  resolution: "startupjs@npm:0.60.0-canary.18"
+"startupjs@npm:^0.60.0-canary.19":
+  version: 0.60.0-canary.19
+  resolution: "startupjs@npm:0.60.0-canary.19"
   dependencies:
     "@startupjs/auth": "npm:^0.60.0-canary.8"
     "@startupjs/bundler": "npm:^0.60.0-canary.18"
@@ -20238,7 +20238,7 @@ __metadata:
       optional: true
   bin:
     startupjs: cli.js
-  checksum: 10c0/fbcc835baa531300e6518174d671b6f7498d79e20e2753ea8a97bae7ded981e78b4d770a18d2d2c5320d97fdd27c381747bbd3423edbbd2c2d74441ea709f25d
+  checksum: 10c0/080d5175db82fd598c508485750c3ba7d54f84207e7e267f485acc9407f61bf2a0d38f6c16615e152334dcfb459d4688449f7620b7857e7c55512cf4f68a4f75
   languageName: node
   linkType: hard
 
