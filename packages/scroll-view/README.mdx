@@ -1,0 +1,46 @@
+import ScrollView, { _PropsJsonSchema as ScrollViewPropsJsonSchema } from './index'
+import { Sandbox } from '@startupjs/docs'
+import Div from '@startupjs-ui/div'
+import Span from '@startupjs-ui/span'
+
+# ScrollView
+
+Reexported from [React Native](https://reactnative.dev/docs/scrollview) and [React Native Web](https://necolas.github.io/react-native-web/docs/scroll-view/).
+
+```jsx
+import { ScrollView } from 'startupjs-ui'
+```
+
+## Simple example
+
+```jsx example
+return (
+  <ScrollView style={{ maxHeight: 200 }}>
+    <Span>Content</Span>
+    <Span>Content</Span>
+    <Span>Content</Span>
+    <Span>Content</Span>
+    <Span>Content</Span>
+  </ScrollView>
+)
+```
+
+## Full height content
+
+Use `full` to make the content container stretch to the available height.
+
+```jsx example
+return (
+  <Div style={{ height: 200 }} level={1}>
+    <ScrollView full>
+      <Span>Top</Span>
+      <Span>Middle</Span>
+      <Span>Bottom</Span>
+    </ScrollView>
+  </Div>
+)
+```
+
+## Sandbox
+
+<Sandbox Component={ScrollView} propsJsonSchema={ScrollViewPropsJsonSchema} />

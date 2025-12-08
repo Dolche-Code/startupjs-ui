@@ -113,6 +113,7 @@ These depend only on Level 0 components.
 - [x] **Rating** (depends on Div, Icon) (`packages/rating`)
 - [x] **Tabs** (depends on Div, Span) (`packages/tabs`)
 - [x] **Pagination** (depends on Button, Div, Icon, Span) (`packages/pagination`)
+- [x] **ScrollView** (`packages/scroll-view`)
 
 ### Level 2: Intermediate Components
 These depend on Level 1 components.
