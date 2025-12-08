@@ -118,7 +118,6 @@ These depend only on Level 0 components.
 These depend on Level 1 components.
 
 - [x] **Link** (depends on Button, Div, Span) (`packages/link`)
-- [ ] **Pagination** (depends on Button, Div, Icon, Span)
 - [ ] **User** (depends on Avatar)
 - [ ] **Modal** (depends on Portal, Layout, Button)
 - [ ] **Sidebar**
