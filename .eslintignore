@@ -20,6 +20,7 @@ packages/pagination/index.d.ts
 packages/portal/index.d.ts
 packages/rating/index.d.ts
 packages/scroll-view/index.d.ts
+packages/sidebar/index.d.ts
 packages/span/index.d.ts
 packages/tabs/index.d.ts
 packages/tag/index.d.ts
