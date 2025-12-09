@@ -1,0 +1,204 @@
+import { useState, useRef } from 'react'
+import { $ } from 'startupjs'
+import { Sandbox } from '@startupjs/docs'
+import Modal, {
+  _PropsJsonSchema as ModalPropsJsonSchema
+} from './index'
+import { _PropsJsonSchema as ModalHeaderPropsJsonSchema } from './ModalHeader'
+import { _PropsJsonSchema as ModalContentPropsJsonSchema } from './ModalContent'
+import { _PropsJsonSchema as ModalActionsPropsJsonSchema } from './ModalActions'
+import Button from '@startupjs-ui/button'
+import Span from '@startupjs-ui/span'
+import { Table, Thead, Tbody, Tr, Th, Td } from '@startupjs/ui'
+import './index.mdx.cssx.styl'
+
+# Modal
+
+Inherits [React Native Modal](https://reactnative.dev/docs/modal).
+
+Modal can be used when the user needs to inform about critical information, require decisions or interact a complex sub-application without navigating to a new page or interrupting the workflow.
+
+```js
+import { Modal } from 'startupjs-ui'
+```
+
+## Simple example
+
+```jsx example
+const [visible, setVisible] = useState(false)
+
+return (
+  <>
+    <Modal
+      visible={visible}
+      title='Text in modal'
+      onRequestClose={setVisible}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+    </Modal>
+    <Button onPress={() => setVisible(true)}>
+      Open modal
+    </Button>
+  </>
+)
+```
+
+## Managing visibility
+
+There are three options for managing visiblity of a modal:
+
+1. By passing the scoped model to the `$visible` property from the state of which visibility is controlled.
+
+```jsx example
+const $visible = $()
+
+return (
+  <React.Fragment>
+    <Button onPress={() => $visible.set(true)}>
+      Open
+    </Button>
+    <Modal
+      title='Example'
+      $visible={$visible}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+    </Modal>
+  </React.Fragment>
+)
+```
+
+2. By passing the `visible` property that determines whether modal is visible.
+
+```jsx example
+const [visible, setVisible] = useState(false)
+
+return (
+  <React.Fragment>
+    <Button onPress={() => setVisible(true)}>
+      Open
+    </Button>
+    <Modal
+      title='Example'
+      visible={visible}
+      onRequestClose={() => setVisible(false)}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+    </Modal>
+  </React.Fragment>
+)
+```
+
+3. By passing `ref`, which will receive the `open()` and `close()` methods to control visibility.
+
+```jsx example
+const modalRef = useRef()
+
+return (
+  <React.Fragment>
+    <Button onPress={() => modalRef.current.open()}>
+      Open
+    </Button>
+    <Modal
+      title='Example'
+      ref={modalRef}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+    </Modal>
+  </React.Fragment>
+)
+```
+
+## Fullscreen modal
+
+By default the modal shows like window in center of the page. To make it fullscreen, you need pass the string `fullscreen` to the `variant` property.
+
+```jsx example
+const $visible = $(false)
+
+return (
+  <React.Fragment>
+    <Button onPress={() => $visible.set(true)}>
+      Open fullscreen modal
+    </Button>
+    <Modal
+      variant='fullscreen'
+      title='Fullscreen example'
+      $visible={$visible}
+      onCancel={() => console.log('onCancel')}
+      onConfirm={() => console.log('onConfirm')}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+    </Modal>
+  </React.Fragment>
+)
+```
+
+## Advanced usage
+
+Modal consists of three parts - `Header`, `Content` and `Actions`. These parts can be used to add custom markup, the `Header` is used instead of `title`, the `Content` is used instead of children and the `Actions` is used instead of handlers `onCancel`, `onConfirm`. They can be used separately.
+
+```jsx example
+const $visible = $(false)
+
+return (
+  <React.Fragment>
+    <Button onPress={() => $visible.set(true)}>
+      Open advanced modal
+    </Button>
+    <Modal $visible={$visible}>
+      <Modal.Header>Advanced modal</Modal.Header>
+      <Modal.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+      </Modal.Content>
+      <Modal.Actions>
+        <Button
+          shape='circle'
+          onPress={() => $visible.set(false)}
+        >
+          Custom close
+        </Button>
+        <Button
+          pushed
+          shape='circle'
+          onPress={() => $visible.set(false)}
+        >
+          Custom confirm
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  </React.Fragment>
+)
+```
+
+## Sandbox
+
+### Modal
+
+<Sandbox
+  Component={Modal}
+  propsJsonSchema={ModalPropsJsonSchema}
+  props={{ /* $visible: $.session.Props.Modal.visible */ }}
+  $props={$.session.Props.Modal}
+  {...{ _comment: "HACK to make alive sandbox when user click on 'visible' checkbox" }}
+/>
+
+### Modal.Header
+
+<Sandbox
+  Component={Modal.Header}
+  propsJsonSchema={ModalHeaderPropsJsonSchema}
+/>
+
+### Modal.Content
+
+<Sandbox
+  Component={Modal.Content}
+  propsJsonSchema={ModalContentPropsJsonSchema}
+/>
+
+### Modal.Actions
+
+<Sandbox
+  Component={Modal.Actions}
+  propsJsonSchema={ModalActionsPropsJsonSchema}
+/>

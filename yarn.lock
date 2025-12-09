@@ -4519,7 +4519,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/avatar@workspace:packages/avatar":
+"@startupjs-ui/avatar@npm:^0.1.0, @startupjs-ui/avatar@workspace:packages/avatar":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/avatar@workspace:packages/avatar"
   dependencies:
@@ -4732,6 +4732,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/modal@workspace:packages/modal":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/modal@workspace:packages/modal"
+  dependencies:
+    "@startupjs-ui/button": "npm:^0.1.0"
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/icon": "npm:^0.1.0"
+    "@startupjs-ui/portal": "npm:^0.1.0"
+    "@startupjs-ui/scroll-view": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/pagination@workspace:packages/pagination":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/pagination@workspace:packages/pagination"
@@ -4747,7 +4765,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/portal@workspace:packages/portal":
+"@startupjs-ui/portal@npm:^0.1.0, @startupjs-ui/portal@workspace:packages/portal":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/portal@workspace:packages/portal"
   dependencies:
@@ -4767,6 +4785,18 @@ __metadata:
     "@startupjs-ui/div": "npm:^0.1.0"
     "@startupjs-ui/icon": "npm:^0.1.0"
     "@startupjs-ui/span": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/scroll-view@npm:^0.1.0, @startupjs-ui/scroll-view@workspace:packages/scroll-view":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/scroll-view@workspace:packages/scroll-view"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -4807,6 +4837,21 @@ __metadata:
     "@startupjs-ui/core": "npm:^0.1.1"
     "@startupjs-ui/div": "npm:^0.1.0"
     "@startupjs-ui/icon": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/user@workspace:packages/user":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/user@workspace:packages/user"
+  dependencies:
+    "@startupjs-ui/avatar": "npm:^0.1.0"
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
     "@startupjs-ui/span": "npm:^0.1.0"
   peerDependencies:
     react: "*"
