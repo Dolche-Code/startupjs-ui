@@ -127,6 +127,4 @@ const ObservedCollapse: any = observer(themed('Collapse', Collapse))
 ObservedCollapse.Header = CollapseHeader
 ObservedCollapse.Content = CollapseContent
 
-export { default as CollapseHeader, _PropsJsonSchema as CollapseHeaderPropsJsonSchema } from './CollapseHeader'
-export { default as CollapseContent, _PropsJsonSchema as CollapseContentPropsJsonSchema } from './CollapseContent'
 export default ObservedCollapse

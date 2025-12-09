@@ -42,6 +42,4 @@ export interface CollapseProps extends Omit<DivProps, 'style' | 'children' | 'va
     onAnimationEnd?: () => void;
 }
 declare const ObservedCollapse: any;
-export { default as CollapseHeader, _PropsJsonSchema as CollapseHeaderPropsJsonSchema } from './CollapseHeader';
-export { default as CollapseContent, _PropsJsonSchema as CollapseContentPropsJsonSchema } from './CollapseContent';
 export default ObservedCollapse;
