@@ -9,6 +9,7 @@ packages/button/index.d.ts
 packages/card/index.d.ts
 packages/content/index.d.ts
 packages/div/index.d.ts
+packages/drawer-sidebar/index.d.ts
 packages/icon/index.d.ts
 packages/item/index.d.ts
 packages/layout/index.d.ts

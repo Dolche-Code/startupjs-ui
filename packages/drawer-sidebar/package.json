@@ -1,0 +1,16 @@
+{
+  "name": "@startupjs-ui/drawer-sidebar",
+  "version": "0.1.0",
+  "main": "index.tsx",
+  "types": "index.d.ts",
+  "type": "module",
+  "dependencies": {
+    "@startupjs-ui/core": "^0.1.1",
+    "react-native-drawer-layout-polyfill": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "startupjs": "*"
+  }
+}

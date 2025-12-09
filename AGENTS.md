@@ -122,7 +122,7 @@ These depend on Level 1 components.
 - [x] **User** (depends on Avatar) (`packages/user`)
 - [x] **Modal** (depends on Portal, Layout, Button) (`packages/modal`)
 - [x] **Sidebar** (`packages/sidebar`)
-- [ ] **DrawerSidebar**
+- [x] **DrawerSidebar** (`packages/drawer-sidebar`)
 - [ ] **Collapse**
 - [ ] **Carousel**
 

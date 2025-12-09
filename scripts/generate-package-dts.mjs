@@ -49,6 +49,11 @@ async function main () {
   await fs.rm(tempDir, { recursive: true, force: true })
   await fs.mkdir(outDir, { recursive: true })
 
+  const extraDtsFiles = await collectDeclarationFiles([
+    path.join(rootDir, 'types'),
+    ...packagesToBuild.map(pkg => path.join(packagesDir, pkg.name))
+  ])
+
   const tsconfigPath = path.join(tempDir, 'tsconfig.json')
   const tsconfig = {
     extends: '../../tsconfig.json',
@@ -60,8 +65,10 @@ async function main () {
       rootDir: '../..',
       skipLibCheck: true
     },
-    include: ['../../types/**/*.d.ts'],
-    files: packagesToBuild.map(pkg => path.relative(tempDir, path.join(rootDir, pkg.entryFile)))
+    files: [
+      ...packagesToBuild.map(pkg => path.relative(tempDir, path.join(rootDir, pkg.entryFile))),
+      ...extraDtsFiles.map(file => path.relative(tempDir, file))
+    ]
   }
 
   await fs.writeFile(tsconfigPath, JSON.stringify(tsconfig, null, 2))
@@ -136,6 +143,35 @@ async function main () {
   }
 
   await fs.rm(tempDir, { recursive: true, force: true })
+}
+
+async function collectDeclarationFiles (directories) {
+  const files = []
+  for (const dir of directories) {
+    try {
+      const stats = await fs.stat(dir)
+      if (!stats.isDirectory()) continue
+    } catch {
+      continue
+    }
+
+    const stack = [dir]
+    while (stack.length) {
+      const current = stack.pop()
+      const entries = await fs.readdir(current, { withFileTypes: true })
+      for (const entry of entries) {
+        const fullPath = path.join(current, entry.name)
+        if (entry.isDirectory()) {
+          stack.push(fullPath)
+          continue
+        }
+        if (!entry.name.endsWith('.d.ts')) continue
+        if (entry.name === 'index.d.ts') continue
+        files.push(fullPath)
+      }
+    }
+  }
+  return Array.from(new Set(files))
 }
 
 main().catch(err => {

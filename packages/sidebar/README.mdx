@@ -169,18 +169,20 @@ return (
           Span Sidebar content
       `
     },
-    children: pug`
-      Div.content
-        Button.button(
-          onPress=() => {
+    children: (
+      <Div styleName='content'>
+        <Button
+          styleName='button'
+          onPress={() => {
             console.log('Toggle sidebar')
             const value = $.session.Sandbox.Sidebar.get()
             $.session.Sandbox.Sidebar.set(!value)
-          }
-        ) Toggle
-        Br
-        Span Children content
-    `
+          }}
+        >Toggle</Button>
+        <Br />
+        <Span>Children content</Span>
+      </Div>
+    )
   }}
   propsJsonSchema={SidebarPropsJsonSchema}
   block
