@@ -136,6 +136,11 @@ These have deep dependency chains.
 - [ ] **Table**
 - [ ] **Dialogs**
 
+### Level 4: Forms
+Form components from ui/components/forms/*
+
+- [x] **TextInput** (`packages/text-input`)
+
 ## Updating this Guide
 
 **IMPORTANT**: If you discover new patterns, caveats, or simplifications during your work, **UPDATE THIS FILE**.
