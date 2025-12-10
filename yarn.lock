@@ -4606,6 +4606,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/carousel@workspace:packages/carousel":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/carousel@workspace:packages/carousel"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/icon": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/collapse@workspace:packages/collapse":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/collapse@workspace:packages/collapse"

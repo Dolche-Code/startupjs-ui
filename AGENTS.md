@@ -124,7 +124,7 @@ These depend on Level 1 components.
 - [x] **Sidebar** (`packages/sidebar`)
 - [x] **DrawerSidebar** (`packages/drawer-sidebar`)
 - [x] **Collapse** (`packages/collapse`)
-- [ ] **Carousel**
+- [x] **Carousel** (`packages/carousel`)
 
 ### Level 3: Complex Components
 These have deep dependency chains.
