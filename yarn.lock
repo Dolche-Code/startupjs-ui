@@ -4808,6 +4808,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/number-input@workspace:packages/number-input":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/number-input@workspace:packages/number-input"
+  dependencies:
+    "@startupjs-ui/button": "npm:^0.1.0"
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
+    "@startupjs-ui/text-input": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/pagination@workspace:packages/pagination":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/pagination@workspace:packages/pagination"
@@ -4930,7 +4946,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/text-input@workspace:packages/text-input":
+"@startupjs-ui/text-input@npm:^0.1.0, @startupjs-ui/text-input@workspace:packages/text-input":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/text-input@workspace:packages/text-input"
   dependencies:

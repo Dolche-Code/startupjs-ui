@@ -147,7 +147,7 @@ Form components from ui/components/forms/*
 - [ ] **Form** (ui/components/forms/Form)
 - [ ] **Input** (ui/components/forms/Input)
 - [ ] **Multiselect** (ui/components/forms/Multiselect)
-- [ ] **NumberInput** (ui/components/forms/NumberInput)
+- [x] **NumberInput** (`packages/number-input`)
 - [ ] **ObjectInput** (ui/components/forms/ObjectInput)
 - [ ] **PasswordInput** (ui/components/forms/PasswordInput)
 - [ ] **Radio** (ui/components/forms/Radio)
