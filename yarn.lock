@@ -4671,6 +4671,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/color-picker@workspace:packages/color-picker":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/color-picker@workspace:packages/color-picker"
+  dependencies:
+    "@startupjs-ui/button": "npm:^0.1.0"
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/modal": "npm:^0.1.0"
+    "@startupjs-ui/scroll-view": "npm:^0.1.0"
+    color: "npm:^3.1.2"
+    react-native-color-picker: "npm:^0.6.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/content@workspace:packages/content":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/content@workspace:packages/content"
@@ -4810,7 +4828,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/modal@workspace:packages/modal":
+"@startupjs-ui/modal@npm:^0.1.0, @startupjs-ui/modal@workspace:packages/modal":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/modal@workspace:packages/modal"
   dependencies:

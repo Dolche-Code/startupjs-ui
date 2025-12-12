@@ -34,3 +34,4 @@ export { default as PasswordInput } from '../../packages/password-input/README.m
 export { default as Radio } from '../../packages/radio/README.mdx'
 export { default as RangeInput } from '../../packages/range-input/README.mdx'
 export { default as Select } from '../../packages/select/README.mdx'
+export { default as ColorPicker } from '../../packages/color-picker/README.mdx'

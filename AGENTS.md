@@ -40,6 +40,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - Remove the Component.propTypes (the interface handles it now).
     - Specify the return type of the component function to be `ReactNode` (import { type ReactNode } from 'react').
     - Export `_PropsJsonSchema` for docs generation: `export const _PropsJsonSchema = {/* ComponentProps */}`.
+    - If legacy code used `observer(..., { forwardRef: true })` and `(props, ref)` signature, switch to a `ref?: RefObject<any>` prop (like `packages/div`) and use `useImperativeHandle(ref, ...)`; do not rely on React `forwardRef`.
     - Babel handles `part="..."` attributes: it auto-injects the corresponding style prop into destructuring and passes it down (e.g., `part='root'` adds `style`, `part='title'` adds `titleStyle`). You generally do not need to manually add `style` to the JSX unless you actually transform it, but you should declare the prop in the interface when relevant.
     - Implement minimal TS typing beyond the props interface when needed to satisfy `tsc`/ESLint; keep the implementation otherwise as close to original JS code as possible.
     - `index.d.ts` file will be generated automatically by the build system, don't create it yourself.
@@ -78,6 +79,10 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - The Sandbox section appears at the bottom.
     - The props table in Sandbox shows the correct types and **descriptions**.
 6.  Optional quick checks: `yarn eslint packages/<component>/index.tsx` and `yarn tsc --noEmit --skipLibCheck`.
+
+## Common TS Fixes
+
+- Missing typings for third-party deps: prefer adding a minimal ambient module declaration in `types/*.d.ts` (instead of installing `@types/*`), so `yarn tsc --noEmit --skipLibCheck` passes in a network-restricted environment.
 
 ## Refactoring Order & Progress
 
@@ -140,7 +145,7 @@ Form components from ui/components/forms/*
 - [x] **TextInput** (`packages/text-input`)
 - [ ] **ArrayInput** (ui/components/forms/ArrayInput)
 - [x] **Checkbox** (ui/components/forms/Checkbox) (`packages/checkbox`)
-- [ ] **ColorPicker** (ui/components/forms/ColorPicker)
+- [x] **ColorPicker** (ui/components/forms/ColorPicker) (`packages/color-picker`)
 - [ ] **DateTimePicker** (ui/components/forms/DateTimePicker)
 - [ ] **FileInput** (ui/components/forms/FileInput)
 - [ ] **Form** (ui/components/forms/Form)
