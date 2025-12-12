@@ -1,5 +1,6 @@
 # AUTO-GENERATED START (generate-package-dts)
 # DO NOT EDIT MANUALLY. Managed by scripts/generate-package-dts.mjs
+packages/abstract-popover/index.d.ts
 packages/alert/index.d.ts
 packages/avatar/index.d.ts
 packages/badge/index.d.ts

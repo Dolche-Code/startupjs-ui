@@ -1,0 +1,156 @@
+import { useRef, useState } from 'react'
+import { Sandbox } from '@startupjs/docs'
+import AbstractPopover, {
+  _PropsJsonSchema as AbstractPopoverPropsJsonSchema
+} from './index'
+import Button from '@startupjs-ui/button'
+import Div from '@startupjs-ui/div'
+import Span from '@startupjs-ui/span'
+
+# AbstractPopover
+
+Low-level primitive for anchoring content to an element (tooltip / popover use-cases).
+
+```jsx
+import { AbstractPopover } from 'startupjs-ui'
+```
+
+## Basic example
+
+```jsx example
+const anchorRef = useRef()
+const [visible, setVisible] = useState(false)
+
+return (
+  <Div style={{ padding: 20, backgroundColor: '#f6f7f9' }}>
+    <Div row gap style={{ alignItems: 'center' }}>
+      <Button onPress={() => setVisible(v => !v)}>
+        Toggle popover
+      </Button>
+      <Div
+        ref={anchorRef}
+        style={{
+          padding: 10,
+          backgroundColor: 'white',
+          borderRadius: 8,
+          borderWidth: 1,
+          borderColor: '#ddd'
+        }}
+      >
+        <Span>Anchor</Span>
+      </Div>
+    </Div>
+
+    <AbstractPopover
+      anchorRef={anchorRef}
+      visible={visible}
+      arrow
+      position='bottom'
+      attachment='start'
+      style={{
+        backgroundColor: 'white',
+        padding: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ddd'
+      }}
+    >
+      <Span>Popover content</Span>
+    </AbstractPopover>
+  </Div>
+)
+```
+
+## Matching anchor width
+
+```jsx example
+const anchorRef = useRef()
+const [visible, setVisible] = useState(false)
+
+return (
+  <Div style={{ padding: 20, backgroundColor: '#f6f7f9' }}>
+    <Div
+      ref={anchorRef}
+      style={{
+        width: 240,
+        padding: 10,
+        backgroundColor: 'white',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ddd'
+      }}
+    >
+      <Span>Anchor (240px)</Span>
+      <Button pushed onPress={() => setVisible(v => !v)}>
+        Toggle
+      </Button>
+    </Div>
+
+    <AbstractPopover
+      anchorRef={anchorRef}
+      visible={visible}
+      matchAnchorWidth
+      position='bottom'
+      attachment='start'
+      style={{
+        backgroundColor: 'white',
+        padding: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ddd'
+      }}
+    >
+      <Span>Width matches anchor</Span>
+    </AbstractPopover>
+  </Div>
+)
+```
+
+## Custom fallback placements
+
+```jsx example
+const anchorRef = useRef()
+const [visible, setVisible] = useState(false)
+
+return (
+  <Div style={{ padding: 20, backgroundColor: '#f6f7f9' }}>
+    <Div ref={anchorRef} style={{ padding: 10, backgroundColor: 'white', borderRadius: 8 }}>
+      <Span>Anchor</Span>
+      <Button pushed onPress={() => setVisible(v => !v)}>
+        Toggle
+      </Button>
+    </Div>
+
+    <AbstractPopover
+      anchorRef={anchorRef}
+      visible={visible}
+      position='top'
+      attachment='center'
+      placements={['top-center', 'bottom-center']}
+      arrow
+      style={{
+        backgroundColor: 'white',
+        padding: 10,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#ddd'
+      }}
+    >
+      <Span>Tries top-center, then bottom-center</Span>
+    </AbstractPopover>
+  </Div>
+)
+```
+
+## Sandbox
+
+<Sandbox
+  Component={AbstractPopover}
+  propsJsonSchema={AbstractPopoverPropsJsonSchema}
+  props={{
+    anchorRef: { current: { measure: (cb) => cb(0, 0, 120, 32, 40, 120) } },
+    style: { backgroundColor: 'white', padding: 10, borderRadius: 8, borderWidth: 1, borderColor: '#ddd' },
+    arrow: true,
+    children: <Span>Sandbox content</Span>
+  }}
+/>

@@ -4,6 +4,7 @@
 import { type ComponentType, type ReactNode } from 'react';
 import { type StyleProp, type ViewStyle } from 'react-native';
 import './index.cssx.styl';
+export { default as useDrawerDismiss } from './useDrawerDismiss';
 export declare const _PropsJsonSchema: {};
 export interface DrawerProps {
     /** Custom styles applied to the drawer container */

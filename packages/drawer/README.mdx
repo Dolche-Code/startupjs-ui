@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { useDrawerDismiss } from '@startupjs/ui/hooks'
 import { View, TouchableWithoutFeedback, Text } from 'react-native'
 import { Sandbox } from '@startupjs/docs'
 import { useRouter } from 'expo-router'
-import Drawer, { _PropsJsonSchema as DrawerPropsJsonSchema } from './index'
+import Drawer, { _PropsJsonSchema as DrawerPropsJsonSchema, useDrawerDismiss } from './index'
 import Div from '@startupjs-ui/div'
 import Button from '@startupjs-ui/button'
 
@@ -128,7 +127,7 @@ return (
 If the component has events, before the execution of which the panel must be hidden, e.g. go to another page, and you need it to close smoothly with animation
 There is a hook - `useDrawerDismiss`, into which the default function is passed, which works out for each event `onDismiss`, and additional ones that will be called after it
 ```jsx
-import { useDrawerDismiss } from '@startupjs/ui/hooks'
+import { useDrawerDismiss } from 'startupjs-ui'
 ```
 
 ```jsx example

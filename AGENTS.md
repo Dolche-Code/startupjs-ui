@@ -83,6 +83,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
 ## Common TS Fixes
 
 - Missing typings for third-party deps: prefer adding a minimal ambient module declaration in `types/*.d.ts` (instead of installing `@types/*`), so `yarn tsc --noEmit --skipLibCheck` passes in a network-restricted environment.
+- `@typescript-eslint/promise-function-async` and JSX wrappers: if the rule triggers on a synchronous wrapper like `node => node`, explicitly annotate the wrapper return type (e.g. `renderWrapper = (node): ReactNode => node`) so ESLint doesn’t infer a promise-returning function (see `packages/abstract-popover/index.tsx`).
 
 ## Refactoring Order & Progress
 
@@ -120,6 +121,7 @@ These depend only on Level 0 components.
 - [x] **ScrollView** (`packages/scroll-view`)
 - [x] **Divider** (`packages/divider`)
 - [x] **Drawer** (`packages/drawer`)
+- [x] **AbstractPopover** (`packages/abstract-popover`)
 
 ### Level 2: Intermediate Components
 These depend on Level 1 components.

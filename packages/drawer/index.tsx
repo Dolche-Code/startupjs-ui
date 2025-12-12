@@ -15,6 +15,8 @@ import Swipe from './Swipe'
 import animate, { type DrawerAnimateStates } from './animate'
 import './index.cssx.styl'
 
+export { default as useDrawerDismiss } from './useDrawerDismiss'
+
 const POSITION_STYLES = {
   left: { alignItems: 'flex-start' },
   right: { alignItems: 'flex-end' },
