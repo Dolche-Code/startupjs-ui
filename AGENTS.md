@@ -32,17 +32,16 @@ The goal is to decouple components and introduce TypeScript interfaces for props
 ### 2. Migrate & Refactor Code
 - Move the component code from `ui/components/<Component>` to `packages/<component>/index.tsx`.
 - **TypeScript**:
-    - Keep runtime logic as-is; only add the minimal types/interface needed.
-    - Convert the file to `.tsx` - just change the extension but do not do any actual refactoring of adding types. Do not change the actual JS code whatsoever.
-    - **Do NOT** fully type the implementation. Keep it loose and do NOT add any types besides what's needed to define the props interface itself (e.g., `SpanProps`).
-    - **MUST** define a single TypeScript interface for props (e.g., `SpanProps`).
-    - **MUST** add JSDoc descriptions to each prop in the interface. This is used by the Sandbox to generate documentation tables.
+    - Convert the file to `.tsx` - just change the extension, keep runtime logic as-is.
+    - Only add the minimal types/interface needed - when making proper typing is too complex you can occasionally use 'any'.
+    - **MUST** define a single TypeScript interface for props of the main component you are refactoring (e.g., `SpanProps`), it must define all props. If the component extends another component (e.g. passes the rest of the props to Div) then extend the interface from it and if `tsc` complains then use Omit on the conflicting props.
+    - **MUST** add JSDoc descriptions to each prop in the interface. This is used by the Sandbox to generate documentation table.
     - Add defaults into the props destructuring of the component itself and remove the Component.defaultProps.
     - Remove the Component.propTypes (the interface handles it now).
     - Specify the return type of the component function to be `ReactNode` (import { type ReactNode } from 'react').
     - Export `_PropsJsonSchema` for docs generation: `export const _PropsJsonSchema = {/* ComponentProps */}`.
     - Babel handles `part="..."` attributes: it auto-injects the corresponding style prop into destructuring and passes it down (e.g., `part='root'` adds `style`, `part='title'` adds `titleStyle`). You generally do not need to manually add `style` to the JSX unless you actually transform it, but you should declare the prop in the interface when relevant.
-    - Minimal TS typing beyond the props interface is fine when needed to satisfy `tsc`/ESLint; keep the implementation otherwise unchanged.
+    - Implement minimal TS typing beyond the props interface when needed to satisfy `tsc`/ESLint; keep the implementation otherwise as close to original JS code as possible.
     - `index.d.ts` file will be generated automatically by the build system, don't create it yourself.
     - Don't change anything in the original `ui/` components folder - they are only there for a reference, they are not used, and will be completely removed after we finish refactoring all components.
     - If you have to use a component in `.mdx` docs which was not refactored yet, import it from `@startupjs/ui` (old library) via top-level named exports, e.g., `import { NumberInput } from '@startupjs/ui'`.
@@ -150,7 +149,7 @@ Form components from ui/components/forms/*
 - [x] **NumberInput** (`packages/number-input`)
 - [ ] **ObjectInput** (ui/components/forms/ObjectInput)
 - [x] **PasswordInput** (`packages/password-input`)
-- [ ] **Radio** (ui/components/forms/Radio)
+- [x] **Radio** (`packages/radio`)
 - [ ] **RangeInput** (ui/components/forms/RangeInput)
 - [ ] **Rank** (ui/components/forms/Rank)
 - [ ] **Select** (ui/components/forms/Select)
