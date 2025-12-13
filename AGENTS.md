@@ -123,6 +123,7 @@ These depend only on Level 0 components.
 - [x] **Drawer** (`packages/drawer`)
 - [x] **AbstractPopover** (`packages/abstract-popover`)
 - [x] **Popover** (`packages/popover`)
+- [x] **Dropdown** (`packages/dropdown`)
 
 ### Level 2: Intermediate Components
 These depend on Level 1 components.

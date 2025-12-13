@@ -1,0 +1,91 @@
+import { useState } from 'react'
+import { View } from 'react-native'
+import Dropdown, { _PropsJsonSchema as DropdownPropsJsonSchema } from './index'
+import Icon from '@startupjs-ui/icon'
+import { Sandbox } from '@startupjs/docs'
+import {
+  faEllipsisV,
+  faPencilAlt,
+  faTrashAlt
+} from '@fortawesome/free-solid-svg-icons'
+
+# Dropdown
+
+Pop-up menus. Adaptable depending on the extension.
+
+```jsx
+import { Dropdown } from 'startupjs-ui'
+```
+
+## Simple example
+
+```jsx example
+const [sort, setSort] = useState('')
+
+return (
+  <Dropdown value={sort} onChange={v => setSort(v)}>
+    <Dropdown.Caption placeholder="Sort by" />
+    <Dropdown.Item value="popular" label="Popular" />
+    <Dropdown.Item value="brand" label="Brand" />
+    <Dropdown.Item value="name" label="Name" />
+  </Dropdown>
+)
+```
+
+## Custom caption
+
+```jsx example
+const [sort, setSort] = useState('')
+
+const captionStyle = {
+  width: 30,
+  height: 30,
+  backgroundColor: 'white',
+  borderRadius: 50,
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+return (
+  <Dropdown value={sort} onChange={v => setSort(v)}>
+    <Dropdown.Caption>
+      <View style={captionStyle}>
+        <Icon icon={faEllipsisV} />
+      </View>
+    </Dropdown.Caption>
+    <Dropdown.Item value="popular" label="Popular" />
+    <Dropdown.Item value="brand" label="Brand" />
+    <Dropdown.Item value="name" label="Name" />
+  </Dropdown>
+)
+```
+
+## Icons in items
+
+```jsx example
+const [value, setValue] = useState('')
+
+return (
+  <Dropdown value={value} onChange={v => setValue(v)}>
+    <Dropdown.Item icon={faPencilAlt} value="edit" label="Edit" />
+    <Dropdown.Item icon={faTrashAlt} value="delete" label="Delete" />
+  </Dropdown>
+)
+```
+
+## Sandbox
+
+<Sandbox
+  Component={Dropdown}
+  propsJsonSchema={DropdownPropsJsonSchema}
+  props={{
+    value: 'popular',
+    onChange: v => alert(`Selected: ${v}`),
+    children: [
+      <Dropdown.Caption placeholder="Sort by" />,
+      <Dropdown.Item value="popular" label="Popular" />,
+      <Dropdown.Item value="brand" label="Brand" />,
+      <Dropdown.Item value="name" label="Name" />
+    ]
+  }}
+/>

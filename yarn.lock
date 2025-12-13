@@ -4767,12 +4767,32 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/drawer@workspace:packages/drawer":
+"@startupjs-ui/drawer@npm:^0.1.0, @startupjs-ui/drawer@workspace:packages/drawer":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/drawer@workspace:packages/drawer"
   dependencies:
     "@startupjs-ui/core": "npm:^0.1.1"
     "@startupjs-ui/portal": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/dropdown@workspace:packages/dropdown":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/dropdown@workspace:packages/dropdown"
+  dependencies:
+    "@startupjs-ui/button": "npm:^0.1.0"
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/drawer": "npm:^0.1.0"
+    "@startupjs-ui/icon": "npm:^0.1.0"
+    "@startupjs-ui/link": "npm:^0.1.0"
+    "@startupjs-ui/menu": "npm:^0.1.0"
+    "@startupjs-ui/popover": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -4850,7 +4870,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/menu@workspace:packages/menu":
+"@startupjs-ui/menu@npm:^0.1.0, @startupjs-ui/menu@workspace:packages/menu":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/menu@workspace:packages/menu"
   dependencies:
@@ -4928,7 +4948,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/popover@workspace:packages/popover":
+"@startupjs-ui/popover@npm:^0.1.0, @startupjs-ui/popover@workspace:packages/popover":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/popover@workspace:packages/popover"
   dependencies:
