@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { StyleSheet } from 'react-native'
-import { pug, observer, $root, useValue } from 'startupjs'
+import { pug, observer, $ } from 'startupjs'
 import PropTypes from 'prop-types'
 import { faGripVertical } from '@fortawesome/free-solid-svg-icons/faGripVertical'
 import DragDropProvider from '../../draggable/DragDropProvider'
@@ -38,8 +38,8 @@ const RankInput = observer(function ({
   disabled,
   style
 }) {
-  const [width, $width] = useValue()
-  const dropId = useMemo(() => $root.id(), [])
+  const $width = $()
+  const dropId = useMemo(() => $.id(), [])
 
   const getColor = useColors()
 
@@ -66,7 +66,7 @@ const RankInput = observer(function ({
     const extraStyle = disabled ? { backgroundColor: getColor('bg-main-subtle') } : STYLES.cursor
     const style = [
       { ...STYLES.draggable, backgroundColor: getColor('bg-main-strong'), borderColor: getColor('border-main') },
-      { width },
+      { width: $width.get() },
       extraStyle
     ]
 
