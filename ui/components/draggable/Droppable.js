@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useContext } from 'react'
 import { View, StatusBar } from 'react-native'
-import { pug, observer, useValue } from 'startupjs'
+import { pug, observer, $ } from 'startupjs'
 import { DragDropContext } from './DragDropProvider'
 
 export default observer(function Droppable ({
@@ -12,11 +12,11 @@ export default observer(function Droppable ({
   onHover
 }) {
   const ref = useRef()
-  const [dndContext, $dndContext] = useContext(DragDropContext)
-  const [, $isHover] = useValue(false)
+  const $dndContext = useContext(DragDropContext)
+  const $isHover = $(false)
 
   useEffect(() => {
-    $dndContext.set(`drops.${dropId}`, {
+    $dndContext.drops[dropId].set({
       ref,
       items: React.Children.map(children, child => {
         return child.props.dragId
@@ -26,7 +26,7 @@ export default observer(function Droppable ({
 
   useEffect(() => {
     ref.current.measure((x, y, width, height, pageX, pageY) => {
-      if (!dndContext.activeData.dragId || !dndContext.dropHoverId) {
+      if (!$dndContext.activeData.dragId.get() || !$dndContext.dropHoverId.get()) {
         $isHover.set(false)
         return
       }
@@ -37,10 +37,10 @@ export default observer(function Droppable ({
       const bottomBorder = pageY + height
 
       const isHoverUpdate = (
-        dndContext.activeData.x > leftBorder &&
-        dndContext.activeData.x < rightBorder &&
-        dndContext.activeData.y - (StatusBar.currentHeight || 0) > topBorder &&
-        dndContext.activeData.y - (StatusBar.currentHeight || 0) < bottomBorder
+        $dndContext.activeData.x.get() > leftBorder &&
+        $dndContext.activeData.x.get() < rightBorder &&
+        $dndContext.activeData.y.get() - (StatusBar.currentHeight || 0) > topBorder &&
+        $dndContext.activeData.y.get() - (StatusBar.currentHeight || 0) < bottomBorder
       )
 
       if (isHoverUpdate && !$isHover.get()) {
@@ -54,7 +54,7 @@ export default observer(function Droppable ({
 
       $isHover.set(isHoverUpdate)
     })
-  }, [JSON.stringify(dndContext.activeData)])
+  }, [JSON.stringify($dndContext.activeData.get())])
 
   const modChildren = React.Children.toArray(children).map((child, index) => {
     return React.cloneElement(child, {
@@ -64,9 +64,9 @@ export default observer(function Droppable ({
     })
   })
 
-  const hasActiveDrag = dndContext.drops[dropId]?.items?.includes(dndContext.activeData.dragId)
+  const hasActiveDrag = $dndContext.drops[dropId].items.get()?.includes($dndContext.activeData.dragId.get())
   const activeStyle = hasActiveDrag ? { zIndex: 9999 } : {}
-  const contextStyle = dndContext.drops[dropId]?.style || {}
+  const contextStyle = $dndContext.drops[dropId].style.get() || {}
 
   return pug`
     View(

@@ -1,5 +1,5 @@
 import React from 'react'
-import { pug, useValue } from 'startupjs'
+import { pug, $ } from 'startupjs'
 
 /*
   DragDropContext = {
@@ -37,7 +37,7 @@ import { pug, useValue } from 'startupjs'
 export const DragDropContext = React.createContext({})
 
 export default function DragDropProvider ({ children }) {
-  const [context, $context] = useValue({
+  const $context = $({
     dropHoverId: '',
     dragHoverIndex: null,
     activeData: {},
@@ -46,7 +46,7 @@ export default function DragDropProvider ({ children }) {
   })
 
   return pug`
-    DragDropContext.Provider(value=[context, $context])
+    DragDropContext.Provider(value=$context)
       = children
   `
 }

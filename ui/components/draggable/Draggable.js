@@ -17,7 +17,7 @@ export default observer(function Draggable ({
   onDragEnd
 }) {
   const ref = useRef()
-  const [dndContext, $dndContext] = useContext(DragDropContext)
+  const $dndContext = useContext(DragDropContext)
 
   const animateStates = {
     left: new Animated.Value(0),
@@ -26,11 +26,12 @@ export default observer(function Draggable ({
 
   // init drags.dragId
   useEffect(() => {
-    $dndContext.set(`drags.${dragId}`, { ref, style: {} })
-  }, [
+    $dndContext.drags[dragId].set({ ref, style: {} })
+  }, [ // eslint-disable-line react-hooks/exhaustive-deps
+    dragId,
     _dropId,
     _index,
-    dndContext.drags[dragId]?.ref?.current
+    $dndContext.drags[dragId].ref.current.get() // eslint-disable-line react-hooks/exhaustive-deps
   ])
 
   function onHandlerStateChange ({ nativeEvent }) {
@@ -49,10 +50,10 @@ export default observer(function Draggable ({
       ref.current.measure((dragX, dragY, dragWidth, dragHeight) => {
         data.dragStyle.height = dragHeight
 
-        dndContext.drops[_dropId].ref.current.measure((dx, dy, dw, dropHeight) => {
+        $dndContext.drops[_dropId].ref.current.get().measure((dx, dy, dw, dropHeight) => {
           // init states
-          $dndContext.set(`drags.${dragId}.style`, { display: 'none' })
-          $dndContext.setEach({
+          $dndContext.drags[dragId].style.set({ display: 'none' })
+          $dndContext.assign({
             activeData: data,
             dropHoverId: _dropId,
             dragHoverIndex: _index
@@ -73,10 +74,10 @@ export default observer(function Draggable ({
       animateStates.top.setValue(0)
 
       onDragEnd && onDragEnd({
-        dragId: dndContext.activeData.dragId,
-        dropId: dndContext.activeData.dropId,
-        dropHoverId: dndContext.dropHoverId,
-        hoverIndex: dndContext.dragHoverIndex
+        dragId: $dndContext.activeData.dragId.get(),
+        dropId: $dndContext.activeData.dropId.get(),
+        dropHoverId: $dndContext.dropHoverId.get(),
+        hoverIndex: $dndContext.dragHoverIndex.get()
       })
 
       // reset states
@@ -92,35 +93,35 @@ export default observer(function Draggable ({
   }
 
   function onGestureEvent ({ nativeEvent }) {
-    if (!dndContext.dropHoverId) return
+    if (!$dndContext.dropHoverId.get()) return
 
     animateStates.left.setValue(
-      nativeEvent.absoluteX - dndContext.activeData.startPosition.x
+      nativeEvent.absoluteX - $dndContext.activeData.startPosition.x.get()
     )
     animateStates.top.setValue(
-      nativeEvent.absoluteY - dndContext.activeData.startPosition.y
+      nativeEvent.absoluteY - $dndContext.activeData.startPosition.y.get()
     )
 
     $dndContext.set('activeData.x', nativeEvent.absoluteX)
     $dndContext.set('activeData.y', nativeEvent.absoluteY)
-    checkPosition(dndContext.activeData)
+    checkPosition($dndContext.activeData.get())
   }
 
   function checkPosition (activeData) {
-    dndContext.drops[_dropId].ref.current.measure(async (dX, dY, dWidth, dHeight, dPageX, dPageY) => {
+    $dndContext.drops[_dropId].ref.current.get().measure(async (dX, dY, dWidth, dHeight, dPageX, dPageY) => {
       const positions = []
       let startPosition = dPageY
       let endPosition = dPageY
 
-      const dragsLength = dndContext.drops[dndContext.dropHoverId]?.items?.length || 0
+      const dragsLength = $dndContext.drops[$dndContext.dropHoverId.get()].items.get()?.length || 0
 
       for (let index = 0; index < dragsLength; index++) {
-        if (!dndContext.dropHoverId) break
+        if (!$dndContext.dropHoverId.get()) break
 
-        const iterDragId = dndContext.drops[dndContext.dropHoverId].items[index]
+        const iterDragId = $dndContext.drops[$dndContext.dropHoverId.get()].items[index].get()
 
         await new Promise(resolve => {
-          dndContext.drags[iterDragId].ref.current.measure((x, y, width, height, pageX, pageY) => {
+          $dndContext.drags[iterDragId].ref.current.get().measure((x, y, width, height, pageX, pageY) => {
             if (index === 0) {
               startPosition = dPageY
               endPosition = dPageY + y + (height / 2)
@@ -154,24 +155,24 @@ export default observer(function Draggable ({
     })
   }
 
-  const contextStyle = dndContext.drags[dragId]?.style || {}
+  const contextStyle = $dndContext.drags[dragId].style.get() || {}
   const _style = StyleSheet.flatten([style, animateStates])
 
-  const isShowPlaceholder = dndContext.activeData &&
-    dndContext.dropHoverId === _dropId &&
-    dndContext.dragHoverIndex === _index
+  const isShowPlaceholder = $dndContext.activeData.get() &&
+    $dndContext.dropHoverId.get() === _dropId &&
+    $dndContext.dragHoverIndex.get() === _index
 
-  const isShowLastPlaceholder = dndContext.activeData &&
-    dndContext.dropHoverId === _dropId &&
-    dndContext.drops[_dropId].items.length - 1 === _index &&
-    dndContext.dragHoverIndex === _index + 1
+  const isShowLastPlaceholder = $dndContext.activeData.get() &&
+    $dndContext.dropHoverId.get() === _dropId &&
+    $dndContext.drops[_dropId].items.get().length - 1 === _index &&
+    $dndContext.dragHoverIndex.get() === _index + 1
 
   const placeholder = pug`
     View.placeholder(
       style={
-        height: dndContext.activeData && dndContext.activeData.dragStyle && dndContext.activeData.dragStyle.height,
-        marginTop: dndContext.activeData && dndContext.activeData.dragStyle && dndContext.activeData.dragStyle.marginTop,
-        marginBottom: dndContext.activeData && dndContext.activeData.dragStyle && dndContext.activeData.dragStyle.marginBottom
+        height: $dndContext.activeData.get() && $dndContext.activeData.dragStyle.get() && $dndContext.activeData.dragStyle.height.get(),
+        marginTop: $dndContext.activeData.get() && $dndContext.activeData.dragStyle.get() && $dndContext.activeData.dragStyle.marginTop.get(),
+        marginBottom: $dndContext.activeData.get() && $dndContext.activeData.dragStyle.get() && $dndContext.activeData.dragStyle.marginBottom.get()
       }
     )
   `
@@ -181,7 +182,7 @@ export default observer(function Draggable ({
       = placeholder
 
     Portal
-      if dndContext.activeData.dragId === dragId
+      if $dndContext.activeData.dragId.get() === dragId
         Animated.View(style=[
           _style,
           { position: 'absolute', cursor: 'default' }
