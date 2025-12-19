@@ -19,9 +19,9 @@
     "@startupjs-ui/dialogs": "^0.1.0",
     "@startupjs-ui/div": "^0.1.0",
     "busboy": "^1.6.0",
-    "expo-document-picker": "~14.0.8",
-    "expo-image-picker": "~17.0.10",
-    "sharp": "^0.33.2"
+    "expo-document-picker": ">=14.0.0",
+    "expo-image-picker": ">=17.0.0",
+    "sharp": "^0.34.5"
   },
   "peerDependencies": {
     "@azure/storage-blob": "*",
