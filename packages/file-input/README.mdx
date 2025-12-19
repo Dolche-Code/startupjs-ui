@@ -1,0 +1,60 @@
+import { useState } from 'react'
+import FileInput, { _PropsJsonSchema as FileInputPropsJsonSchema } from './index'
+import Div from '@startupjs-ui/div'
+import { Sandbox } from '@startupjs/docs'
+import { Photo } from './README.helpers.js'
+
+# FileInput
+
+FileInput lets users pick a file (or image) and upload it to your StartupJS backend. The `value` is a `fileId` pointing to a document in the `files` model.
+
+```jsx
+import { FileInput } from 'startupjs-ui'
+```
+
+## Basic usage
+
+```jsx example
+const [fileId, setFileId] = useState()
+return (
+  <FileInput
+    value={fileId}
+    onChange={setFileId}
+  />
+)
+```
+
+## Image picker
+
+```jsx example
+const [avatarId, setAvatarId] = useState()
+return (
+  <Div>
+    {avatarId && <Photo fileId={avatarId} name="Avatar" />}
+    <FileInput
+      image
+      value={avatarId}
+      onChange={setAvatarId}
+    />
+  </Div>
+)
+```
+
+## Storage providers
+
+By default FileInput stores file contents in SQLite storage. If `MONGO_URL` is configured (MongoDB is used by StartupJS), the default storage becomes MongoDB (GridFS). You can force a specific provider with `DEFAULT_STORAGE_TYPE`:
+
+- `DEFAULT_STORAGE_TYPE=sqlite`
+- `DEFAULT_STORAGE_TYPE=mongo`
+- `DEFAULT_STORAGE_TYPE=azureblob` (requires `AZURE_BLOB_STORAGE_CONNECTION_STRING`)
+
+## Sandbox
+
+<Sandbox
+  Component={FileInput}
+  propsJsonSchema={FileInputPropsJsonSchema}
+  props={{
+    onChange: fileId => alert('Uploaded fileId: ' + fileId)
+  }}
+  block
+/>

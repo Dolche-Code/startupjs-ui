@@ -21,6 +21,7 @@ packages/draggable/index.d.ts
 packages/drawer-sidebar/index.d.ts
 packages/drawer/index.d.ts
 packages/dropdown/index.d.ts
+packages/file-input/index.d.ts
 packages/flat-list/index.d.ts
 packages/icon/index.d.ts
 packages/item/index.d.ts
