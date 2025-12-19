@@ -17,9 +17,9 @@ export async function deleteFile (storageType, fileId) {
 }
 
 export async function getDefaultStorageType () {
-  const storage = process.env.DEFAULT_STORAGE_TYPE;
+  const storage = process.env.DEFAULT_STORAGE_TYPE
 
-  if (storage) return storage;
+  if (storage) return storage
   if (mongo) return 'mongo'
   if (sqlite) return 'sqlite'
   throw Error(ERRORS.noDefaultStorageProvider)

@@ -1,10 +1,10 @@
 import { sqlite } from 'startupjs/server'
 
-export async function validateSupport() {
+export async function validateSupport () {
   if (!sqlite) throw Error(ERRORS.disabled)
 }
 
-export async function getFileBlob(fileId, range) {
+export async function getFileBlob (fileId, range) {
   return await new Promise((resolve, reject) => {
     sqlite.get('SELECT * FROM files WHERE id = ?', [fileId], (err, row) => {
       if (err) return reject(err)
@@ -24,7 +24,7 @@ export async function getFileBlob(fileId, range) {
         }
 
         // Ensure end is within file bounds
-        let adjustedEnd = Math.min(range.end, actualFileSize - 1)
+        const adjustedEnd = Math.min(range.end, actualFileSize - 1)
 
         // Ensure end is not before start
         if (adjustedEnd < range.start) {
@@ -64,7 +64,7 @@ export async function getFileBlob(fileId, range) {
   })
 }
 
-export async function saveFileBlob(fileId, blob) {
+export async function saveFileBlob (fileId, blob) {
   return await new Promise((resolve, reject) => {
     sqlite.run('INSERT OR REPLACE INTO files (id, data) VALUES (?, ?)', [fileId, blob], err => {
       if (err) return reject(err)
@@ -73,7 +73,7 @@ export async function saveFileBlob(fileId, blob) {
   })
 }
 
-export async function deleteFile(fileId) {
+export async function deleteFile (fileId) {
   return await new Promise((resolve, reject) => {
     sqlite.run('DELETE FROM files WHERE id = ?', [fileId], err => {
       if (err) return reject(err)
@@ -82,7 +82,7 @@ export async function deleteFile(fileId) {
   })
 }
 
-export async function getFileSize(fileId) {
+export async function getFileSize (fileId) {
   await validateSupport()
   return await new Promise((resolve, reject) => {
     sqlite.get('SELECT data FROM files WHERE id = ?', [fileId], (err, row) => {

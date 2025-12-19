@@ -1,5 +1,5 @@
-import { GridFSBucket } from 'mongodb'
 import { mongo } from 'startupjs/server'
+import { GridFSBucket } from 'mongodb'
 
 let bucket
 
@@ -32,7 +32,7 @@ export async function getFileBlob (fileId, range) {
       }
 
       // Ensure end is within file bounds
-      let adjustedEnd = Math.min(range.end, actualFileSize - 1)
+      const adjustedEnd = Math.min(range.end, actualFileSize - 1)
 
       // Ensure end is not before start
       if (adjustedEnd < range.start) {
@@ -107,7 +107,7 @@ export async function saveFileBlob (fileId, blob) {
   console.log('[MongoDB GridFS] Saving file:', {
     fileId,
     blobType: blob ? blob.constructor.name : 'undefined',
-    blobLength: blob instanceof Buffer ? blob.length : 'N/A',
+    blobLength: blob instanceof Buffer ? blob.length : 'N/A'
   })
 
   validateSupport()
@@ -125,13 +125,13 @@ export async function saveFileBlob (fileId, blob) {
     const uploadStream = bucket.openUploadStream(fileId)
 
     uploadStream.on('data', (chunk) => {
-      console.log('[MongoDB GridFS] Stream data received:', { fileId, chunkLength: chunk.length });
+      console.log('[MongoDB GridFS] Stream data received:', { fileId, chunkLength: chunk.length })
     })
     uploadStream.on('end', () => {
-      console.log('[MongoDB GridFS] Stream end event:', fileId);
+      console.log('[MongoDB GridFS] Stream end event:', fileId)
     })
     uploadStream.on('close', () => {
-      console.log('[MongoDB GridFS] Stream closed:', fileId);
+      console.log('[MongoDB GridFS] Stream closed:', fileId)
     })
 
     uploadStream.on('error', (err) => {
@@ -157,7 +157,7 @@ export async function saveFileBlob (fileId, blob) {
       }
     } catch (err) {
       console.error('[MongoDB GridFS] Error writing blob:', err)
-      reject(err);
+      reject(err)
     }
 
     console.log('here we go')
