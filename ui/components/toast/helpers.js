@@ -1,3 +1,3 @@
-import { $ui } from './../../helpers'
+import { $ } from 'startupjs'
 
-export const { $toasts } = $ui
+export const $toasts = $()
