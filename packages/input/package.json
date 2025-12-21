@@ -17,6 +17,7 @@
     "@startupjs-ui/icon": "^0.1.0",
     "@startupjs-ui/multi-select": "^0.1.0",
     "@startupjs-ui/number-input": "^0.1.0",
+    "@startupjs-ui/object-input": "^0.1.0",
     "@startupjs-ui/password-input": "^0.1.0",
     "@startupjs-ui/radio": "^0.1.0",
     "@startupjs-ui/range-input": "^0.1.0",

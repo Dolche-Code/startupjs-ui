@@ -36,7 +36,6 @@ function ArrayInput ({
   _renderWrapper
 }: ArrayInputProps): ReactNode {
   if (!$value || !items) return null
-  console.log('ArrayInput render', { $value, items })
 
   const arrayLength = $value.get()?.length || 0
 
@@ -44,7 +43,6 @@ function ArrayInput ({
     return Array(arrayLength + 1).fill(null).map((_, index) => {
       return {
         ...items,
-        key: index,
         $value: $value[index]
       }
     })
@@ -69,10 +67,10 @@ function ArrayInput ({
   return _renderWrapper({
     style: [style, inputStyle]
   }, pug`
-    each input, index in inputs
+    each inputProps, index in inputs
       Div.item(key=index styleName={ pushTop: index !== 0 })
         Div.input
-          Input(...input)
+          Input(...inputProps)
         Div.actions(vAlign='center' align='right')
           if index < arrayLength
             Button.remove(

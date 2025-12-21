@@ -5169,6 +5169,7 @@ __metadata:
     "@startupjs-ui/icon": "npm:^0.1.0"
     "@startupjs-ui/multi-select": "npm:^0.1.0"
     "@startupjs-ui/number-input": "npm:^0.1.0"
+    "@startupjs-ui/object-input": "npm:^0.1.0"
     "@startupjs-ui/password-input": "npm:^0.1.0"
     "@startupjs-ui/radio": "npm:^0.1.0"
     "@startupjs-ui/range-input": "npm:^0.1.0"
@@ -5301,6 +5302,20 @@ __metadata:
     "@startupjs-ui/div": "npm:^0.1.0"
     "@startupjs-ui/span": "npm:^0.1.0"
     "@startupjs-ui/text-input": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/object-input@npm:^0.1.0, @startupjs-ui/object-input@workspace:packages/object-input":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/object-input@workspace:packages/object-input"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/input": "npm:^0.1.0"
   peerDependencies:
     react: "*"
     react-native: "*"
