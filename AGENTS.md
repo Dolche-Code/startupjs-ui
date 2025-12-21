@@ -112,10 +112,10 @@ These depend only on Level 0 components.
 - [x] **Avatar** (depends on Div, Icon, Span) (`packages/avatar`)
 - [x] **Tag** (depends on Div, Icon, Span) (`packages/tag`)
 - [x] **Card** (depends on Div) (`packages/card`)
-- [ ] **Tooltip** (depends on Div)
+- [ ] **Tooltip** (depends on Div) - DEPRECATED, removed from new version
 - [x] **Alert** (depends on Div, Icon) (`packages/alert`)
 - [x] **Content** (depends on Div) (`packages/content`)
-- [ ] **Row** (depends on Div)
+- [ ] **Row** (depends on Div) - DEPRECATED, removed from new version
 - [x] **Breadcrumbs** (depends on Div, Icon, Span) (`packages/breadcrumbs`)
 - [x] **Menu** (depends on Div, Icon, Span) (`packages/menu`)
 - [x] **Progress** (depends on Div, Span) (`packages/progress`)
