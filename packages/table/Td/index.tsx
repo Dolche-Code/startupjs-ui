@@ -1,0 +1,55 @@
+import { useEffect, type ReactNode } from 'react'
+import { type StyleProp, type ViewStyle } from 'react-native'
+import { pug, observer, $ } from 'startupjs'
+import { themed } from '@startupjs-ui/core'
+import Div, { type DivProps } from '@startupjs-ui/div'
+import Span from '@startupjs-ui/span'
+import './index.cssx.styl'
+
+export const _PropsJsonSchema = {/* TdProps */} // used in docs generation
+
+export interface TdProps extends DivProps {
+  /** Custom styles applied to the cell container */
+  style?: StyleProp<ViewStyle>
+  /** Cell content rendered inside */
+  children?: ReactNode
+  /** Collapse text into a single line with ellipsis, tap to toggle @default false */
+  ellipsis?: boolean
+}
+
+function Td ({
+  style,
+  children,
+  ellipsis = false,
+  ...props
+}: TdProps): ReactNode {
+  const $full = $()
+
+  useEffect(() => () => $full.del(), [$full])
+
+  const options: Record<string, any> = {}
+
+  if (ellipsis) {
+    options.onPress = () => $full.set(!$full.get())
+    if (!$full.get()) {
+      options.numberOfLines = 1
+      options.ellipsizeMode = 'tail'
+    }
+  }
+
+  return pug`
+    Div.root(
+      ...props
+      style=style
+    )
+      if typeof children === 'string'
+        Span(
+          ...options
+        )= children
+      else
+        = children
+
+  `
+}
+
+export default observer(themed('Td', Td))

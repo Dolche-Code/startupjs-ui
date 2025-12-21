@@ -5551,6 +5551,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/table@workspace:packages/table":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/table@workspace:packages/table"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/tabs@workspace:packages/tabs":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/tabs@workspace:packages/tabs"

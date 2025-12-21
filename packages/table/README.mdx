@@ -1,0 +1,225 @@
+import { Sandbox } from '@startupjs/docs'
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TablePropsJsonSchema,
+  TheadPropsJsonSchema,
+  TbodyPropsJsonSchema,
+  TrPropsJsonSchema,
+  ThPropsJsonSchema,
+  TdPropsJsonSchema
+} from './index'
+import Span from '@startupjs-ui/span'
+
+# Table
+
+The Table component arranges data in rows and columns. Use Thead for headers, Tbody for rows, and Tr/Th/Td for cells. Section and cell components accept Div props for layout and interaction.
+
+```jsx
+import { Table, Thead, Tbody, Tr, Th, Td } from 'startupjs-ui'
+```
+
+## Simple example
+
+```jsx example
+return (
+  <Table>
+    <Thead>
+      <Tr>
+        <Th>
+          <Span bold>First</Span>
+        </Th>
+        <Th>
+          <Span bold>Second</Span>
+        </Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      <Tr>
+        <Td>
+          <Span>First 1</Span>
+        </Td>
+        <Td>
+          <Span>Second 1</Span>
+        </Td>
+      </Tr>
+      <Tr>
+        <Td>
+          <Span>First 2</Span>
+        </Td>
+        <Td>
+          <Span>Second 3</Span>
+        </Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+```
+
+## Styling
+
+```jsx example
+const tableStyle = {
+  backgroundColor: '#fff'
+}
+
+const hoverOptions = {
+  style: {
+    cursor: 'default'
+  },
+  hoverStyle: {
+    backgroundColor: '#ebf8fd'
+  },
+  activeStyle: {
+    opacity: 1,
+    backgroundColor: '#ebf8fd'
+  },
+  onPress: () => undefined
+}
+
+return (
+  <Table style={tableStyle}>
+    <Thead>
+      <Tr>
+        <Th {...hoverOptions}>
+          <Span bold italic>First</Span>
+        </Th>
+        <Th {...hoverOptions}>Second</Th>
+        <Th {...hoverOptions}>Third</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      <Tr {...hoverOptions}>
+        <Td>
+          <Span italic>First 1</Span>
+        </Td>
+        <Td>Second 1</Td>
+        <Td>Third 1</Td>
+      </Tr>
+      <Tr {...hoverOptions}>
+        <Td>
+          <Span italic>First 2</Span>
+        </Td>
+        <Td>Second 2</Td>
+        <Td>Third 2</Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+```
+
+## Sandbox
+
+### Table
+
+export const TableSandbox = (props) => (
+  <Table {...props}>
+    <Thead>
+      <Tr>
+        <Th>First</Th>
+        <Th>Second</Th>
+      </Tr>
+    </Thead>
+    <Tbody>
+      <Tr>
+        <Td>First 1</Td>
+        <Td>Second 1</Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+
+<Sandbox
+  Component={TableSandbox}
+  propsJsonSchema={TablePropsJsonSchema}
+/>
+
+### Thead
+
+export const TheadSandbox = (props) => (
+  <Table>
+    <Thead {...props}>
+      <Tr>
+        <Th>Header</Th>
+      </Tr>
+    </Thead>
+  </Table>
+)
+
+<Sandbox
+  Component={TheadSandbox}
+  propsJsonSchema={TheadPropsJsonSchema}
+/>
+
+### Tbody
+
+export const TbodySandbox = (props) => (
+  <Table>
+    <Tbody {...props}>
+      <Tr>
+        <Td>Cell</Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+
+<Sandbox
+  Component={TbodySandbox}
+  propsJsonSchema={TbodyPropsJsonSchema}
+/>
+
+### Tr
+
+export const TrSandbox = (props) => (
+  <Table>
+    <Tbody>
+      <Tr {...props}>
+        <Td>Cell</Td>
+        <Td>Cell</Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+
+<Sandbox
+  Component={TrSandbox}
+  propsJsonSchema={TrPropsJsonSchema}
+/>
+
+### Th
+
+export const ThSandbox = (props) => (
+  <Table>
+    <Thead>
+      <Tr>
+        <Th {...props}>Header</Th>
+      </Tr>
+    </Thead>
+  </Table>
+)
+
+<Sandbox
+  Component={ThSandbox}
+  propsJsonSchema={ThPropsJsonSchema}
+/>
+
+### Td
+
+export const TdSandbox = (props) => (
+  <Table>
+    <Tbody>
+      <Tr>
+        <Td {...props}>Cell</Td>
+      </Tr>
+    </Tbody>
+  </Table>
+)
+
+<Sandbox
+  Component={TdSandbox}
+  propsJsonSchema={TdPropsJsonSchema}
+/>

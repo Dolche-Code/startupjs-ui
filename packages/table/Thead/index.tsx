@@ -1,0 +1,34 @@
+import { type ReactNode } from 'react'
+import { type StyleProp, type ViewStyle } from 'react-native'
+import { pug, observer } from 'startupjs'
+import { themed } from '@startupjs-ui/core'
+import Div, { type DivProps } from '@startupjs-ui/div'
+import './index.cssx.styl'
+
+export const _PropsJsonSchema = {/* TheadProps */} // used in docs generation
+
+export interface TheadProps extends DivProps {
+  /** Custom styles applied to the header container */
+  style?: StyleProp<ViewStyle>
+  /** Header content rendered inside */
+  children?: ReactNode
+  /** Add bottom border to the header @default true */
+  bordered?: boolean
+}
+
+function Thead ({
+  style,
+  children,
+  bordered = true,
+  ...props
+}: TheadProps): ReactNode {
+  return pug`
+    Div(
+      ...props
+      style=[style]
+      styleName=[{ bordered }]
+    )= children
+  `
+}
+
+export default observer(themed('Thead', Thead))
