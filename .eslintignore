@@ -24,6 +24,7 @@ packages/dropdown/index.d.ts
 packages/file-input/index.d.ts
 packages/flat-list/index.d.ts
 packages/icon/index.d.ts
+packages/input/index.d.ts
 packages/item/index.d.ts
 packages/layout/index.d.ts
 packages/link/index.d.ts

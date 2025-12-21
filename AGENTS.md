@@ -46,6 +46,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
     - `index.d.ts` file will be generated automatically by the build system, don't create it yourself.
     - Don't change anything in the original `ui/` components folder - they are only there for a reference, they are not used, and will be completely removed after we finish refactoring all components.
     - If you have to use a component in `.mdx` docs which was not refactored yet, import it from `@startupjs/ui` (old library) via top-level named exports, e.g., `import { NumberInput } from '@startupjs/ui'`.
+    - If a component has a circular dependency on not-yet-refactored components, add temporary mock files in the new package and leave commented-out real imports above the mocks so they can be swapped later.
 - **Styles**:
     - Do not change the styles, keep them as is.
     - Ensure `themed` is imported from `@startupjs-ui/core`.
@@ -160,7 +161,7 @@ Form components from ui/components/forms/*
 - [x] **DateTimePicker** (ui/components/forms/DateTimePicker) (`packages/date-time-picker`)
 - [x] **FileInput** (ui/components/forms/FileInput) (`packages/file-input`)
 - [ ] **Form** (ui/components/forms/Form)
-- [ ] **Input** (ui/components/forms/Input)
+- [x] **Input** (`packages/input`)
 - [x] **MultiSelect** (ui/components/forms/Multiselect) (`packages/multi-select`)
 - [x] **NumberInput** (`packages/number-input`)
 - [ ] **ObjectInput** (ui/components/forms/ObjectInput)

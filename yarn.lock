@@ -4854,7 +4854,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/card@workspace:packages/card":
+"@startupjs-ui/card@npm:^0.1.0, @startupjs-ui/card@workspace:packages/card":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/card@workspace:packages/card"
   dependencies:
@@ -4881,7 +4881,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/checkbox@workspace:packages/checkbox":
+"@startupjs-ui/checkbox@npm:^0.1.0, @startupjs-ui/checkbox@workspace:packages/checkbox":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/checkbox@workspace:packages/checkbox"
   dependencies:
@@ -4912,7 +4912,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/color-picker@workspace:packages/color-picker":
+"@startupjs-ui/color-picker@npm:^0.1.0, @startupjs-ui/color-picker@workspace:packages/color-picker":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/color-picker@workspace:packages/color-picker"
   dependencies:
@@ -4958,7 +4958,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/date-time-picker@workspace:packages/date-time-picker":
+"@startupjs-ui/date-time-picker@npm:^0.1.0, @startupjs-ui/date-time-picker@workspace:packages/date-time-picker":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/date-time-picker@workspace:packages/date-time-picker"
   dependencies:
@@ -5084,7 +5084,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/file-input@workspace:packages/file-input":
+"@startupjs-ui/file-input@npm:^0.1.0, @startupjs-ui/file-input@workspace:packages/file-input":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/file-input@workspace:packages/file-input"
   dependencies:
@@ -5131,6 +5131,36 @@ __metadata:
     "@fortawesome/free-solid-svg-icons": "npm:^5.12.0"
     "@fortawesome/react-native-fontawesome": "npm:^0.3.0"
     "@startupjs-ui/core": "npm:^0.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
+"@startupjs-ui/input@workspace:packages/input":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/input@workspace:packages/input"
+  dependencies:
+    "@fortawesome/free-solid-svg-icons": "npm:^5.12.0"
+    "@startupjs-ui/card": "npm:^0.1.0"
+    "@startupjs-ui/checkbox": "npm:^0.1.0"
+    "@startupjs-ui/color-picker": "npm:^0.1.0"
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/date-time-picker": "npm:^0.1.0"
+    "@startupjs-ui/div": "npm:^0.1.0"
+    "@startupjs-ui/file-input": "npm:^0.1.0"
+    "@startupjs-ui/icon": "npm:^0.1.0"
+    "@startupjs-ui/multi-select": "npm:^0.1.0"
+    "@startupjs-ui/number-input": "npm:^0.1.0"
+    "@startupjs-ui/password-input": "npm:^0.1.0"
+    "@startupjs-ui/radio": "npm:^0.1.0"
+    "@startupjs-ui/range-input": "npm:^0.1.0"
+    "@startupjs-ui/rank": "npm:^0.1.0"
+    "@startupjs-ui/select": "npm:^0.1.0"
+    "@startupjs-ui/span": "npm:^0.1.0"
+    "@startupjs-ui/text-input": "npm:^0.1.0"
+    lodash: "npm:^4.17.20"
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -5227,7 +5257,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/multi-select@workspace:packages/multi-select":
+"@startupjs-ui/multi-select@npm:^0.1.0, @startupjs-ui/multi-select@workspace:packages/multi-select":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/multi-select@workspace:packages/multi-select"
   dependencies:
@@ -5246,7 +5276,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/number-input@workspace:packages/number-input":
+"@startupjs-ui/number-input@npm:^0.1.0, @startupjs-ui/number-input@workspace:packages/number-input":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/number-input@workspace:packages/number-input"
   dependencies:
@@ -5277,7 +5307,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/password-input@workspace:packages/password-input":
+"@startupjs-ui/password-input@npm:^0.1.0, @startupjs-ui/password-input@workspace:packages/password-input":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/password-input@workspace:packages/password-input"
   dependencies:
@@ -5316,7 +5346,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/radio@workspace:packages/radio":
+"@startupjs-ui/radio@npm:^0.1.0, @startupjs-ui/radio@workspace:packages/radio":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/radio@workspace:packages/radio"
   dependencies:
@@ -5330,7 +5360,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/range-input@workspace:packages/range-input":
+"@startupjs-ui/range-input@npm:^0.1.0, @startupjs-ui/range-input@workspace:packages/range-input":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/range-input@workspace:packages/range-input"
   dependencies:
@@ -5345,7 +5375,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/rank@workspace:packages/rank":
+"@startupjs-ui/rank@npm:^0.1.0, @startupjs-ui/rank@workspace:packages/rank":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/rank@workspace:packages/rank"
   dependencies:
