@@ -5138,6 +5138,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@startupjs-ui/form@workspace:packages/form":
+  version: 0.0.0-use.local
+  resolution: "@startupjs-ui/form@workspace:packages/form"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/input": "npm:^0.1.0"
+    "@startupjs-ui/object-input": "npm:^0.1.0"
+    lodash: "npm:^4.17.20"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
+  languageName: unknown
+  linkType: soft
+
 "@startupjs-ui/icon@npm:^0.1.0, @startupjs-ui/icon@workspace:packages/icon":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/icon@workspace:packages/icon"
@@ -5697,9 +5712,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/docs@npm:^0.60.0-canary.13":
-  version: 0.60.0-canary.13
-  resolution: "@startupjs/docs@npm:0.60.0-canary.13"
+"@startupjs/docs@npm:^0.60.0-canary.23":
+  version: 0.60.0-canary.23
+  resolution: "@startupjs/docs@npm:0.60.0-canary.23"
   dependencies:
     "@fortawesome/free-solid-svg-icons": "npm:^5.12.0"
     "@startupjs/mdx": "npm:^0.60.0-canary.9"
@@ -5709,7 +5724,7 @@ __metadata:
     react: "*"
     react-native: "*"
     startupjs: "*"
-  checksum: 10c0/84db4e410a575db11c2a85ebf47a4a4ab3767af5313dfdcfa556bec120a602ea555c1e63f16871147fdf7fe4ae24a743879ecbf3d2c95f38071f820acd678473
+  checksum: 10c0/bb13520d09d97f6a93eaab40141facaedb9d89bf5517a0b4fea5e687c0f0312e72aafe387e578e881c9f94e034a47fcf1e6895cb6c913aa77bd43d454ce53713
   languageName: node
   linkType: hard
 
@@ -10097,7 +10112,7 @@ __metadata:
     "@react-navigation/bottom-tabs": "npm:^7.4.0"
     "@react-navigation/elements": "npm:^2.6.3"
     "@react-navigation/native": "npm:^7.1.8"
-    "@startupjs/docs": "npm:^0.60.0-canary.13"
+    "@startupjs/docs": "npm:^0.60.0-canary.23"
     "@startupjs/mdx": "npm:^0.60.0-canary.0"
     "@startupjs/router": "npm:^0.60.0-canary.7"
     "@startupjs/ui": "npm:^0.60.0-canary.11"
