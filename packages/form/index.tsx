@@ -148,6 +148,8 @@ export default observer(Form)
 
 export { default as useFormProps } from './useFormProps'
 export { default as useValidate } from './useValidate'
+export { default as useFormFields } from './useFormFields'
+export { default as useFormFields$ } from './useFormFields$'
 
 function useForceUpdate (): () => void {
   const [, setState] = useState(Math.random())

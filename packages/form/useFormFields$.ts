@@ -1,11 +1,11 @@
 import { useRef, useMemo } from 'react'
 import { $ } from 'startupjs'
-import useFormFields from './useFormFields.js'
+import useFormFields from './useFormFields'
 
-export default function useFormFields$ (schema, options) {
+export default function useFormFields$ (schema: any, options?: Record<string, any>): any {
   const firstRenderRef = useRef(true)
-  const prevFieldsRef = useRef()
-  const fields = useFormFields(schema, options)
+  const prevFieldsRef = useRef<any>(undefined)
+  const fields = useFormFields(schema, options ?? {})
   const $fields = $(fields)
 
   const [firstRender, prevFields] = useMemo(() => {
@@ -14,7 +14,7 @@ export default function useFormFields$ (schema, options) {
     const prevFields = prevFieldsRef.current
     prevFieldsRef.current = fields
     return [firstRender, prevFields]
-  }, [JSON.stringify(fields)])
+  }, [JSON.stringify(fields)]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!firstRender && prevFields !== fields) {
     $fields.set(fields)
