@@ -5,6 +5,7 @@
   "types": "index.d.ts",
   "type": "module",
   "dependencies": {
+    "@startupjs-ui/abstract-popover": "^0.1.0",
     "@startupjs-ui/core": "^0.1.1"
   },
   "peerDependencies": {

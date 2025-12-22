@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, type ReactNode, type RefObject, use } from 'react'
 import { Platform, View } from 'react-native'
 import { pug, styl } from 'startupjs'
 import Span from '@startupjs-ui/span'
-// @ts-expect-error AbstractPopover not typed
-import AbstractPopover from '../../ui/components/AbstractPopover'
+import AbstractPopover from '@startupjs-ui/abstract-popover'
 
 const isWeb = Platform.OS === 'web'
 
@@ -13,21 +12,60 @@ const DEFAULT_TOOLTIP_PROPS = {
   arrow: true
 }
 
-export default function useTooltip ({ style, anchorRef, tooltip }: any) {
-  const result: any = {}
+interface UseTooltipProps {
+  style?: any
+  anchorRef: RefObject<any>
+  tooltip?: ReactNode | (() => ReactNode)
+}
+
+export type TooltipEventHandler = 'onMouseEnter' | 'onMouseLeave' | 'onLongPress' | 'onPressOut'
+export type TooltipEventHandlers = Partial<Record<TooltipEventHandler, any>>
+export const tooltipEventHandlersList: TooltipEventHandler[] = [
+  'onMouseEnter',
+  'onMouseLeave',
+  'onLongPress',
+  'onPressOut'
+]
+
+interface TooltipResult {
+  tooltipElement?: ReactNode
+  tooltipEventHandlers: TooltipEventHandlers
+  tooltipHash: 'none' | 'hover' | 'press'
+}
+
+export default function useTooltip ({ style, anchorRef, tooltip }: UseTooltipProps) {
+  const result: TooltipResult = { tooltipEventHandlers: {}, tooltipHash: 'none' }
   const [visible, setVisible] = useState(false)
+
+  const cbSetVisibleTrue = useCallback(() => { setVisible(true) }, [])
+  const cbSetVisibleFalse = useCallback(() => { setVisible(false) }, [])
 
   useEffect(() => {
     if (!isWeb) return
     if (!tooltip) return
 
-    function onClose () { setVisible(false) }
-
-    window.addEventListener('wheel', onClose, true)
+    window.addEventListener('wheel', cbSetVisibleFalse, true)
     return () => {
-      window.removeEventListener('wheel', onClose, true)
+      window.removeEventListener('wheel', cbSetVisibleFalse, true)
     }
-  }, [])
+  }, [cbSetVisibleFalse, cbSetVisibleTrue, tooltip])
+
+  const tooltipEventHandlers = useMemo(() => {
+    const handlers: TooltipEventHandlers = {}
+    if (!tooltip) return handlers
+
+    if (isWeb) {
+      handlers.onMouseEnter = cbSetVisibleTrue
+      handlers.onMouseLeave = cbSetVisibleFalse
+    } else {
+      handlers.onLongPress = cbSetVisibleTrue
+      handlers.onPressOut = cbSetVisibleFalse
+    }
+
+    return handlers
+  }, [cbSetVisibleFalse, cbSetVisibleTrue, tooltip])
+
+  result.tooltipEventHandlers = tooltipEventHandlers
 
   if (tooltip) {
     result.tooltipElement = pug`
@@ -47,17 +85,6 @@ export default function useTooltip ({ style, anchorRef, tooltip }: any) {
           View(style={ flexDirection: 'row' })
             Span.tooltip-text= tooltip
     `
-    const eventHandlers: any = {}
-
-    if (isWeb) {
-      eventHandlers.onMouseEnter = () => { setVisible(true) }
-      eventHandlers.onMouseLeave = () => { setVisible(false) }
-    } else {
-      eventHandlers.onLongPress = () => { setVisible(true) }
-      eventHandlers.onPressOut = () => { setVisible(false) }
-    }
-
-    result.tooltipEventHandlers = eventHandlers
   }
 
   return result

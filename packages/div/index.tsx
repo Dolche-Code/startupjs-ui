@@ -1,4 +1,4 @@
-import { useState, type ReactNode, type RefObject } from 'react'
+import { useState, useMemo, useRef, type ReactNode, type RefObject } from 'react'
 import {
   View,
   Pressable,
@@ -11,8 +11,7 @@ import {
 } from 'react-native'
 import { pug, observer, u, useDidUpdate } from 'startupjs'
 import { colorToRGBA, getCssVariable, themed } from '@startupjs-ui/core'
-// TODO: bring back tooltip after AbstractPopover is refactored
-// import useTooltip from './useTooltip'
+import useTooltip, { tooltipEventHandlersList, type TooltipEventHandlers } from './useTooltip'
 import STYLES from './index.cssx.styl'
 
 const DEPRECATED_PUSHED_VALUES = ['xs', 'xl', 'xxl']
@@ -70,7 +69,7 @@ export interface DivProps extends ViewProps {
   bleed?: boolean
   /** Expand to take full available height (or width if 'row' is true) */
   full?: boolean
-  /** Simple tooltip text (currently disabled) */
+  /** Simple tooltip text */
   tooltip?: string
   /** Style overrides for tooltip element */
   tooltipStyle?: StyleProp<ViewStyle>
@@ -125,6 +124,8 @@ function Div ({
   if (isNative && reverse) style = reverseMarginPaddingSides(style)
   if (gap === true) gap = 2
   const isPressable = hasPressHandler(props)
+  const fallbackRef = useRef<any>(null)
+  const rootRef = ref ?? fallbackRef
 
   let pressableStyle: StyleProp<ViewStyle> = {}
   ;({
@@ -143,21 +144,26 @@ function Div ({
     feedback
   }))
 
-  // TODO: bring back tooltip after AbstractPopover is refactored
-  // const { tooltipElement, tooltipEventHandlers } = useTooltip({
-  //   style: tooltipStyle,
-  //   anchorRef: ref,
-  //   tooltip
-  // })
+  const { tooltipElement, tooltipEventHandlers } = useTooltip({
+    style: tooltipStyle,
+    anchorRef: rootRef,
+    tooltip
+  })
 
-  // for (const tooltipEventHandlerName in tooltipEventHandlers) {
-  //   const divHandler = props[tooltipEventHandlerName]
-  //   const tooltipHandler = tooltipEventHandlers[tooltipEventHandlerName]
+  // TODO: fix typings
+  const extraEventHandlerProps: TooltipEventHandlers = useMemo(() => {
+    const res: TooltipEventHandlers = {}
+    for (const handlerName in tooltipEventHandlers) {
+      const divHandler = props[handlerName]
+      const tooltipHandler = tooltipEventHandlers[handlerName]
 
-  //   props[tooltipEventHandlerName] = divHandler
-  //     ? (...args) => { tooltipHandler(...args); divHandler(...args) }
-  //     : tooltipHandler
-  // }
+      res[handlerName] = divHandler
+        ? (...args: any) => { tooltipHandler(...args); divHandler(...args) }
+        : tooltipHandler
+    }
+    return res
+  }, [tooltipEventHandlers, ...tooltipEventHandlersList.map(h => props[h])])
+  Object.assign(props, extraEventHandlerProps)
 
   let pushedModifier
   if (pushed) {
@@ -174,7 +180,7 @@ function Div ({
   const testID = props.testID ?? props['data-testid']
   const divElement = pug`
     Component.root(
-      ref=ref
+      ref=rootRef
       style=[
         gap ? { gap: u(gap) } : undefined,
         style,
@@ -202,11 +208,12 @@ function Div ({
     )= children
   `
 
-  return pug`
-    = divElement
-    // TODO: bring back tooltip after AbstractPopover is refactored
-    // = tooltipElement
-  `
+  if (tooltipElement) {
+    return pug`
+      = divElement
+      = tooltipElement
+    `
+  } else return divElement
 }
 
 function useDecoratePressableProps ({
