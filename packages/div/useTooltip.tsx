@@ -12,7 +12,7 @@ const DEFAULT_TOOLTIP_PROPS = {
   arrow: true
 }
 
-interface UseTooltipProps {
+export interface UseTooltipProps {
   style?: any
   anchorRef: RefObject<any>
   tooltip?: ReactNode | (() => ReactNode)
@@ -30,11 +30,10 @@ export const tooltipEventHandlersList: TooltipEventHandler[] = [
 interface TooltipResult {
   tooltipElement?: ReactNode
   tooltipEventHandlers: TooltipEventHandlers
-  tooltipHash: 'none' | 'hover' | 'press'
 }
 
 export default function useTooltip ({ style, anchorRef, tooltip }: UseTooltipProps) {
-  const result: TooltipResult = { tooltipEventHandlers: {}, tooltipHash: 'none' }
+  const result: TooltipResult = { tooltipEventHandlers: {} }
   const [visible, setVisible] = useState(false)
 
   const cbSetVisibleTrue = useCallback(() => { setVisible(true) }, [])
@@ -103,4 +102,65 @@ export default function useTooltip ({ style, anchorRef, tooltip }: UseTooltipPro
       &-text
         color var(--Div-tooltipText)
   `
+}
+
+export interface UseDecorateTooltipProps {
+  props: Record<string, any>
+  style?: any
+  anchorRef: RefObject<any>
+  tooltip?: ReactNode | (() => ReactNode)
+}
+
+interface DecorateTooltipResult {
+  props: Record<string, any>
+  tooltipElement?: ReactNode
+}
+
+export function useDecorateTooltipProps ({
+  props,
+  style,
+  anchorRef,
+  tooltip
+}: UseDecorateTooltipProps): DecorateTooltipResult {
+  const { tooltipElement, tooltipEventHandlers } = useTooltip({ style, anchorRef, tooltip })
+  const {
+    onMouseEnter,
+    onMouseLeave,
+    onLongPress,
+    onPressOut
+  } = props as TooltipEventHandlers
+
+  const extraEventHandlerProps: TooltipEventHandlers = useMemo(() => {
+    const res: TooltipEventHandlers = {}
+    const divHandlers: TooltipEventHandlers = {
+      onMouseEnter,
+      onMouseLeave,
+      onLongPress,
+      onPressOut
+    }
+
+    for (const handlerName of tooltipEventHandlersList) {
+      const tooltipHandler = tooltipEventHandlers[handlerName]
+      if (!tooltipHandler) continue
+      const divHandler = divHandlers[handlerName]
+
+      res[handlerName] = divHandler
+        ? (...args: any[]) => {
+            tooltipHandler(...args)
+            divHandler(...args)
+          }
+        : tooltipHandler
+    }
+    return res
+  }, [
+    tooltipEventHandlers,
+    onMouseEnter,
+    onMouseLeave,
+    onLongPress,
+    onPressOut
+  ])
+
+  Object.assign(props, extraEventHandlerProps)
+
+  return { props, tooltipElement }
 }

@@ -4,6 +4,10 @@
   "main": "index.tsx",
   "types": "index.d.ts",
   "type": "module",
+  "exports": {
+    ".": "./index.tsx",
+    "./useTooltip": "./useTooltip.tsx"
+  },
   "dependencies": {
     "@startupjs-ui/abstract-popover": "^0.1.0",
     "@startupjs-ui/core": "^0.1.1",

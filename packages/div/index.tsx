@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, type ReactNode, type RefObject } from 'react'
+import { useState, useRef, type ReactNode, type RefObject } from 'react'
 import {
   View,
   Pressable,
@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 import { pug, observer, u, useDidUpdate } from 'startupjs'
 import { colorToRGBA, getCssVariable, themed } from '@startupjs-ui/core'
-import useTooltip, { tooltipEventHandlersList, type TooltipEventHandlers } from './useTooltip'
+import { useDecorateTooltipProps } from './useTooltip'
 import STYLES from './index.cssx.styl'
 
 const DEPRECATED_PUSHED_VALUES = ['xs', 'xl', 'xxl']
@@ -144,33 +144,16 @@ function Div ({
     feedback
   }))
 
-  const { tooltipElement, tooltipEventHandlers } = useTooltip({
+  let tooltipElement
+  ;({
+    props,
+    tooltipElement
+  } = useDecorateTooltipProps({
+    props,
     style: tooltipStyle,
     anchorRef: rootRef,
     tooltip
-  })
-
-  const extraEventHandlerProps: TooltipEventHandlers = useMemo(() => {
-    const res: TooltipEventHandlers = {}
-    for (const handlerName of tooltipEventHandlersList) {
-      const tooltipHandler = tooltipEventHandlers[handlerName]
-      if (!tooltipHandler) continue
-      const divHandler = (props as TooltipEventHandlers)[handlerName]
-
-      res[handlerName] = divHandler
-        ? (...args: any[]) => {
-            tooltipHandler(...args)
-            divHandler(...args)
-          }
-        : tooltipHandler
-    }
-    return res
-  }, [ // eslint-disable-line react-hooks/exhaustive-deps
-    tooltipEventHandlers,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    ...tooltipEventHandlersList.map(handlerName => (props as TooltipEventHandlers)[handlerName])
-  ])
-  props = { ...props, ...extraEventHandlerProps }
+  }))
 
   let pushedModifier
   if (pushed) {
