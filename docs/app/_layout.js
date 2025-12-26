@@ -11,7 +11,8 @@ export default function RootLayout () {
         <ToastProvider />
         <Stack
           screenOptions={{
-            contentStyle: { backgroundColor: 'white' }
+            contentStyle: { backgroundColor: 'white' },
+            headerShown: false
           }}
         />
       </Portal.Provider>

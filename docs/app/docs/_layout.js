@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { View, ScrollView, TextInput } from 'react-native'
 import { pug, styl, observer } from 'startupjs'
 import { Slot, Link, usePathname, Stack } from 'expo-router'
+import GitHubIcon from '../../svg/github-mark.svg'
 
 export default observer(({ children }) => {
   const [search, setSearch] = useState('')
@@ -20,6 +21,10 @@ export default observer(({ children }) => {
         options={ title: 'Docs' + (component ? ' / ' + component : '') }
       )
       View.sidebar
+        View.header
+          Link.title(href='/') StartupJS UI
+          Link(href='https://github.com/startupjs/startupjs-ui' target='_blank' accessibilityLabel='GitHub repository')
+            GitHubIcon(width=24 height=24)
         TextInput.search(
           placeholder='Search...'
           placeholderTextColor='#999'
@@ -37,9 +42,15 @@ export default observer(({ children }) => {
     .root
       flex-direction: row
       flex: 1
+    .header
+      padding 15px 20px
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+    .title
+      font-family monospace
     .sidebar
       max-width: 200px
-      border-right 1px solid #ccc
     .contentWrapper
       flex: 1
     .content
@@ -51,9 +62,10 @@ export default observer(({ children }) => {
     .items
       padding-bottom 20px
     .search
-      padding 15px 20px
-      border-bottom-width 1px
-      border-bottom-color #ccc
+      padding 10px 10px
+      margin 5px 10px
+      background-color #f5f5f5
+      border-radius 999px
       outline none
   `
 })
@@ -71,8 +83,12 @@ const Item = observer(({ children }) => {
   styl`
     .item
       padding: 10px 20px
+      border-radius: 0 999px 999px 0
+      color #777
       &.isActive
         background-color: rgba(black, 0.05)
+        color black
+        font-weight bold
   `
 })
 
