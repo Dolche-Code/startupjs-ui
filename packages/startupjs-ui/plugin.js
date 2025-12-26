@@ -1,7 +1,7 @@
 import { createElement as el } from 'react'
 import { createPlugin, ROOT_MODULE as MODULE } from 'startupjs/registry'
-import { setCustomInputs } from './components/forms/Input/globalCustomInputs'
-import { setCustomIcons } from './components/Icon/globalCustomIcons'
+import { setCustomInputs } from '@startupjs-ui/input/globalCustomInputs'
+import { setCustomIcons } from '@startupjs-ui/icon/globalCustomIcons'
 import UiProvider from './UiProvider'
 
 let hasCustomElementsInitialized = false

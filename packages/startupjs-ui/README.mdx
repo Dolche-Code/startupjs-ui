@@ -1,0 +1,62 @@
+# startupjs-ui
+
+startupjs-ui is the modular UI component library for StartupJS. You can import any component directly from `startupjs-ui` or from the individual subpaths `startupjs-ui/*`.
+
+```js
+import { Button, Form } from 'startupjs-ui'
+// or
+import Button from 'startupjs-ui/Button'
+import Form from 'startupjs-ui/Form'
+```
+
+## UiProvider
+
+UiProvider wires up theming and shared UI infrastructure (CSS variables, portal, toasts, dialogs). It is plugged in automatically as a plugin into `StartupjsProvider`, so the only thing you need at the root of your app is:
+
+```jsx
+import { StartupjsProvider } from 'startupjs'
+import { Stack } from 'expo-router'
+
+export default function RootLayout () {
+  return (
+    <StartupjsProvider>
+      <Stack />
+    </StartupjsProvider>
+  )
+}
+```
+
+You can pass UiProvider options via `StartupjsProvider` props:
+
+```jsx
+import styleOverrides from './style.cssx.styl'
+
+<StartupjsProvider
+  style={styleOverrides}
+  palette={palette}
+  colors={colors}
+  componentColors={componentColors}
+>
+  <Stack />
+</StartupjsProvider>
+```
+
+```styl
+// style.cssx.styl
+
+:root
+  --color-primary #0000ff
+  --color-error #ff0000
+
+.Button
+  border-radius 12px
+  &:part(hover)
+    background-color #0000cc
+```
+
+### Options
+
+- `style`: CSSX style overrides for UI components. You can also override static CSS variables by specifying them inside the `:root` section of `style`.
+- `palette`: theme palette overrides.
+- `colors`: theme color overrides.
+- `componentColors`: component-level color overrides.

@@ -5611,7 +5611,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/toast@workspace:packages/toast":
+"@startupjs-ui/toast@npm:^0.1.0, @startupjs-ui/toast@workspace:packages/toast":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/toast@workspace:packages/toast"
   dependencies:
@@ -21251,6 +21251,17 @@ __metadata:
 "startupjs-ui@workspace:packages/startupjs-ui":
   version: 0.0.0-use.local
   resolution: "startupjs-ui@workspace:packages/startupjs-ui"
+  dependencies:
+    "@startupjs-ui/core": "npm:^0.1.1"
+    "@startupjs-ui/dialogs": "npm:^0.1.0"
+    "@startupjs-ui/icon": "npm:^0.1.0"
+    "@startupjs-ui/input": "npm:^0.1.0"
+    "@startupjs-ui/portal": "npm:^0.1.0"
+    "@startupjs-ui/toast": "npm:^0.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    startupjs: "*"
   languageName: unknown
   linkType: soft
 

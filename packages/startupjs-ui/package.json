@@ -6,5 +6,21 @@
   },
   "version": "0.1.1",
   "type": "module",
+  "exports": {
+    "./plugin": "./plugin.js"
+  },
+  "dependencies": {
+    "@startupjs-ui/core": "^0.1.1",
+    "@startupjs-ui/dialogs": "^0.1.0",
+    "@startupjs-ui/icon": "^0.1.0",
+    "@startupjs-ui/input": "^0.1.0",
+    "@startupjs-ui/portal": "^0.1.0",
+    "@startupjs-ui/toast": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "startupjs": "*"
+  },
   "license": "MIT"
 }

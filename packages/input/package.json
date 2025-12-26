@@ -4,6 +4,10 @@
   "main": "index.tsx",
   "types": "index.d.ts",
   "type": "module",
+  "exports": {
+    ".": "./index.tsx",
+    "./globalCustomInputs": "./globalCustomInputs.ts"
+  },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@startupjs-ui/array-input": "^0.1.0",

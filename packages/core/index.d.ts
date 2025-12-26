@@ -15,6 +15,29 @@ export function getCssVariable (
   options?: GetCssVariableOptions
 ): CssVariableValue
 
+export interface CssVariablesMeta {
+  palette?: Record<string, any>
+  colors?: Record<string, any>
+  componentColors?: Record<string, any>
+}
+
+export interface CssVariablesProps {
+  meta?: CssVariablesMeta
+  clear?: boolean
+  children?: React.ReactNode
+}
+
+export const CssVariables: React.ComponentType<CssVariablesProps>
+
+export function useCssVariablesMeta (options: {
+  staticOverrides?: Record<string, any>
+  palette?: Record<string, any>
+  colors?: Record<string, any>
+  componentColors?: Record<string, any>
+}): CssVariablesMeta | undefined
+
+export const StyleContext: React.Context<any>
+
 export const Colors: Record<string, string>
 
 export interface GetColorOptions {

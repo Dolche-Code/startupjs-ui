@@ -12,22 +12,23 @@ export default observer(({ children }) => {
   useEffect(() => {
     setSearch('')
   }, [component])
+  const filteredComponents = DOC_COMPONENT_NAMES.filter(name => name.toLowerCase().includes(search.toLowerCase()))
 
   return pug`
     View.root
       Stack.Screen(
         options={ title: 'Docs' + (component ? ' / ' + component : '') }
       )
-      ScrollView.sidebar
+      View.sidebar
         TextInput.search(
           placeholder='Search...'
           placeholderTextColor='#999'
           value=search
           onChangeText=setSearch
         )
-        - const filteredComponents = DOC_COMPONENT_NAMES.filter(name => name.toLowerCase().includes(search.toLowerCase()))
-        each component in filteredComponents
-          Item(key=component)= component
+        ScrollView.items
+          each component in filteredComponents
+            Item(key=component)= component
       ScrollView.contentWrapper
         View.content
           Slot
@@ -47,11 +48,13 @@ export default observer(({ children }) => {
       width: 100%
       align-self: center
       padding: 20px 20px 0 20px
+    .items
+      padding-bottom 20px
     .search
       padding 15px 20px
       border-bottom-width 1px
       border-bottom-color #ccc
-      margin-bottom 10px
+      outline none
   `
 })
 
