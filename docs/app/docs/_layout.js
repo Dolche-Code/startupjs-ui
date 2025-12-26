@@ -1,12 +1,17 @@
-import { View, ScrollView } from 'react-native'
+import { useState, useEffect } from 'react'
+import { View, ScrollView, TextInput } from 'react-native'
 import { pug, styl, observer } from 'startupjs'
-import { Slot, Link, usePathname, Stack, useGlobalSearchParams } from 'expo-router'
-import * as DOC_COMPONENTS from '../../clientHelpers/docComponents'
-
-const DOC_COMPONENT_NAMES = Object.keys(DOC_COMPONENTS).sort()
+import { Slot, Link, usePathname, Stack } from 'expo-router'
 
 export default observer(({ children }) => {
-  const { component } = useGlobalSearchParams()
+  const [search, setSearch] = useState('')
+  const pathname = usePathname()
+  const component = pathname.startsWith('/docs/')
+    ? pathname.replace(/^\/docs\//, '').replace(/[^\w].*$/, '')
+    : undefined
+  useEffect(() => {
+    setSearch('')
+  }, [component])
 
   return pug`
     View.root
@@ -14,7 +19,14 @@ export default observer(({ children }) => {
         options={ title: 'Docs' + (component ? ' / ' + component : '') }
       )
       ScrollView.sidebar
-        each component in DOC_COMPONENT_NAMES
+        TextInput.search(
+          placeholder='Search...'
+          placeholderTextColor='#999'
+          value=search
+          onChangeText=setSearch
+        )
+        - const filteredComponents = DOC_COMPONENT_NAMES.filter(name => name.toLowerCase().includes(search.toLowerCase()))
+        each component in filteredComponents
           Item(key=component)= component
       ScrollView.contentWrapper
         View.content
@@ -25,7 +37,6 @@ export default observer(({ children }) => {
       flex-direction: row
       flex: 1
     .sidebar
-      padding-top 10px
       max-width: 200px
       border-right 1px solid #ccc
     .contentWrapper
@@ -36,6 +47,11 @@ export default observer(({ children }) => {
       width: 100%
       align-self: center
       padding: 20px 20px 0 20px
+    .search
+      padding 15px 20px
+      border-bottom-width 1px
+      border-bottom-color #ccc
+      margin-bottom 10px
   `
 })
 
@@ -56,3 +72,63 @@ const Item = observer(({ children }) => {
         background-color: rgba(black, 0.05)
   `
 })
+
+const DOC_COMPONENT_NAMES = [
+  'AbstractPopover',
+  'Alert',
+  'ArrayInput',
+  'AutoSuggest',
+  'Avatar',
+  'Badge',
+  'Br',
+  'Breadcrumbs',
+  'Button',
+  'Card',
+  'Carousel',
+  'Checkbox',
+  'Collapse',
+  'ColorPicker',
+  'Content',
+  'DateTimePicker',
+  'Dialogs',
+  'Div',
+  'Divider',
+  'Draggable',
+  'Drawer',
+  'DrawerSidebar',
+  'Dropdown',
+  'FileInput',
+  'FlatList',
+  'Form',
+  'Icon',
+  'Input',
+  'Item',
+  'Layout',
+  'Link',
+  'Loader',
+  'Menu',
+  'Modal',
+  'MultiSelect',
+  'NumberInput',
+  'ObjectInput',
+  'Pagination',
+  'PasswordInput',
+  'Popover',
+  'Portal',
+  'Progress',
+  'Radio',
+  'RangeInput',
+  'Rank',
+  'Rating',
+  'ScrollView',
+  'Select',
+  'Sidebar',
+  'SmartSidebar',
+  'Span',
+  'Table',
+  'Tabs',
+  'Tag',
+  'TextInput',
+  'Toast',
+  'User'
+]

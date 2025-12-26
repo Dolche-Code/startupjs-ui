@@ -1,7 +1,10 @@
 import { View } from 'react-native'
-import { Link } from 'expo-router'
+import { Link, Redirect } from 'expo-router'
+
+const REDIRECT = true
 
 export default function Index () {
+  if (REDIRECT) return <Redirect href='/docs' />
   return (
     <View
       style={{

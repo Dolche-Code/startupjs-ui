@@ -77,8 +77,9 @@ function RangeInput ({
       // eslint-disable-next-line @typescript-eslint/no-throw-literal
       throw new Promise<void>(resolve => {
         void (async () => {
-          if (!onChange) throw new Error('[@startupjs-ui/range-input] `onChange` is required when `value` is undefined')
-          await onChange(range ? [min, max] : min)
+          // TODO: maybe throw an Error instead of console.warn?
+          if (!onChange) console.warn('[@startupjs-ui/range-input] `onChange` is required when `value` is undefined')
+          await onChange?.(range ? [min, max] : min)
           resolve()
         })()
       })

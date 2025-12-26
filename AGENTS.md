@@ -18,7 +18,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
 - Copy styles: `index.styl` -> `index.cssx.styl` (and `index.mdx.styl` -> `index.mdx.cssx.styl` if present) without changes.
 - Port logic: move `ui/components/<Component>/index.*` to `packages/<component>/index.tsx`; add props interface with JSDoc, defaults in destructuring, remove `propTypes`/`defaultProps`, return `ReactNode`, export `_PropsJsonSchema`.
 - Docs: move `Component.en.mdx` -> `packages/<component>/README.mdx`, update imports to new packages; for not-yet-refactored components import from `@startupjs/ui` top-level.
-- Register docs page in `docs/clientHelpers/docComponents.js`.
+- Register docs page for Component in `docs/app/docs/<Component>.js`.
 
 ## Refactoring Steps & Tooling Notes
 
@@ -60,8 +60,7 @@ The goal is to decouple components and introduce TypeScript interfaces for props
 - In the docs on where to import the component from change it from '@startupjs/ui' to instead be 'startupjs-ui' (that's the new meta-library which will re-export all individual packages for each component).
 
 ### 4. Register in Docs App
-- Edit `docs/clientHelpers/docComponents.js`.
-- Export the component's MDX file: `export { default as Component } from '../../packages/<component>/README.mdx'`.
+- Add a new file which re-exports README.mdx of the component in `docs/app/docs/<Component>.js`: `export { default } from '../../../packages/<component>/README.mdx'`.
 
 ## Key Requirements
 
