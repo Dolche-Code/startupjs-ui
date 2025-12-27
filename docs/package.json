@@ -11,7 +11,11 @@
     "lint": "expo lint",
     "postinstall": "npx startupjs postinstall",
     "build": "npx startupjs build",
-    "start-production": "npx startupjs start-production"
+    "build-static": "yarn switch-to-static && npx startupjs build && yarn switch-to-single || yarn switch-to-single",
+    "switch-to-static": "node -e \"require('fs').writeFileSync('./app.json', JSON.stringify((json = require('./app.json'), json.expo.web.output = 'static', json), null, 2) + '\\n')\"",
+    "switch-to-single": "node -e \"require('fs').writeFileSync('./app.json', JSON.stringify((json = require('./app.json'), json.expo.web.output = 'single', json), null, 2) + '\\n')\"",
+    "start-production": "npx startupjs start-production",
+    "start-production-static": "serve ./dist"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -59,6 +63,7 @@
     "eslint-config-expo": "~10.0.0",
     "husky": "^4.3.0",
     "lint-staged": "^15.2.2",
+    "serve": "^14.2.5",
     "typescript": "~5.9.2"
   },
   "private": true,
