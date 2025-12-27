@@ -406,6 +406,7 @@ function getDefaultInputs () {
       useProps: useTextProps
     }
   }
+  return _defaultInputs
 }
 
 export function useInputMeta (input: string): { Component: any, useProps: InputUseProps } {
