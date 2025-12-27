@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { View, ScrollView, TextInput } from 'react-native'
+import { useState, useEffect, useCallback } from 'react'
+import { View, ScrollView, TextInput, Pressable, Text } from 'react-native'
 import { pug, styl, observer } from 'startupjs'
 import { Slot, Link, usePathname, Stack } from 'expo-router'
 import GitHubIcon from '../../svg/github-mark.svg'
@@ -71,24 +71,32 @@ export default observer(({ children }) => {
 })
 
 const Item = observer(({ children }) => {
+  const [isHover, setIsHover] = useState(false)
+  const onHoverIn = useCallback(() => setIsHover(true), [])
+  const onHoverOut = useCallback(() => setIsHover(false), [])
   const pathname = usePathname()
   if (typeof children !== 'string') return 'NO_NAME'
   const name = children
   const href = '/docs/' + children
   const isActive = pathname === href
   return pug`
-    Link.item(styleName={ isActive } href=href)
-      = name
+    Link(href=href asChild)
+      Pressable.item(styleName={ isHover, isActive } onHoverIn=onHoverIn onHoverOut=onHoverOut)
+        Text.text(styleName={ isHover, isActive })= name
   `
   styl`
     .item
       padding: 10px 20px
       border-radius: 0 999px 999px 0
-      color #777
+      &.isHover
+        background-color: rgba(black, 0.03)
       &.isActive
         background-color: rgba(black, 0.05)
-        color black
+    .text
+      color #777
+      &.isActive
         font-weight bold
+        color black
   `
 })
 
