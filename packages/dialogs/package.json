@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/dialogs",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "publishConfig": {
     "access": "public"
   },
@@ -15,11 +15,11 @@
     "./prompt": "./prompt.tsx"
   },
   "dependencies": {
-    "@startupjs-ui/br": "^0.1.3",
-    "@startupjs-ui/core": "^0.1.3",
-    "@startupjs-ui/modal": "^0.1.3",
-    "@startupjs-ui/span": "^0.1.3",
-    "@startupjs-ui/text-input": "^0.1.3"
+    "@startupjs-ui/br": "^0.1.5",
+    "@startupjs-ui/core": "^0.1.5",
+    "@startupjs-ui/modal": "^0.1.5",
+    "@startupjs-ui/span": "^0.1.5",
+    "@startupjs-ui/text-input": "^0.1.5"
   },
   "peerDependencies": {
     "react": "*",
