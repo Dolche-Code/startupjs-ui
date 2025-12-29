@@ -34,7 +34,7 @@ export default createPlugin({
         const isVideoRequest = req.url.includes('.mp4') || req.url.includes('.mov') || req.url.includes('.avi')
         // if id has extension, remove it
         // (extension is sometimes added for client libraries to properly handle the file)
-        fileId = fileId.replace(/\\.[^.]+$/, '')
+        fileId = fileId.replace(/\.[^.]+$/, '')
         // url might have ?download=true which means we should force download
         const download = (req.query?.download != null)
         const $file = await sub($.files[fileId])
@@ -209,7 +209,7 @@ export default createPlugin({
               })
               .toFormat('jpeg', { quality: 80 })) // Convert to JPEG with 85% quality
 
-            filename = filename.replace(/\\.[^.]+$/, '.jpg') // Change extension to .jpg
+            filename = filename.replace(/\.[^.]+$/, '.jpg') // Change extension to .jpg
             mimeType = 'image/jpeg'
           }
 
@@ -224,7 +224,7 @@ export default createPlugin({
 
             // extract extension from filename
             console.log('meta.filename', meta.filename)
-            const extension = meta.filename?.match(/\\.([^.]+)$/)?.[1]
+            const extension = meta.filename?.match(/\.([^.]+)$/)?.[1]
             if (extension) meta.extension = extension
             const create = !fileId
             if (!fileId) fileId = $.id()
