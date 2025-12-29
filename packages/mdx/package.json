@@ -1,7 +1,7 @@
 {
   "name": "@startupjs-ui/mdx",
   "description": "MDX provider with a set of custom components for react-native support and syntax highlighting",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publishConfig": {
     "access": "public"
   },
@@ -12,16 +12,16 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@mdx-js/react": "^3.0.0",
-    "@startupjs-ui/alert": "^0.1.2",
-    "@startupjs-ui/br": "^0.1.2",
-    "@startupjs-ui/collapse": "^0.1.2",
-    "@startupjs-ui/div": "^0.1.2",
-    "@startupjs-ui/divider": "^0.1.2",
-    "@startupjs-ui/icon": "^0.1.2",
-    "@startupjs-ui/link": "^0.1.2",
-    "@startupjs-ui/scroll-view": "^0.1.2",
-    "@startupjs-ui/span": "^0.1.2",
-    "@startupjs-ui/table": "^0.1.2",
+    "@startupjs-ui/alert": "^0.1.3",
+    "@startupjs-ui/br": "^0.1.3",
+    "@startupjs-ui/collapse": "^0.1.3",
+    "@startupjs-ui/div": "^0.1.3",
+    "@startupjs-ui/divider": "^0.1.3",
+    "@startupjs-ui/icon": "^0.1.3",
+    "@startupjs-ui/link": "^0.1.3",
+    "@startupjs-ui/scroll-view": "^0.1.3",
+    "@startupjs-ui/span": "^0.1.3",
+    "@startupjs-ui/table": "^0.1.3",
     "refractor": "^3.0.0"
   },
   "peerDependencies": {
