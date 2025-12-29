@@ -27,3 +27,6 @@ doc_build
 
 # tmp folders
 .tmp
+
+# lerna
+lerna-debug.log
