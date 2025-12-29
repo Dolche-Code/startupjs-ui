@@ -29,6 +29,13 @@ export interface CssVariablesProps {
 
 export const CssVariables: React.ComponentType<CssVariablesProps>
 
+export const palette: Record<string, any>
+
+export function generateColors (
+  palette: Record<string, any>,
+  overrides?: Record<string, any>
+): Record<string, any>
+
 export function useCssVariablesMeta (options: {
   staticOverrides?: Record<string, any>
   palette?: Record<string, any>
@@ -38,7 +45,18 @@ export function useCssVariablesMeta (options: {
 
 export const StyleContext: React.Context<any>
 
+export class Palette {
+  constructor (palette?: Record<string, any>)
+  colors: Record<string, any>
+  generateColors (overrides?: Record<string, any>, componentOverrides?: Record<string, any>): Record<string, any>
+  Color (name: string, level?: any, options?: { alpha?: number }): any
+}
+
 export const Colors: Record<string, string>
+
+export const ThemeProvider: React.Provider<any>
+
+export const ThemeContext: React.Context<any>
 
 export interface GetColorOptions {
   prefix?: string
