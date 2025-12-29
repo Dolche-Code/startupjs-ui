@@ -1,16 +1,16 @@
 {
   "name": "@startupjs-ui/rank",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "index.tsx",
   "types": "index.d.ts",
   "type": "module",
   "dependencies": {
-    "@startupjs-ui/core": "^0.1.1",
-    "@startupjs-ui/div": "^0.1.0",
-    "@startupjs-ui/draggable": "^0.1.0",
-    "@startupjs-ui/icon": "^0.1.0",
-    "@startupjs-ui/select": "^0.1.0",
-    "@startupjs-ui/span": "^0.1.0"
+    "@startupjs-ui/core": "^0.1.2",
+    "@startupjs-ui/div": "^0.1.2",
+    "@startupjs-ui/draggable": "^0.1.2",
+    "@startupjs-ui/icon": "^0.1.2",
+    "@startupjs-ui/select": "^0.1.2",
+    "@startupjs-ui/span": "^0.1.2"
   },
   "peerDependencies": {
     "react": "*",

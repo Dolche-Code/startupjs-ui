@@ -1,0 +1,14 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.2](https://github.com/startupjs/startupjs-ui/compare/v0.1.1...v0.1.2) (2025-12-29)
+
+
+### Features
+
+* add mdx and docs packages. Refactor docs to get rid of any @startupjs/ui usage and use startupjs-ui instead ([703c926](https://github.com/startupjs/startupjs-ui/commit/703c92636efb0421ffd11783f692fc892b74018f))
+* **docs:** support static web bundling (each route as a separate html page) ([5e4738c](https://github.com/startupjs/startupjs-ui/commit/5e4738c50157ae37e14d8dc36cb43d6a45a008ad))
+* **file-input:** refactor FileInput component ([ab87527](https://github.com/startupjs/startupjs-ui/commit/ab87527a6a9dba34b3106034cc33d311f88f8e93))
+* **file-input:** update example ([e019ed2](https://github.com/startupjs/startupjs-ui/commit/e019ed26886d7b7e9d499e76e3c1eca802864774))
