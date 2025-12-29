@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/startupjs/startupjs-ui/compare/v0.1.3...v0.1.4) (2025-12-29)
+
+
+### Bug Fixes
+
+* **file-input:** fix wrong regexps ([4d9c020](https://github.com/startupjs/startupjs-ui/commit/4d9c020621e67ec6caed8e4a2d1621028fd34a66))
+
+
+
+
+
 ## [0.1.3](https://github.com/startupjs/startupjs-ui/compare/v0.1.2...v0.1.3) (2025-12-29)
 
 **Note:** Version bump only for package @startupjs-ui/file-input
