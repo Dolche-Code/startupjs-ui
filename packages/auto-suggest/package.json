@@ -1,6 +1,9 @@
 {
   "name": "@startupjs-ui/auto-suggest",
   "version": "0.1.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.tsx",
   "types": "index.d.ts",
   "type": "module",

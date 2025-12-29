@@ -1,11 +1,11 @@
 {
   "name": "@startupjs-ui/mdx",
+  "description": "MDX provider with a set of custom components for react-native support and syntax highlighting",
+  "version": "0.1.2",
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
-  "description": "MDX provider with a set of custom components for react-native support and syntax highlighting",
-  "version": "0.1.2",
   "exports": {
     ".": "./index.js"
   },
