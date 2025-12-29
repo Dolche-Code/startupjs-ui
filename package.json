@@ -27,7 +27,7 @@
     "eslint": "^8.56.0",
     "eslint-config-cssxjs": "^0.2.0",
     "husky": "^4.3.0",
-    "lerna": "^9.0.0",
+    "lerna": "^9.0.3",
     "lint-staged": "^15.2.2",
     "typescript": "^5.1.3"
   },
