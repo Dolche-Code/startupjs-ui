@@ -92,6 +92,7 @@
     "./H5": "./exports/_DEPRECATED_H5.tsx",
     "./H6": "./exports/_DEPRECATED_H6.tsx",
     "./User": "./exports/User.tsx",
+    "./colorToRGBA": "./exports/colorToRGBA.tsx",
     "./CssVariables": "./exports/CssVariables.tsx",
     "./palette": "./exports/palette.tsx",
     "./generateColors": "./exports/generateColors.tsx",

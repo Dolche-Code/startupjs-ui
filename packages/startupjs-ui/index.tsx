@@ -95,6 +95,7 @@ export { default as User } from '@startupjs-ui/user'
 
 // theming
 export {
+  colorToRGBA,
   CssVariables,
   palette,
   generateColors,
