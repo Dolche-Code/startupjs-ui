@@ -1365,24 +1365,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/cli@npm:54.0.19":
-  version: 54.0.19
-  resolution: "@expo/cli@npm:54.0.19"
+"@expo/cli@npm:54.0.20":
+  version: 54.0.20
+  resolution: "@expo/cli@npm:54.0.20"
   dependencies:
     "@0no-co/graphql.web": "npm:^1.0.8"
     "@expo/code-signing-certificates": "npm:^0.0.5"
-    "@expo/config": "npm:~12.0.12"
-    "@expo/config-plugins": "npm:~54.0.3"
+    "@expo/config": "npm:~12.0.13"
+    "@expo/config-plugins": "npm:~54.0.4"
     "@expo/devcert": "npm:^1.2.1"
     "@expo/env": "npm:~2.0.8"
     "@expo/image-utils": "npm:^0.8.8"
     "@expo/json-file": "npm:^10.0.8"
-    "@expo/metro": "npm:~54.1.0"
-    "@expo/metro-config": "npm:~54.0.11"
+    "@expo/metro": "npm:~54.2.0"
+    "@expo/metro-config": "npm:~54.0.12"
     "@expo/osascript": "npm:^2.3.8"
     "@expo/package-manager": "npm:^1.9.9"
     "@expo/plist": "npm:^0.4.8"
-    "@expo/prebuild-config": "npm:^54.0.7"
+    "@expo/prebuild-config": "npm:^54.0.8"
     "@expo/schema-utils": "npm:^0.1.8"
     "@expo/spawn-async": "npm:^1.7.2"
     "@expo/ws-tunnel": "npm:^1.0.1"
@@ -1443,7 +1443,7 @@ __metadata:
       optional: true
   bin:
     expo-internal: build/bin/cli
-  checksum: 10c0/a5db332daf83060dee3ec70bdc8a19022de9fa9ada5c01fd768df09ff2383f9738e14cd84b7e0c7777dfb379c955217e402bae37cc3cb181e1e45f2bc352fff9
+  checksum: 10c0/8ec91b42e06a70e2ca3ab6beec1ffd0757fe138645aa48a3d8e17696078db32889ec2055ec5889aa40528aa2cdb8be63c6e20329b22cee3b5df302357eb20a16
   languageName: node
   linkType: hard
 
@@ -1479,14 +1479,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config-types@npm:^54.0.10, @expo/config-types@npm:^54.0.9":
+"@expo/config-types@npm:^54.0.10":
   version: 54.0.10
   resolution: "@expo/config-types@npm:54.0.10"
   checksum: 10c0/a304e18314937cbe3a146fe7daf23d5b78049676dabc14b1e181330f9e74ab2f4ada288f23999f254b59ee7c59380f895ffcb536f537e9039cd10336b1c1d7bc
   languageName: node
   linkType: hard
 
-"@expo/config@npm:~12.0.11, @expo/config@npm:~12.0.12":
+"@expo/config@npm:~12.0.12":
   version: 12.0.12
   resolution: "@expo/config@npm:12.0.12"
   dependencies:
@@ -1504,6 +1504,27 @@ __metadata:
     slugify: "npm:^1.3.4"
     sucrase: "npm:~3.35.1"
   checksum: 10c0/4094af9815a1c594a80fd4663db12768840350b03136e5500a7d0103c348cfe6ebe90b89bfe7ca3913293c49f9c6fa85a4b8f87a2154492e415c46e7a8cbdbb4
+  languageName: node
+  linkType: hard
+
+"@expo/config@npm:~12.0.13":
+  version: 12.0.13
+  resolution: "@expo/config@npm:12.0.13"
+  dependencies:
+    "@babel/code-frame": "npm:~7.10.4"
+    "@expo/config-plugins": "npm:~54.0.4"
+    "@expo/config-types": "npm:^54.0.10"
+    "@expo/json-file": "npm:^10.0.8"
+    deepmerge: "npm:^4.3.1"
+    getenv: "npm:^2.0.0"
+    glob: "npm:^13.0.0"
+    require-from-string: "npm:^2.0.2"
+    resolve-from: "npm:^5.0.0"
+    resolve-workspace-root: "npm:^2.0.0"
+    semver: "npm:^7.6.0"
+    slugify: "npm:^1.3.4"
+    sucrase: "npm:~3.35.1"
+  checksum: 10c0/c81494670424251b629f3c1a3ff8eb76e40b51838dbeaa793f6f763d0252fa506d5c7bf60dc358555a64bded7e9c33731169675a56604ff439510359e41b6d10
   languageName: node
   linkType: hard
 
@@ -1596,17 +1617,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/metro-config@npm:54.0.11, @expo/metro-config@npm:~54.0.11":
-  version: 54.0.11
-  resolution: "@expo/metro-config@npm:54.0.11"
+"@expo/metro-config@npm:54.0.12, @expo/metro-config@npm:~54.0.12":
+  version: 54.0.12
+  resolution: "@expo/metro-config@npm:54.0.12"
   dependencies:
     "@babel/code-frame": "npm:^7.20.0"
     "@babel/core": "npm:^7.20.0"
     "@babel/generator": "npm:^7.20.5"
-    "@expo/config": "npm:~12.0.12"
+    "@expo/config": "npm:~12.0.13"
     "@expo/env": "npm:~2.0.8"
     "@expo/json-file": "npm:~10.0.8"
-    "@expo/metro": "npm:~54.1.0"
+    "@expo/metro": "npm:~54.2.0"
     "@expo/spawn-async": "npm:^1.7.2"
     browserslist: "npm:^4.25.0"
     chalk: "npm:^4.1.0"
@@ -1626,7 +1647,7 @@ __metadata:
   peerDependenciesMeta:
     expo:
       optional: true
-  checksum: 10c0/be2774a33366607a28d9dc5a19721fc4eb50f1d84fe68d9a33ab41611cc9186e60e340c24c8b4646403995a86e4dc90b4d21653b3388181f146ff1a22b641d70
+  checksum: 10c0/95a40d3835505be331104b548c57d841703e24470eb597e49dc28f2febed63406d6829e8c9d5a356916c847e1920bb03c15a0468f32f21bb114a3d1d56af880d
   languageName: node
   linkType: hard
 
@@ -1650,23 +1671,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/metro@npm:~54.1.0":
-  version: 54.1.0
-  resolution: "@expo/metro@npm:54.1.0"
+"@expo/metro@npm:~54.2.0":
+  version: 54.2.0
+  resolution: "@expo/metro@npm:54.2.0"
   dependencies:
-    metro: "npm:0.83.2"
-    metro-babel-transformer: "npm:0.83.2"
-    metro-cache: "npm:0.83.2"
-    metro-cache-key: "npm:0.83.2"
-    metro-config: "npm:0.83.2"
-    metro-core: "npm:0.83.2"
-    metro-file-map: "npm:0.83.2"
-    metro-resolver: "npm:0.83.2"
-    metro-runtime: "npm:0.83.2"
-    metro-source-map: "npm:0.83.2"
-    metro-transform-plugins: "npm:0.83.2"
-    metro-transform-worker: "npm:0.83.2"
-  checksum: 10c0/db531c50feec0315a21d595802ecb8702d595e8acea05d5eea9b120cb697fcec33a5fcc793c8d9c5d860905c341c7ad752dd4a3064c0cf6d5676fefa0a94205c
+    metro: "npm:0.83.3"
+    metro-babel-transformer: "npm:0.83.3"
+    metro-cache: "npm:0.83.3"
+    metro-cache-key: "npm:0.83.3"
+    metro-config: "npm:0.83.3"
+    metro-core: "npm:0.83.3"
+    metro-file-map: "npm:0.83.3"
+    metro-minify-terser: "npm:0.83.3"
+    metro-resolver: "npm:0.83.3"
+    metro-runtime: "npm:0.83.3"
+    metro-source-map: "npm:0.83.3"
+    metro-symbolicate: "npm:0.83.3"
+    metro-transform-plugins: "npm:0.83.3"
+    metro-transform-worker: "npm:0.83.3"
+  checksum: 10c0/5114ac19021094e19fcbd383778748451bdf78c904cb9be831b04d44880b4ca05071c1e045e5ccf8076418e32a87de2e5163529f1d91fed4bdda2184958e8a61
   languageName: node
   linkType: hard
 
@@ -1705,13 +1728,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/prebuild-config@npm:^54.0.7":
-  version: 54.0.7
-  resolution: "@expo/prebuild-config@npm:54.0.7"
+"@expo/prebuild-config@npm:^54.0.8":
+  version: 54.0.8
+  resolution: "@expo/prebuild-config@npm:54.0.8"
   dependencies:
-    "@expo/config": "npm:~12.0.11"
-    "@expo/config-plugins": "npm:~54.0.3"
-    "@expo/config-types": "npm:^54.0.9"
+    "@expo/config": "npm:~12.0.13"
+    "@expo/config-plugins": "npm:~54.0.4"
+    "@expo/config-types": "npm:^54.0.10"
     "@expo/image-utils": "npm:^0.8.8"
     "@expo/json-file": "npm:^10.0.8"
     "@react-native/normalize-colors": "npm:0.81.5"
@@ -1721,7 +1744,7 @@ __metadata:
     xml2js: "npm:0.6.0"
   peerDependencies:
     expo: "*"
-  checksum: 10c0/8ab94732c51c74823e8377c2f6fd5095615f8f82a4dd1696586bbdd5faed617806ffb52b9ab9fd88dff8244fc6361828eb376143c956a7b6ea30d6e9479e4e9c
+  checksum: 10c0/70bef3fe360a7035b449e9f137e5046c6fe9137f2220f87bb563af2c34de4593034cd68cea5716ae98930e43a63331659795d1ec2af0f9a905565f2086f7c1a1
   languageName: node
   linkType: hard
 
@@ -5148,12 +5171,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs/auth@npm:^0.60.0-canary.8":
-  version: 0.60.0-canary.8
-  resolution: "@startupjs/auth@npm:0.60.0-canary.8"
+"@startupjs/auth@npm:^0.61.1":
+  version: 0.61.1
+  resolution: "@startupjs/auth@npm:0.61.1"
   dependencies:
-    "@startupjs/registry": "npm:^0.60.0-canary.7"
-    "@startupjs/utils": "npm:^0.60.0-canary.7"
+    "@startupjs/registry": "npm:^0.61.0"
+    "@startupjs/utils": "npm:^0.61.0"
     bcrypt: "npm:^5.1.1"
     jsonwebtoken: "npm:^9.0.2"
     jwks-rsa: "npm:^3.1.0"
@@ -5162,47 +5185,47 @@ __metadata:
   peerDependencies:
     "@react-native-async-storage/async-storage": "*"
     teamplay: "*"
-  checksum: 10c0/7d307b7ae26dbdc1e4e15236e3cf2941d923d3ba9ceaeb8c0113680139a884633e2443d10954d1a8edbcf4f8792b00ba35d7823c81f9d5ed38af2bc344381ffa
+  checksum: 10c0/936a5111d4f67e5197214e880c5499d360393cb1f029f895c56161e7a0fae26566600a6f2886fd80f97d8c80895ffd9a3760d21367c6681941cca9c15e07c290
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-eliminator@npm:^0.60.0-canary.0, @startupjs/babel-plugin-eliminator@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/babel-plugin-eliminator@npm:0.60.0-canary.7"
-  checksum: 10c0/5e2627e13fcd156b9b66aa6d2bbe4a95dc02c3865fbb389211dd73c2be23adf6d2c06e84731e9c69273df01da7dcf6a7612ebe1b696ccc0e4ab0a8bdf055c8c8
+"@startupjs/babel-plugin-eliminator@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/babel-plugin-eliminator@npm:0.61.0"
+  checksum: 10c0/ca2fbb426db498f65c94785d37c1f7cbd05c1f648b984187bb3836e5f7c7cf49c8552af20bc588f2ca9965b2da0d13ab79726f0bfb78a12b4f2ab86fc018661c
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-i18n-extract@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/babel-plugin-i18n-extract@npm:0.60.0-canary.7"
+"@startupjs/babel-plugin-i18n-extract@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/babel-plugin-i18n-extract@npm:0.61.0"
   dependencies:
     lodash: "npm:^4.17.20"
-  checksum: 10c0/107a298ba2f5401ff012ef438a10181b704257010b56f8289b1bcdde5d3378f5f43c29718bf2fc040714cc093196b101834c16346fdf6b2f99bfa744549e7a8a
+  checksum: 10c0/96f6ca8b5c77c074cb202ba4f49303d57adc068c6b7bef52b930e36a4f421fce8b39eedeffcec4dd530d9a60bbab12c500adea4427d76f2ba958fae38d03ac41
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-startupjs-debug@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/babel-plugin-startupjs-debug@npm:0.60.0-canary.7"
-  checksum: 10c0/a4f7cdbbd17e09d37d14a583794905ad007eed894e8a6af6d11f90d55cb2dad508cd7cd412cf21a4458254b472a3e908f5e2c173db812bf756ca5f66d7641d0e
+"@startupjs/babel-plugin-startupjs-debug@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/babel-plugin-startupjs-debug@npm:0.61.0"
+  checksum: 10c0/328a041eb26423ffba4283f09931c1704287439a0fc3cfffad09f4eca57734d83148687db8443e8e4760537e4d75c51a4e5343cda8cd3988839ab7d1eb09360c
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-startupjs-plugins@npm:^0.60.0-canary.0, @startupjs/babel-plugin-startupjs-plugins@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/babel-plugin-startupjs-plugins@npm:0.60.0-canary.7"
+"@startupjs/babel-plugin-startupjs-plugins@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/babel-plugin-startupjs-plugins@npm:0.61.0"
   dependencies:
     "@babel/helper-module-imports": "npm:^7.0.0"
     resolve: "npm:^1.20.0"
-  checksum: 10c0/ecb9b539152ba6c738b56abb3a4a8bacb0680e37a25df4e68803ce6a22f9c6fcbad2a0d1b16b8f638bbaec5df3aeb8813bf810333fb2c4da0b38868ca33a037b
+  checksum: 10c0/cf5b1046c18121067b0a7e276488da074e62980be0e652702995d97fd87a03cb1f754a084a7b0cf285ea3b6a88cdc50cd9117cbc19ffee2dccc59a8b5f1a3d43
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-startupjs@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/babel-plugin-startupjs@npm:0.60.0-canary.7"
-  checksum: 10c0/caccf9cba2fabb79bd9ad42c7bf915f6b2f0217bb8536f4bb727f0abb51e7909a2c312a4d06a134a03900bf1681f5f48dedc849c2704916720085200829d2ecb
+"@startupjs/babel-plugin-startupjs@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/babel-plugin-startupjs@npm:0.61.0"
+  checksum: 10c0/424b832555e9e26505ad06e3ba0413c0f2bfbd3d4256a03a31004373dfc51d100a413fc6c59293ad1476fa082ac05215bd0d57fdcc3e54ac3a0aa533ad7c0351
   languageName: node
   linkType: hard
 
@@ -5223,50 +5246,50 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-ts-to-json-schema@npm:^0.60.0-canary.18":
-  version: 0.60.0-canary.18
-  resolution: "@startupjs/babel-plugin-ts-to-json-schema@npm:0.60.0-canary.18"
+"@startupjs/babel-plugin-ts-to-json-schema@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/babel-plugin-ts-to-json-schema@npm:0.61.0"
   dependencies:
     ts-json-schema-generator: "npm:2.0.0"
-  checksum: 10c0/d8a49c7d459973e786254a6e8cc5a578e6cbea22234eefdd1f0d69931a091a86d72d55a318dacb8a8ed94bf61464ddb659300fd4f2ed5471141462054c6cd8e9
+  checksum: 10c0/c9b078213c012841a4d070ffa7390baf1735e883ae8553487850865b25ea38740c64bd0972c5f4466d62f2e528f0266f9adecdab30cb4e50862faa98efdf9596
   languageName: node
   linkType: hard
 
-"@startupjs/bundler@npm:^0.60.0-canary.25":
-  version: 0.60.0-canary.25
-  resolution: "@startupjs/bundler@npm:0.60.0-canary.25"
+"@startupjs/bundler@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/bundler@npm:0.61.0"
   dependencies:
     "@babel/core": "npm:^7.9.0"
     "@babel/plugin-syntax-jsx": "npm:^7.0.0"
     "@mdx-js/mdx": "npm:^3.0.0"
-    "@startupjs/babel-plugin-eliminator": "npm:^0.60.0-canary.7"
-    "@startupjs/babel-plugin-startupjs-plugins": "npm:^0.60.0-canary.7"
-    "@startupjs/server": "npm:^0.60.0-canary.7"
+    "@startupjs/babel-plugin-eliminator": "npm:^0.61.0"
+    "@startupjs/babel-plugin-startupjs-plugins": "npm:^0.61.0"
+    "@startupjs/server": "npm:^0.61.0"
     "@svgr/core": "npm:^8.1.0"
     "@svgr/plugin-jsx": "npm:^8.1.0"
     "@svgr/plugin-svgo": "npm:^8.1.0"
-    babel-preset-startupjs: "npm:^0.60.0-canary.18"
+    babel-preset-startupjs: "npm:^0.61.0"
     connect: "npm:^3.7.0"
     lodash: "npm:^4.17.20"
     remark-gfm: "npm:4.0.1"
   peerDependencies:
     cssxjs: "*"
     react-native-svg: "*"
-  checksum: 10c0/25a29d92a4d9a806243062da3d38657bcf8ed00f667615fc469a6e7a556e41565c29556ae723b386eddaa18aa310ff92f1a56de8bfe5896dc47b043325f6ead6
+  checksum: 10c0/e82cc6ba639c6f1324f79fcbe6dd1718bd247461e13455de2cf1de624fc58d41008ddf9d61548511f4c403656c4352bbced104404f77aa8daf65f2514a3cf2d6
   languageName: node
   linkType: hard
 
-"@startupjs/cli@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/cli@npm:0.60.0-canary.7"
+"@startupjs/cli@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/cli@npm:0.61.0"
   dependencies:
-    "@startupjs/patches": "npm:^0.60.0-canary.7"
-    "@startupjs/pm": "npm:^0.60.0-canary.7"
+    "@startupjs/patches": "npm:^0.61.0"
+    "@startupjs/pm": "npm:^0.61.0"
     chalk: "npm:^5.3.0"
     commander: "npm:^12.0.0"
-    create-startupjs: "npm:^0.60.0-canary.7"
+    create-startupjs: "npm:^0.61.0"
     execa: "npm:^8.0.1"
-  checksum: 10c0/728f03d224bf5f7e173c1ec8f216cb4771217d58fcadbbc1ed342054ebc347c401b954260c23fa1c87f1182ac9e865c194c810092319be0e3e1535a460a144e4
+  checksum: 10c0/55748561a78fd706f582599109bc6f0aabc5bca1862005aaf15af5aebd1985d5d50c455c28fdde776b2db57e4b1e36638bfed0a821e238ef4a927bcf931b94bb
   languageName: node
   linkType: hard
 
@@ -5298,15 +5321,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/hooks@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/hooks@npm:0.60.0-canary.7"
+"@startupjs/hooks@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/hooks@npm:0.61.0"
   dependencies:
-    "@startupjs/utils": "npm:^0.60.0-canary.7"
+    "@startupjs/utils": "npm:^0.61.0"
     lodash: "npm:^4.17.20"
   peerDependencies:
     react: "*"
-  checksum: 10c0/55ce12f40696f9d07edd43455eec22353db02e11477b957785be4b7879bff4f2f20687b9db3829f684ef9263d4b9bbb0c962218d67d9446260d03c2507db2d3d
+  checksum: 10c0/5c4cc33c35ac584ef42772774eea0465e821d55b4274a1dd61d9ba5df0817bc759b595adbbed15319ffda74558cd570e23b3184a6aedf3e867e0bd534fdb0336
   languageName: node
   linkType: hard
 
@@ -5320,26 +5343,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/isomorphic-helpers@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/isomorphic-helpers@npm:0.60.0-canary.7"
-  checksum: 10c0/26c3c6c7ff5e8099c7f38064d11ce8e8d4080a4d755461f411bebdbc10da8b1db2d1888820b60cc58d22d270febb0e63419a150809b1db7e3fd97515eff5571e
+"@startupjs/isomorphic-helpers@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/isomorphic-helpers@npm:0.61.0"
+  checksum: 10c0/db26caca5fc79834b83fb6652aa9c2d9352a87e207e48edecc5f4c8ed719cbbf89fb36c5570757a382ac8e55134c3bad34e168a8e02bc1e1a8e1f8ab732272ed
   languageName: node
   linkType: hard
 
-"@startupjs/patches@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/patches@npm:0.60.0-canary.7"
+"@startupjs/patches@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/patches@npm:0.61.0"
   dependencies:
     patch-package: "npm:^7.0.0"
-  checksum: 10c0/e89947fe7d1572e8db6902abe599016a5862c0c678b0710d7ba0b2f0a659b3e8325c3f0aaf31248f7be7778ad20c65c88fbd7275645a85e17ed2c0e27058528a
+  checksum: 10c0/6364237f97366919658c16c203f169a5bd31cbe8de67dc41be25685ba2cf44cf6a2e2e54a78f169e811320d7ad2bf57d2a73a7fdd65186adf562ab483f7e7051
   languageName: node
   linkType: hard
 
-"@startupjs/pm@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/pm@npm:0.60.0-canary.7"
-  checksum: 10c0/c0606a71f78c8e9da191bdb26c41395fd666d22bc8431ce8e32db5b4eb37e3c69356e39e65e8449b6898a190c995bd95b2cc6ba4c1d7b80542873de057171112
+"@startupjs/pm@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/pm@npm:0.61.0"
+  checksum: 10c0/b1cec6a832a967d13bb767e39867c522c79acdfce9da6a98e7669e5682ccebb889a5b54766af7dd2a1657bcb2fecf8ea46b5bd1c377fb3d75d459c1c7279bd69
   languageName: node
   linkType: hard
 
@@ -5389,23 +5412,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/registry@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/registry@npm:0.60.0-canary.7"
+"@startupjs/registry@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/registry@npm:0.61.0"
   dependencies:
     fbemitter: "npm:^3.0.0"
   peerDependencies:
     react: "*"
     teamplay: "*"
-  checksum: 10c0/b042ffb72aa345835c1029f1cf52908aaa9e8744a10b30572a6655b6ce77d372eb9c8d9a15ae002dce9db41aabc279bc4edb17045b63f580cdcad57b857e5dd6
+  checksum: 10c0/78c8951c84d7fae6230b54421b00bf0ae0ba43fb385fb40c946b0299ff74cc821623e6d22a953859eddbc858d528c795850193231132efe4951c99c3a86532c0
   languageName: node
   linkType: hard
 
-"@startupjs/router@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/router@npm:0.60.0-canary.7"
+"@startupjs/router@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/router@npm:0.61.0"
   dependencies:
-    "@startupjs/utils": "npm:^0.60.0-canary.7"
+    "@startupjs/utils": "npm:^0.61.0"
     react-router: "npm:^6.22.3"
   peerDependencies:
     expo-router: "*"
@@ -5414,15 +5437,15 @@ __metadata:
   peerDependenciesMeta:
     expo-router:
       optional: true
-  checksum: 10c0/dacf0a95ee6e0ad10f6c6d0a760ebe429a4805d5d2a05a8531623ff3969248fd75458a518e58f2dc8fcdbd0d5c48bb87f5c5cc8e76bdbbde1953c7a9271b438e
+  checksum: 10c0/efcd1178526a1476c362f1a1b8f57a2fddfbce0dfbe5619f649791bb9792ea982556e7f7c0df34ccdbd6f6d9c99b160f8f715193270c3b9c69e37e98915f93b6
   languageName: node
   linkType: hard
 
-"@startupjs/server@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/server@npm:0.60.0-canary.7"
+"@startupjs/server@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/server@npm:0.61.0"
   dependencies:
-    "@startupjs/registry": "npm:^0.60.0-canary.7"
+    "@startupjs/registry": "npm:^0.61.0"
     body-parser: "npm:1.20.0"
     compression: "npm:^1.6.0"
     connect-mongo: "npm:^4.4.1"
@@ -5436,26 +5459,26 @@ __metadata:
     method-override: "npm:~2.3.10"
   peerDependencies:
     teamplay: "*"
-  checksum: 10c0/4643190ceb4d028a9a4142e4aef8ff3bbfaad8de57c2df10803e62a2067d17c555e7e93cd2ed6e9144f4ca6d5c880bf3cc077149c804367708fbf0b877610af7
+  checksum: 10c0/66a7afdb8950760d9738916721d1e059d279774dd89c2bf2b87e2acef37f2bc71f3a41fc58f1e72beb6eb41ad89f9d4b8bd0fe973b8c5fea0290eba9e83bd46c
   languageName: node
   linkType: hard
 
-"@startupjs/sharedb-mingo-memory@npm:^4.0.0-1":
-  version: 4.0.0-1
-  resolution: "@startupjs/sharedb-mingo-memory@npm:4.0.0-1"
+"@startupjs/sharedb-mingo-memory@npm:^4.0.0-2":
+  version: 4.0.0-2
+  resolution: "@startupjs/sharedb-mingo-memory@npm:4.0.0-2"
   dependencies:
     lodash.clonedeep: "npm:^4.5.0"
     lodash.isobject: "npm:^3.0.2"
     mingo: "npm:^6.4.15"
   peerDependencies:
     sharedb: ^1.0.0-beta || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
-  checksum: 10c0/3fe4867dc28d92f401bbbc8411813293cf2381fb635fd4f52606adb7f5d4ca89c64401598b20fc540dcb3a17719c8e0d9d6f4764816ab021c9ed401797f7b1e1
+  checksum: 10c0/98d51569145a337f54fd9d2c889fd3b66611925ac431ab25b42617858a5ea3ceaa47b168a7ec14409f4a8264ba49692e8666262f39af69497a6d14e1f6f28b7f
   languageName: node
   linkType: hard
 
-"@startupjs/utils@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "@startupjs/utils@npm:0.60.0-canary.7"
+"@startupjs/utils@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "@startupjs/utils@npm:0.61.0"
   dependencies:
     axios: "npm:^1.6.5"
   peerDependencies:
@@ -5475,7 +5498,7 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: 10c0/d8ddce5ff24b00a9cba582b3adcf6de5aeaeef23e3a936e28a6b30f28b908312dc89919221cb749248b2447f5cae10d16ee88a8c0a74b38f679e305516433cc3
+  checksum: 10c0/f2f051507ac1021b6c728e29fcec3d663a8879e8aac723ed7f3c82469f070820e37bd4e9ba0f4b22f50578d896f55e163964887f4665ef4f650385202f40f256
   languageName: node
   linkType: hard
 
@@ -5619,11 +5642,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@teamplay/backend@npm:^0.3.29":
-  version: 0.3.29
-  resolution: "@teamplay/backend@npm:0.3.29"
+"@teamplay/backend@npm:^0.3.30":
+  version: 0.3.30
+  resolution: "@teamplay/backend@npm:0.3.30"
   dependencies:
-    "@startupjs/sharedb-mingo-memory": "npm:^4.0.0-1"
+    "@startupjs/sharedb-mingo-memory": "npm:^4.0.0-2"
     "@teamplay/schema": "npm:^0.3.29"
     "@teamplay/server-aggregate": "npm:^0.3.29"
     "@teamplay/sharedb-access": "npm:^0.3.29"
@@ -5639,7 +5662,7 @@ __metadata:
     sharedb-mongo: "npm:^4.1.2"
     sharedb-redis-pubsub: "npm:^2.0.1"
     sqlite3: "npm:^5.1.6"
-  checksum: 10c0/8a8cfdb449662b302aba7829332603b351f637e9e8a2f4447c896452d4a682594a85314e5c4a4a0739866a06ae49265c6f8bb586b1a3b7b8968809c0033faee3
+  checksum: 10c0/49b5c913c1e6cc95bb1d7accc3014a8a63b0e7a182f7fbef953272ffcae559a7f50bfcb4b0aab471df527b0139c25080f9cbb6cfcbc678124481ca66df21157b
   languageName: node
   linkType: hard
 
@@ -7417,9 +7440,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-expo@npm:~54.0.8":
-  version: 54.0.8
-  resolution: "babel-preset-expo@npm:54.0.8"
+"babel-preset-expo@npm:~54.0.9":
+  version: 54.0.9
+  resolution: "babel-preset-expo@npm:54.0.9"
   dependencies:
     "@babel/helper-module-imports": "npm:^7.25.9"
     "@babel/plugin-proposal-decorators": "npm:^7.12.9"
@@ -7452,7 +7475,7 @@ __metadata:
       optional: true
     expo:
       optional: true
-  checksum: 10c0/474b0799f3027d35f72d27f212551e92ac1b1119bac5a3f98c5d4e78be1a1cfcbcd24f52680236bf1400a037e07f7ab69ca4a8311947f0cf6f75c2d44aabde7d
+  checksum: 10c0/40e3142204d3abcad492021ebac3581ca1b25c27039999f6bd244e1da830f230410930d3d65850b76c85791390f36b269f93585171f84d839eb959d5d5d3cd4f
   languageName: node
   linkType: hard
 
@@ -7468,22 +7491,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-startupjs@npm:^0.60.0-canary.18":
-  version: 0.60.0-canary.18
-  resolution: "babel-preset-startupjs@npm:0.60.0-canary.18"
+"babel-preset-startupjs@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "babel-preset-startupjs@npm:0.61.0"
   dependencies:
     "@babel/core": "npm:^7.9.0"
     "@babel/plugin-syntax-jsx": "npm:^7.0.0"
     "@babel/plugin-syntax-typescript": "npm:^7.23.3"
-    "@startupjs/babel-plugin-eliminator": "npm:^0.60.0-canary.0"
-    "@startupjs/babel-plugin-i18n-extract": "npm:^0.60.0-canary.7"
-    "@startupjs/babel-plugin-startupjs": "npm:^0.60.0-canary.7"
-    "@startupjs/babel-plugin-startupjs-debug": "npm:^0.60.0-canary.7"
-    "@startupjs/babel-plugin-startupjs-plugins": "npm:^0.60.0-canary.0"
-    "@startupjs/babel-plugin-ts-to-json-schema": "npm:^0.60.0-canary.18"
+    "@startupjs/babel-plugin-eliminator": "npm:^0.61.0"
+    "@startupjs/babel-plugin-i18n-extract": "npm:^0.61.0"
+    "@startupjs/babel-plugin-startupjs": "npm:^0.61.0"
+    "@startupjs/babel-plugin-startupjs-debug": "npm:^0.61.0"
+    "@startupjs/babel-plugin-startupjs-plugins": "npm:^0.61.0"
+    "@startupjs/babel-plugin-ts-to-json-schema": "npm:^0.61.0"
   peerDependencies:
     cssxjs: "*"
-  checksum: 10c0/6c6ea45e7898d2f483496903584bba860341683aaba9420f42251d0c1c629bc13c01c2a58610f81706e69c3e2801fe5ce299d2428a1f84657ea01a155c9ae460
+  checksum: 10c0/114767366ff44465768d6a655339ad5c6c0c5d47ab025fde34d934ab602487e2ecca90eddc8b0d89c3e525af00c5d20d5e08e2cd6af7c1b6b00366e8f0d5c8a7
   languageName: node
   linkType: hard
 
@@ -7805,6 +7828,16 @@ __metadata:
     base64-js: "npm:^1.3.1"
     ieee754: "npm:^1.1.13"
   checksum: 10c0/27cac81cff434ed2876058d72e7c4789d11ff1120ef32c9de48f59eab58179b66710c488987d295ae89a228f835fc66d088652dffeb8e3ba8659f80eb091d55e
+  languageName: node
+  linkType: hard
+
+"buffer@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "buffer@npm:6.0.3"
+  dependencies:
+    base64-js: "npm:^1.3.1"
+    ieee754: "npm:^1.2.1"
+  checksum: 10c0/2a905fbbcde73cc5d8bd18d1caa23715d5f83a5935867c2329f0ac06104204ba7947be098fe1317fbd8830e26090ff8e764f08cd14fefc977bb248c3487bcbd0
   languageName: node
   linkType: hard
 
@@ -8890,9 +8923,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"create-startupjs@npm:^0.60.0-canary.7":
-  version: 0.60.0-canary.7
-  resolution: "create-startupjs@npm:0.60.0-canary.7"
+"create-startupjs@npm:^0.61.0":
+  version: 0.61.0
+  resolution: "create-startupjs@npm:0.61.0"
   dependencies:
     chalk: "npm:^5.3.0"
     commander: "npm:^12.0.0"
@@ -8901,7 +8934,7 @@ __metadata:
     lodash: "npm:^4.17.20"
   bin:
     create-startupjs: index.js
-  checksum: 10c0/65f6fe86f2a229da896421e3ae2801810662a2ee5210065be4da2b89ef5b122e7fc1c4d40cf0618399cf929de435472bb3775fbffc6afe1324646ecf8ee7badd
+  checksum: 10c0/5fa3f8aac217ec00f1d6e92a7be613a2f34b47ef6ca22771ae16ade3e8350534f29a9d4026e40c7707f606a73668b91781ba2d3a68045ea6fba75936edb4c457
   languageName: node
   linkType: hard
 
@@ -9399,21 +9432,21 @@ __metadata:
     "@react-navigation/native": "npm:^7.1.8"
     "@startupjs-ui/docs": "npm:^0.1.5"
     "@startupjs-ui/mdx": "npm:^0.1.5"
-    "@startupjs/router": "npm:^0.60.0-canary.7"
+    "@startupjs/router": "npm:^0.61.0"
     "@types/react": "npm:~19.1.0"
     eslint: "npm:^8.56.0"
     eslint-config-cssxjs: "npm:^0.2.0"
     eslint-config-expo: "npm:~10.0.0"
-    expo: "npm:~54.0.29"
+    expo: "npm:~54.0.30"
     expo-constants: "npm:~18.0.12"
     expo-document-picker: "npm:~14.0.8"
     expo-font: "npm:~14.0.10"
     expo-haptics: "npm:~15.0.8"
     expo-image: "npm:~3.0.11"
     expo-image-picker: "npm:~17.0.10"
-    expo-linking: "npm:~8.0.10"
-    expo-router: "npm:~6.0.20"
-    expo-splash-screen: "npm:~31.0.12"
+    expo-linking: "npm:~8.0.11"
+    expo-router: "npm:~6.0.21"
+    expo-splash-screen: "npm:~31.0.13"
     expo-status-bar: "npm:~3.0.9"
     expo-symbols: "npm:~1.0.8"
     expo-system-ui: "npm:~6.0.9"
@@ -9432,7 +9465,7 @@ __metadata:
     react-native-web: "npm:~0.21.0"
     react-native-worklets: "npm:0.5.1"
     serve: "npm:^14.2.5"
-    startupjs: "npm:^0.60.0-canary.25"
+    startupjs: "npm:^0.61.1"
     typescript: "npm:~5.9.2"
   languageName: unknown
   linkType: soft
@@ -10609,21 +10642,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-asset@npm:~12.0.11":
-  version: 12.0.11
-  resolution: "expo-asset@npm:12.0.11"
+"expo-asset@npm:~12.0.12":
+  version: 12.0.12
+  resolution: "expo-asset@npm:12.0.12"
   dependencies:
     "@expo/image-utils": "npm:^0.8.8"
-    expo-constants: "npm:~18.0.11"
+    expo-constants: "npm:~18.0.12"
   peerDependencies:
     expo: "*"
     react: "*"
     react-native: "*"
-  checksum: 10c0/d2b452efeb5fbe014e6a17f344b53d57539c79786d26ef32841c89e06ca6eb6f35949c72c6b8c506dc385dda394a344b0810d368090c1d42277b18f37d5b2b08
+  checksum: 10c0/303b7e08126edbddd3235a6803ffa6ff98b1cc0fb7bfa019d1ad891560bbbe9a9b84db7275ced33011330a8f4f225175d3780f4771a925d8e1c3782a343b9796
   languageName: node
   linkType: hard
 
-"expo-constants@npm:~18.0.11, expo-constants@npm:~18.0.12":
+"expo-constants@npm:~18.0.12":
   version: 18.0.12
   resolution: "expo-constants@npm:18.0.12"
   dependencies:
@@ -10722,16 +10755,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-linking@npm:~8.0.10":
-  version: 8.0.10
-  resolution: "expo-linking@npm:8.0.10"
+"expo-linking@npm:~8.0.11":
+  version: 8.0.11
+  resolution: "expo-linking@npm:8.0.11"
   dependencies:
-    expo-constants: "npm:~18.0.11"
+    expo-constants: "npm:~18.0.12"
     invariant: "npm:^2.2.4"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10c0/d4d972e272b83a1c602c2f0a26a815434d75b2972688570e1a318a708b0f67813962884f1a374a6a842ab81960af5255d7767139e90d77d639b615a14286f4cf
+  checksum: 10c0/f4351bfd0a2cf1c0b2b3aa46e4484ee3f344f569d2dba7be31b914dc6274fc356dff413b3ab34bb9d36b205454a2e585b69abe54715e7f13e9629836c295c8d6
   languageName: node
   linkType: hard
 
@@ -10762,9 +10795,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:~6.0.20":
-  version: 6.0.20
-  resolution: "expo-router@npm:6.0.20"
+"expo-router@npm:~6.0.21":
+  version: 6.0.21
+  resolution: "expo-router@npm:6.0.21"
   dependencies:
     "@expo/metro-runtime": "npm:^6.1.2"
     "@expo/schema-utils": "npm:^0.1.8"
@@ -10795,7 +10828,7 @@ __metadata:
     "@testing-library/react-native": ">= 12.0.0"
     expo: "*"
     expo-constants: ^18.0.12
-    expo-linking: ^8.0.10
+    expo-linking: ^8.0.11
     react: "*"
     react-dom: "*"
     react-native: "*"
@@ -10820,7 +10853,7 @@ __metadata:
       optional: true
     react-server-dom-webpack:
       optional: true
-  checksum: 10c0/b7f662fbb11d8574183e0ba2cdf5b9c673070ee536c5cdfe86db78b72926831b9cf2a697afca8ecd393f7f2d06b029c24c3adf4e4ed983451f0b9be65baab863
+  checksum: 10c0/ae39edf1d5c841be46d3dcc8598e46773cbdd2f5a0b6a0c0711dbd0ed852121ada010363270b75a664563e7c74e16dbbd650e4ee7faec8e6e229fd189e99e3b0
   languageName: node
   linkType: hard
 
@@ -10831,14 +10864,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-splash-screen@npm:~31.0.12":
-  version: 31.0.12
-  resolution: "expo-splash-screen@npm:31.0.12"
+"expo-splash-screen@npm:~31.0.13":
+  version: 31.0.13
+  resolution: "expo-splash-screen@npm:31.0.13"
   dependencies:
-    "@expo/prebuild-config": "npm:^54.0.7"
+    "@expo/prebuild-config": "npm:^54.0.8"
   peerDependencies:
     expo: "*"
-  checksum: 10c0/67fbf5e411f65feb3b2e81662df60bbe8b4f8e0b23f9e56f669f9fcace640a0ab13b61835b62465b96159b1f3640094f15fd4ffa00c1925f1af37019b3de2021
+  checksum: 10c0/f2caf9ac41f35f4790ca8cbdecec7f5b453d95f2a31261bb4117c5bb0515547704568998e3c1dfbbad55dc41ec8d1221288a69d2a4a943c4cf4681f5b213e860
   languageName: node
   linkType: hard
 
@@ -10893,22 +10926,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:~54.0.29":
-  version: 54.0.29
-  resolution: "expo@npm:54.0.29"
+"expo@npm:~54.0.30":
+  version: 54.0.30
+  resolution: "expo@npm:54.0.30"
   dependencies:
     "@babel/runtime": "npm:^7.20.0"
-    "@expo/cli": "npm:54.0.19"
-    "@expo/config": "npm:~12.0.12"
+    "@expo/cli": "npm:54.0.20"
+    "@expo/config": "npm:~12.0.13"
     "@expo/config-plugins": "npm:~54.0.4"
     "@expo/devtools": "npm:0.1.8"
     "@expo/fingerprint": "npm:0.15.4"
-    "@expo/metro": "npm:~54.1.0"
-    "@expo/metro-config": "npm:54.0.11"
+    "@expo/metro": "npm:~54.2.0"
+    "@expo/metro-config": "npm:54.0.12"
     "@expo/vector-icons": "npm:^15.0.3"
     "@ungap/structured-clone": "npm:^1.3.0"
-    babel-preset-expo: "npm:~54.0.8"
-    expo-asset: "npm:~12.0.11"
+    babel-preset-expo: "npm:~54.0.9"
+    expo-asset: "npm:~12.0.12"
     expo-constants: "npm:~18.0.12"
     expo-file-system: "npm:~19.0.21"
     expo-font: "npm:~14.0.10"
@@ -10935,7 +10968,7 @@ __metadata:
     expo: bin/cli
     expo-modules-autolinking: bin/autolinking
     fingerprint: bin/fingerprint
-  checksum: 10c0/4e550143de61e8cb68d03ba78e34f3f008bc670f8dd042711f38da04c59e8289b97f88c20fc6e5529f838390cd2efc95e06bab36ea49c324af46253df628f929
+  checksum: 10c0/56f1b80e533711c26b6f4470fc1c5942411e733258eb7bb2cc83610b8a808f590a8f3028c20a95500d58c02373199d5b1d043caf0f174583146f9ad81ad36a79
   languageName: node
   linkType: hard
 
@@ -12402,7 +12435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ieee754@npm:^1.1.13":
+"ieee754@npm:^1.1.13, ieee754@npm:^1.2.1":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
   checksum: 10c0/b0782ef5e0935b9f12883a2e2aa37baa75da6e66ce6515c168697b42160807d9330de9a32ec1ed73149aea02e0d822e572bca6f1e22bdcbd2149e13b050b17bb
@@ -12440,6 +12473,13 @@ __metadata:
   bin:
     image-size: bin/image-size.js
   checksum: 10c0/f8b3c19d4476513f1d7e55c3e6db80997b315444743e2040d545cbcaee59be03d2eb40c46be949a8372697b7003fdb0c04925d704390a7f606bc8181e25c0ed4
+  languageName: node
+  linkType: hard
+
+"immediate@npm:~3.0.5":
+  version: 3.0.6
+  resolution: "immediate@npm:3.0.6"
+  checksum: 10c0/f8ba7ede69bee9260241ad078d2d535848745ff5f6995c7c7cb41cfdc9ccc213f66e10fa5afb881f90298b24a3f7344b637b592beb4f54e582770cdce3f1f039
   languageName: node
   linkType: hard
 
@@ -13866,6 +13906,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lie@npm:3.1.1":
+  version: 3.1.1
+  resolution: "lie@npm:3.1.1"
+  dependencies:
+    immediate: "npm:~3.0.5"
+  checksum: 10c0/d62685786590351b8e407814acdd89efe1cb136f05cb9236c5a97b2efdca1f631d2997310ad2d565c753db7596799870140e4777c9c9b8c44a0f6bf42d1804a1
+  languageName: node
+  linkType: hard
+
 "lighthouse-logger@npm:^1.0.0":
   version: 1.4.2
   resolution: "lighthouse-logger@npm:1.4.2"
@@ -14079,6 +14128,15 @@ __metadata:
     pify: "npm:^3.0.0"
     strip-bom: "npm:^3.0.0"
   checksum: 10c0/6b48f6a0256bdfcc8970be2c57f68f10acb2ee7e63709b386b2febb6ad3c86198f840889cdbe71d28f741cbaa2f23a7771206b138cd1bdd159564511ca37c1d5
+  languageName: node
+  linkType: hard
+
+"localforage@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "localforage@npm:1.10.0"
+  dependencies:
+    lie: "npm:3.1.1"
+  checksum: 10c0/00f19f1f97002e6721587ed5017f502d58faf80dae567d5065d4d1ee0caf0762f40d2e2dba7f0ef7d3f14ee6203242daae9ecad97359bfc10ecff36df11d85a3
   languageName: node
   linkType: hard
 
@@ -14844,18 +14902,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-babel-transformer@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-babel-transformer@npm:0.83.2"
-  dependencies:
-    "@babel/core": "npm:^7.25.2"
-    flow-enums-runtime: "npm:^0.0.6"
-    hermes-parser: "npm:0.32.0"
-    nullthrows: "npm:^1.1.1"
-  checksum: 10c0/8f3005c6534eb62816fa85a321c891b1dd64f4ac92d7dc7eedbfe06b4fffd2e3f629d0641ffd87373c6d28152c701faf36c7f7a4b0ed6624aa2b3c922d6026ae
-  languageName: node
-  linkType: hard
-
 "metro-babel-transformer@npm:0.83.3":
   version: 0.83.3
   resolution: "metro-babel-transformer@npm:0.83.3"
@@ -14868,33 +14914,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-cache-key@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-cache-key@npm:0.83.2"
-  dependencies:
-    flow-enums-runtime: "npm:^0.0.6"
-  checksum: 10c0/791517bcd997d2f8ecaba3aff99714408f1c80d938846c7b8d114e346ce93c963eb103317e4781b3c16ad187ed95b8e23397346bb6cb4b86ec8ff95dbda4681e
-  languageName: node
-  linkType: hard
-
 "metro-cache-key@npm:0.83.3":
   version: 0.83.3
   resolution: "metro-cache-key@npm:0.83.3"
   dependencies:
     flow-enums-runtime: "npm:^0.0.6"
   checksum: 10c0/403a2ca5b5bbb31a979effaa31fba0c47e2eb3830428c39c99db58aa0739a6fcc386f5a56c91495c53a4569065f0bda29e3038e9c41ca17af443971395f257dc
-  languageName: node
-  linkType: hard
-
-"metro-cache@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-cache@npm:0.83.2"
-  dependencies:
-    exponential-backoff: "npm:^3.1.1"
-    flow-enums-runtime: "npm:^0.0.6"
-    https-proxy-agent: "npm:^7.0.5"
-    metro-core: "npm:0.83.2"
-  checksum: 10c0/2c8d4004153431abb73265496ba2ede5e5fd09c2ca3769186ebe5b87645c97d74b871cc1bf83ab6bccdae596039341e330df3ebfab6e8469e1207e6a5d0e9ebc
   languageName: node
   linkType: hard
 
@@ -14907,22 +14932,6 @@ __metadata:
     https-proxy-agent: "npm:^7.0.5"
     metro-core: "npm:0.83.3"
   checksum: 10c0/608e85d819092c0b472c9adabb5de58e88355739de71833230626c1af7f3ce5dd1dca9f1ff3a836d995201f717315fd769c4c646a818c1f490ea2ec29417e32a
-  languageName: node
-  linkType: hard
-
-"metro-config@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-config@npm:0.83.2"
-  dependencies:
-    connect: "npm:^3.6.5"
-    flow-enums-runtime: "npm:^0.0.6"
-    jest-validate: "npm:^29.7.0"
-    metro: "npm:0.83.2"
-    metro-cache: "npm:0.83.2"
-    metro-core: "npm:0.83.2"
-    metro-runtime: "npm:0.83.2"
-    yaml: "npm:^2.6.1"
-  checksum: 10c0/224dff59b53f23ca4a0f39e8a82c297b93c779e9f92c1e097c1ac9fd66d86978b696476aef14a2eb3d2b4704adfb53e3d7ab76abf32924a06f3f6d0c586ac16f
   languageName: node
   linkType: hard
 
@@ -14942,17 +14951,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-core@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-core@npm:0.83.2"
-  dependencies:
-    flow-enums-runtime: "npm:^0.0.6"
-    lodash.throttle: "npm:^4.1.1"
-    metro-resolver: "npm:0.83.2"
-  checksum: 10c0/3582bfb114fbda2c9bb5cdde1a185ba0c707a27f325a6e63c6a981c9a05e02965dcfcc8c98cc37f30ef8e103f34e4f7b544e67f61f1dcdfc1bf81d98b27507f8
-  languageName: node
-  linkType: hard
-
 "metro-core@npm:0.83.3, metro-core@npm:^0.83.1":
   version: 0.83.3
   resolution: "metro-core@npm:0.83.3"
@@ -14961,23 +14959,6 @@ __metadata:
     lodash.throttle: "npm:^4.1.1"
     metro-resolver: "npm:0.83.3"
   checksum: 10c0/d44c1f117c4b27f18abd27110e9536abf3105733e8fccaa522bd0e008248cce0260130517840c4914d7ce5df498f39ecfd43b6046a0f0b1c0f8ada7de38e52c4
-  languageName: node
-  linkType: hard
-
-"metro-file-map@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-file-map@npm:0.83.2"
-  dependencies:
-    debug: "npm:^4.4.0"
-    fb-watchman: "npm:^2.0.0"
-    flow-enums-runtime: "npm:^0.0.6"
-    graceful-fs: "npm:^4.2.4"
-    invariant: "npm:^2.2.4"
-    jest-worker: "npm:^29.7.0"
-    micromatch: "npm:^4.0.4"
-    nullthrows: "npm:^1.1.1"
-    walker: "npm:^1.0.7"
-  checksum: 10c0/0577c06c7c7f1325a9c9121a304de13c632f783e4a4fe149b1b532ae88d375f199803ea75ff56e979867d4969326a297336ac815ee494ba057eec600a129bb58
   languageName: node
   linkType: hard
 
@@ -14998,16 +14979,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-minify-terser@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-minify-terser@npm:0.83.2"
-  dependencies:
-    flow-enums-runtime: "npm:^0.0.6"
-    terser: "npm:^5.15.0"
-  checksum: 10c0/0bf1cb557d30c82b701c2cb8a89f92c93ebb54891bd88dc3a504783e2038825bbde77095b0c9ff74069e09b170742b8fe37f5f9233e421a41c997fe5b3303d66
-  languageName: node
-  linkType: hard
-
 "metro-minify-terser@npm:0.83.3":
   version: 0.83.3
   resolution: "metro-minify-terser@npm:0.83.3"
@@ -15015,15 +14986,6 @@ __metadata:
     flow-enums-runtime: "npm:^0.0.6"
     terser: "npm:^5.15.0"
   checksum: 10c0/9158e3199c0ea647776a7ed5c68ec1bb493f5347ac979f1ca75020cf1c39f907bd29983d60f8cb24dca17053d6b5c35f140c6d720fad0bd0fa9728e8c51e95c6
-  languageName: node
-  linkType: hard
-
-"metro-resolver@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-resolver@npm:0.83.2"
-  dependencies:
-    flow-enums-runtime: "npm:^0.0.6"
-  checksum: 10c0/1094ffa21f8f5273cd0f43d663806a62ed45841c7b4e51f1a823437e0659a98e13829ab18e419e2cfb3cbd097e0263c75e7937a92c5da69718458adec6c4ca51
   languageName: node
   linkType: hard
 
@@ -15036,16 +14998,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-runtime@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-runtime@npm:0.83.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.25.0"
-    flow-enums-runtime: "npm:^0.0.6"
-  checksum: 10c0/1eb13af44f47bc490ed663d6ad3024c95cfbc4117c281e60adbb5cd56e3813e3e9e4344b2e2b2e8db517411f3f7a18dadd71c96a7f79b7d019c6326221648564
-  languageName: node
-  linkType: hard
-
 "metro-runtime@npm:0.83.3, metro-runtime@npm:^0.83.1":
   version: 0.83.3
   resolution: "metro-runtime@npm:0.83.3"
@@ -15053,24 +15005,6 @@ __metadata:
     "@babel/runtime": "npm:^7.25.0"
     flow-enums-runtime: "npm:^0.0.6"
   checksum: 10c0/1d788483b6c2f13e0ea9ff4564996154754d3de84f683812ac848053eaea9243144adee3e8ffe90789e6c253f7402211d72b1b5ebf09e6c23841bc956a680253
-  languageName: node
-  linkType: hard
-
-"metro-source-map@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-source-map@npm:0.83.2"
-  dependencies:
-    "@babel/traverse": "npm:^7.25.3"
-    "@babel/traverse--for-generate-function-map": "npm:@babel/traverse@^7.25.3"
-    "@babel/types": "npm:^7.25.2"
-    flow-enums-runtime: "npm:^0.0.6"
-    invariant: "npm:^2.2.4"
-    metro-symbolicate: "npm:0.83.2"
-    nullthrows: "npm:^1.1.1"
-    ob1: "npm:0.83.2"
-    source-map: "npm:^0.5.6"
-    vlq: "npm:^1.0.0"
-  checksum: 10c0/1590e9e50389f607dff1283fa70a770dfce1be44299062e8a538f0dd75b63307ea8661495ca64ad9994898e3dd0d1dc995023ddd9b67dd304de3b259a105056c
   languageName: node
   linkType: hard
 
@@ -15092,22 +15026,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-symbolicate@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-symbolicate@npm:0.83.2"
-  dependencies:
-    flow-enums-runtime: "npm:^0.0.6"
-    invariant: "npm:^2.2.4"
-    metro-source-map: "npm:0.83.2"
-    nullthrows: "npm:^1.1.1"
-    source-map: "npm:^0.5.6"
-    vlq: "npm:^1.0.0"
-  bin:
-    metro-symbolicate: src/index.js
-  checksum: 10c0/0c021d63520a9f8daaa70165d42c3050f46de31a02ed372aef19ca3027c5beddb14cf9623942142ff493680c094057d7314f2d712419231f3ff3dcf77f18f790
-  languageName: node
-  linkType: hard
-
 "metro-symbolicate@npm:0.83.3":
   version: 0.83.3
   resolution: "metro-symbolicate@npm:0.83.3"
@@ -15124,20 +15042,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-transform-plugins@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-transform-plugins@npm:0.83.2"
-  dependencies:
-    "@babel/core": "npm:^7.25.2"
-    "@babel/generator": "npm:^7.25.0"
-    "@babel/template": "npm:^7.25.0"
-    "@babel/traverse": "npm:^7.25.3"
-    flow-enums-runtime: "npm:^0.0.6"
-    nullthrows: "npm:^1.1.1"
-  checksum: 10c0/55925ace9b878721b478f0c0e95abdbd7d834c4738611a6b5c4a3e457a0f01c81b17356c3158fd70960c7f01b43ff641de2b2ad28888afaac21d73c541820ee1
-  languageName: node
-  linkType: hard
-
 "metro-transform-plugins@npm:0.83.3":
   version: 0.83.3
   resolution: "metro-transform-plugins@npm:0.83.3"
@@ -15149,27 +15053,6 @@ __metadata:
     flow-enums-runtime: "npm:^0.0.6"
     nullthrows: "npm:^1.1.1"
   checksum: 10c0/df3c6db6a69d4888e1b6aad40d48ffec0c3c3faa38e89c07633432fc107ef12c47d55598904c91aadfe0751c5bcb7ec191f8a5ee70c18d253201150fc617ca37
-  languageName: node
-  linkType: hard
-
-"metro-transform-worker@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro-transform-worker@npm:0.83.2"
-  dependencies:
-    "@babel/core": "npm:^7.25.2"
-    "@babel/generator": "npm:^7.25.0"
-    "@babel/parser": "npm:^7.25.3"
-    "@babel/types": "npm:^7.25.2"
-    flow-enums-runtime: "npm:^0.0.6"
-    metro: "npm:0.83.2"
-    metro-babel-transformer: "npm:0.83.2"
-    metro-cache: "npm:0.83.2"
-    metro-cache-key: "npm:0.83.2"
-    metro-minify-terser: "npm:0.83.2"
-    metro-source-map: "npm:0.83.2"
-    metro-transform-plugins: "npm:0.83.2"
-    nullthrows: "npm:^1.1.1"
-  checksum: 10c0/ea8a0e6bdf24dc5719edb0f2aae0e5bf70f6801cebed8a952fd2d3a1eec95640ac1176d0132faa878897b524ff9828a07810ff22e8a82f007f235d470b027e93
   languageName: node
   linkType: hard
 
@@ -15191,56 +15074,6 @@ __metadata:
     metro-transform-plugins: "npm:0.83.3"
     nullthrows: "npm:^1.1.1"
   checksum: 10c0/bea0cbcc7d13cd2b97a2159257b3a53b9ecfb15da18ace82ae05bf2d0ac7cc1806c0bd77ed3b8f4c82c9532773fb99f3938e4b1480e2673f5eda69575ee1d7ef
-  languageName: node
-  linkType: hard
-
-"metro@npm:0.83.2":
-  version: 0.83.2
-  resolution: "metro@npm:0.83.2"
-  dependencies:
-    "@babel/code-frame": "npm:^7.24.7"
-    "@babel/core": "npm:^7.25.2"
-    "@babel/generator": "npm:^7.25.0"
-    "@babel/parser": "npm:^7.25.3"
-    "@babel/template": "npm:^7.25.0"
-    "@babel/traverse": "npm:^7.25.3"
-    "@babel/types": "npm:^7.25.2"
-    accepts: "npm:^1.3.7"
-    chalk: "npm:^4.0.0"
-    ci-info: "npm:^2.0.0"
-    connect: "npm:^3.6.5"
-    debug: "npm:^4.4.0"
-    error-stack-parser: "npm:^2.0.6"
-    flow-enums-runtime: "npm:^0.0.6"
-    graceful-fs: "npm:^4.2.4"
-    hermes-parser: "npm:0.32.0"
-    image-size: "npm:^1.0.2"
-    invariant: "npm:^2.2.4"
-    jest-worker: "npm:^29.7.0"
-    jsc-safe-url: "npm:^0.2.2"
-    lodash.throttle: "npm:^4.1.1"
-    metro-babel-transformer: "npm:0.83.2"
-    metro-cache: "npm:0.83.2"
-    metro-cache-key: "npm:0.83.2"
-    metro-config: "npm:0.83.2"
-    metro-core: "npm:0.83.2"
-    metro-file-map: "npm:0.83.2"
-    metro-resolver: "npm:0.83.2"
-    metro-runtime: "npm:0.83.2"
-    metro-source-map: "npm:0.83.2"
-    metro-symbolicate: "npm:0.83.2"
-    metro-transform-plugins: "npm:0.83.2"
-    metro-transform-worker: "npm:0.83.2"
-    mime-types: "npm:^2.1.27"
-    nullthrows: "npm:^1.1.1"
-    serialize-error: "npm:^2.1.0"
-    source-map: "npm:^0.5.6"
-    throat: "npm:^5.0.0"
-    ws: "npm:^7.5.10"
-    yargs: "npm:^17.6.2"
-  bin:
-    metro: src/cli.js
-  checksum: 10c0/4c3cc7c2a455471d05757b567a0f2ca604a33f55ffbf2d838dbba8519396f2514b00d6a9214af288343be0277655e3397f2e7816506ec41aed16a9fa54585018
   languageName: node
   linkType: hard
 
@@ -16777,15 +16610,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ob1@npm:0.83.2":
-  version: 0.83.2
-  resolution: "ob1@npm:0.83.2"
-  dependencies:
-    flow-enums-runtime: "npm:^0.0.6"
-  checksum: 10c0/fadcdb9e801458ebc66a09554d3535978e031e1c29e1d450f64f4d8da53ba1505b029726349a3211c5d388af49d1e8bb4f50304526ca237cb2b861177eeea327
-  languageName: node
-  linkType: hard
-
 "ob1@npm:0.83.3":
   version: 0.83.3
   resolution: "ob1@npm:0.83.3"
@@ -17734,6 +17558,13 @@ __metadata:
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
   checksum: 10c0/bec089239487833d46b59d80327a1605e1c5287eaad770a291add7f45fda1bb5e28b38e0e061add0a1d0ee0984788ce74fa394d345eed1c420cacf392c554367
+  languageName: node
+  linkType: hard
+
+"process@npm:^0.11.10":
+  version: 0.11.10
+  resolution: "process@npm:0.11.10"
+  checksum: 10c0/40c3ce4b7e6d4b8c3355479df77aeed46f81b279818ccdc500124e6a5ab882c0cc81ff7ea16384873a95a74c4570b01b120f287abbdd4c877931460eca6084b3
   languageName: node
   linkType: hard
 
@@ -20174,22 +20005,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"startupjs@npm:^0.60.0-canary.25":
-  version: 0.60.0-canary.25
-  resolution: "startupjs@npm:0.60.0-canary.25"
+"startupjs@npm:^0.61.1":
+  version: 0.61.1
+  resolution: "startupjs@npm:0.61.1"
   dependencies:
-    "@startupjs/auth": "npm:^0.60.0-canary.8"
-    "@startupjs/bundler": "npm:^0.60.0-canary.25"
-    "@startupjs/cli": "npm:^0.60.0-canary.7"
-    "@startupjs/hooks": "npm:^0.60.0-canary.7"
-    "@startupjs/isomorphic-helpers": "npm:^0.60.0-canary.7"
-    "@startupjs/registry": "npm:^0.60.0-canary.7"
-    "@startupjs/server": "npm:^0.60.0-canary.7"
-    "@startupjs/utils": "npm:^0.60.0-canary.7"
-    babel-preset-startupjs: "npm:^0.60.0-canary.18"
+    "@startupjs/auth": "npm:^0.61.1"
+    "@startupjs/bundler": "npm:^0.61.0"
+    "@startupjs/cli": "npm:^0.61.0"
+    "@startupjs/hooks": "npm:^0.61.0"
+    "@startupjs/isomorphic-helpers": "npm:^0.61.0"
+    "@startupjs/registry": "npm:^0.61.0"
+    "@startupjs/server": "npm:^0.61.0"
+    "@startupjs/utils": "npm:^0.61.0"
+    babel-preset-startupjs: "npm:^0.61.0"
     cssxjs: "npm:^0.2.29"
     lodash: "npm:^4.17.20"
-    teamplay: "npm:^0.3.29"
+    teamplay: "npm:^0.3.30"
   peerDependencies:
     "@startupjs/worker": "*"
     react: "*"
@@ -20201,7 +20032,7 @@ __metadata:
       optional: true
   bin:
     startupjs: cli.js
-  checksum: 10c0/991a8dd618c720cdc4205ab3d697f7509ae7de4ed87d04c731e4550fbd0729e05293eeea9684caccc9aec2a6b764c8a6dc696d4b98249cf538ee3953e2050f95
+  checksum: 10c0/0951a030f7db16b66274cb5fb2ebf8898b564fc8265fac305a17dc51ac84f4fc57cc9cb06cf5e53912e7f182ce2bc356752fd5061348c6ea112945774632f9b7
   languageName: node
   linkType: hard
 
@@ -20233,6 +20064,19 @@ __metadata:
   version: 2.2.0
   resolution: "stream-buffers@npm:2.2.0"
   checksum: 10c0/14a351f0a066eaa08c8c64a74f4aedd87dd7a8e59d4be224703da33dca3eb370828ee6c0ae3fff59a9c743e8098728fc95c5f052ae7741672a31e6b1430ba50a
+  languageName: node
+  linkType: hard
+
+"stream@npm:readable-stream@^4.7.0":
+  version: 4.7.0
+  resolution: "readable-stream@npm:4.7.0"
+  dependencies:
+    abort-controller: "npm:^3.0.0"
+    buffer: "npm:^6.0.3"
+    events: "npm:^3.3.0"
+    process: "npm:^0.11.10"
+    string_decoder: "npm:^1.3.0"
+  checksum: 10c0/fd86d068da21cfdb10f7a4479f2e47d9c0a9b0c862fc0c840a7e5360201580a55ac399c764b12a4f6fa291f8cee74d9c4b7562e0d53b3c4b2769f2c98155d957
   languageName: node
   linkType: hard
 
@@ -20359,7 +20203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string_decoder@npm:^1.1.1":
+"string_decoder@npm:^1.1.1, string_decoder@npm:^1.3.0":
   version: 1.3.0
   resolution: "string_decoder@npm:1.3.0"
   dependencies:
@@ -20650,12 +20494,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"teamplay@npm:^0.3.29":
-  version: 0.3.29
-  resolution: "teamplay@npm:0.3.29"
+"teamplay@npm:^0.3.30":
+  version: 0.3.30
+  resolution: "teamplay@npm:0.3.30"
   dependencies:
     "@nx-js/observer-util": "npm:^4.1.3"
-    "@teamplay/backend": "npm:^0.3.29"
+    "@startupjs/sharedb-mingo-memory": "npm:^4.0.0-2"
+    "@teamplay/backend": "npm:^0.3.30"
     "@teamplay/cache": "npm:^0.3.29"
     "@teamplay/channel": "npm:^0.3.29"
     "@teamplay/debug": "npm:^0.3.29"
@@ -20664,15 +20509,20 @@ __metadata:
     diff-match-patch: "npm:^1.0.5"
     events: "npm:^3.3.0"
     json0-ot-diff: "npm:^1.1.2"
+    localforage: "npm:^1.10.0"
     lodash: "npm:^4.17.20"
     sharedb: "npm:^5.0.0"
+    stream: "npm:readable-stream@^4.7.0"
   peerDependencies:
-    "@startupjs/sharedb-mingo-memory": "*"
+    "@react-native-async-storage/async-storage": "*"
     react: "*"
+    react-native: "*"
   peerDependenciesMeta:
-    "@startupjs/sharedb-mingo-memory":
+    "@react-native-async-storage/async-storage":
       optional: true
-  checksum: 10c0/43c35c3b120476e86daea067925fb244126fbc32eabdafac3930ef16dfeb82e95a8b0a72e9b621bcde998b6f70d5a083550a69a3a4e2133c72da7a8531f69b95
+    react-native:
+      optional: true
+  checksum: 10c0/da73596af377eea9226af3d1fad277547d04949413de91b3f1df1076396136a98ab15841806f18c8d95d45cda1e1b53c0ba143a493266979c1930d82c2042a0d
   languageName: node
   linkType: hard
 
