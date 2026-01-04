@@ -5171,9 +5171,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs/auth@npm:^0.61.1":
-  version: 0.61.1
-  resolution: "@startupjs/auth@npm:0.61.1"
+"@startupjs/auth@npm:^0.61.2":
+  version: 0.61.2
+  resolution: "@startupjs/auth@npm:0.61.2"
   dependencies:
     "@startupjs/registry": "npm:^0.61.0"
     "@startupjs/utils": "npm:^0.61.0"
@@ -5185,7 +5185,7 @@ __metadata:
   peerDependencies:
     "@react-native-async-storage/async-storage": "*"
     teamplay: "*"
-  checksum: 10c0/936a5111d4f67e5197214e880c5499d360393cb1f029f895c56161e7a0fae26566600a6f2886fd80f97d8c80895ffd9a3760d21367c6681941cca9c15e07c290
+  checksum: 10c0/a322b846e1cba3e70bdc1d7bde5b576a5a83babf5973f4d5b9a6354cd29f236468208867590ee29e9d735d86ecc3b910a6c569252a391b6fa73c62749fe13321
   languageName: node
   linkType: hard
 
@@ -5222,10 +5222,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/babel-plugin-startupjs@npm:^0.61.0":
-  version: 0.61.0
-  resolution: "@startupjs/babel-plugin-startupjs@npm:0.61.0"
-  checksum: 10c0/424b832555e9e26505ad06e3ba0413c0f2bfbd3d4256a03a31004373dfc51d100a413fc6c59293ad1476fa082ac05215bd0d57fdcc3e54ac3a0aa533ad7c0351
+"@startupjs/babel-plugin-startupjs@npm:^0.61.2":
+  version: 0.61.2
+  resolution: "@startupjs/babel-plugin-startupjs@npm:0.61.2"
+  checksum: 10c0/9f92d2895a3500cddfd1b7cc65914ed02021354e6bde5ababe85ac2d6c3b305fc8198d5e13f45544dff79fcfa865a45f9543a4d25c9527c951feea68ec281dcf
   languageName: node
   linkType: hard
 
@@ -5255,9 +5255,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/bundler@npm:^0.61.0":
-  version: 0.61.0
-  resolution: "@startupjs/bundler@npm:0.61.0"
+"@startupjs/bundler@npm:^0.61.2":
+  version: 0.61.2
+  resolution: "@startupjs/bundler@npm:0.61.2"
   dependencies:
     "@babel/core": "npm:^7.9.0"
     "@babel/plugin-syntax-jsx": "npm:^7.0.0"
@@ -5268,14 +5268,14 @@ __metadata:
     "@svgr/core": "npm:^8.1.0"
     "@svgr/plugin-jsx": "npm:^8.1.0"
     "@svgr/plugin-svgo": "npm:^8.1.0"
-    babel-preset-startupjs: "npm:^0.61.0"
+    babel-preset-startupjs: "npm:^0.61.2"
     connect: "npm:^3.7.0"
     lodash: "npm:^4.17.20"
     remark-gfm: "npm:4.0.1"
   peerDependencies:
     cssxjs: "*"
     react-native-svg: "*"
-  checksum: 10c0/e82cc6ba639c6f1324f79fcbe6dd1718bd247461e13455de2cf1de624fc58d41008ddf9d61548511f4c403656c4352bbced104404f77aa8daf65f2514a3cf2d6
+  checksum: 10c0/b504c9215ca7e14da55d28308e17579566751296d7556b892f25f539cf23e9851de53fed122caaf573917ad0a73b7e98143b4b601c7afc97f261ee19b45d4dd2
   languageName: node
   linkType: hard
 
@@ -7491,22 +7491,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-startupjs@npm:^0.61.0":
-  version: 0.61.0
-  resolution: "babel-preset-startupjs@npm:0.61.0"
+"babel-preset-startupjs@npm:^0.61.2":
+  version: 0.61.2
+  resolution: "babel-preset-startupjs@npm:0.61.2"
   dependencies:
     "@babel/core": "npm:^7.9.0"
     "@babel/plugin-syntax-jsx": "npm:^7.0.0"
     "@babel/plugin-syntax-typescript": "npm:^7.23.3"
     "@startupjs/babel-plugin-eliminator": "npm:^0.61.0"
     "@startupjs/babel-plugin-i18n-extract": "npm:^0.61.0"
-    "@startupjs/babel-plugin-startupjs": "npm:^0.61.0"
+    "@startupjs/babel-plugin-startupjs": "npm:^0.61.2"
     "@startupjs/babel-plugin-startupjs-debug": "npm:^0.61.0"
     "@startupjs/babel-plugin-startupjs-plugins": "npm:^0.61.0"
     "@startupjs/babel-plugin-ts-to-json-schema": "npm:^0.61.0"
   peerDependencies:
     cssxjs: "*"
-  checksum: 10c0/114767366ff44465768d6a655339ad5c6c0c5d47ab025fde34d934ab602487e2ecca90eddc8b0d89c3e525af00c5d20d5e08e2cd6af7c1b6b00366e8f0d5c8a7
+  checksum: 10c0/57b561da4de5ad3a2d3b208010ee1615c9117d7a19b89fa7a6574ad58497b24fd295eecd9d45fb2ca7e3059126652d182c2a541341fa3f465cf12d15b0000408
   languageName: node
   linkType: hard
 
@@ -9465,7 +9465,7 @@ __metadata:
     react-native-web: "npm:~0.21.0"
     react-native-worklets: "npm:0.5.1"
     serve: "npm:^14.2.5"
-    startupjs: "npm:^0.61.1"
+    startupjs: "npm:^0.61.2"
     typescript: "npm:~5.9.2"
   languageName: unknown
   linkType: soft
@@ -20005,19 +20005,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"startupjs@npm:^0.61.1":
-  version: 0.61.1
-  resolution: "startupjs@npm:0.61.1"
+"startupjs@npm:^0.61.2":
+  version: 0.61.2
+  resolution: "startupjs@npm:0.61.2"
   dependencies:
-    "@startupjs/auth": "npm:^0.61.1"
-    "@startupjs/bundler": "npm:^0.61.0"
+    "@startupjs/auth": "npm:^0.61.2"
+    "@startupjs/bundler": "npm:^0.61.2"
     "@startupjs/cli": "npm:^0.61.0"
     "@startupjs/hooks": "npm:^0.61.0"
     "@startupjs/isomorphic-helpers": "npm:^0.61.0"
     "@startupjs/registry": "npm:^0.61.0"
     "@startupjs/server": "npm:^0.61.0"
     "@startupjs/utils": "npm:^0.61.0"
-    babel-preset-startupjs: "npm:^0.61.0"
+    babel-preset-startupjs: "npm:^0.61.2"
     cssxjs: "npm:^0.2.29"
     lodash: "npm:^4.17.20"
     teamplay: "npm:^0.3.30"
@@ -20032,7 +20032,7 @@ __metadata:
       optional: true
   bin:
     startupjs: cli.js
-  checksum: 10c0/0951a030f7db16b66274cb5fb2ebf8898b564fc8265fac305a17dc51ac84f4fc57cc9cb06cf5e53912e7f182ce2bc356752fd5061348c6ea112945774632f9b7
+  checksum: 10c0/0eae32e13cf8c74ee675192d232a9d72cadee9b9a25de9fdae61d8877fb68cffab71be13bd157d0a973d8b70f3b7b9a1cc3c686b20ffe8dfbce2a1cf44a5f70c
   languageName: node
   linkType: hard
 
