@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/startupjs/startupjs-ui/compare/v0.1.6...v0.1.7) (2026-01-06)
+
+
+### Bug Fixes
+
+* **date-time-picker:** use async import for 'moment-timezone' since it's too large to go into the core bundle by default ([0de6908](https://github.com/startupjs/startupjs-ui/commit/0de690895a6870d4b5bd4a8a6744d9dc61547c17))
+
+
+
+
+
 ## [0.1.5](https://github.com/startupjs/startupjs-ui/compare/v0.1.4...v0.1.5) (2025-12-29)
 
 **Note:** Version bump only for package @startupjs-ui/date-time-picker
