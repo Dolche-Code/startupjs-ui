@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 import { pug, observer, $ } from 'startupjs'
 import Div from '@startupjs-ui/div'
-import moment from 'moment-timezone'
+import { useMoment } from '../../helpers'
 import Header from './Header'
 import Days from './Days'
 
@@ -28,6 +28,7 @@ function Calendar ({
   testID,
   onChangeDate
 }: CalendarProps): ReactNode {
+  const moment = useMoment()
   const $uiDate = $(+moment(date).seconds(0).milliseconds(0))
 
   return pug`

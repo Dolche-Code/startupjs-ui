@@ -11,7 +11,7 @@ import { pug, observer } from 'startupjs'
 import Div from '@startupjs-ui/div'
 import FlatList from '@startupjs-ui/flat-list'
 import Span from '@startupjs-ui/span'
-import moment from 'moment-timezone'
+import { useMoment } from '../../helpers'
 import STYLES from './index.cssx.styl'
 
 export interface TimeSelectRef {
@@ -42,13 +42,14 @@ function TimeSelect ({
   onChangeDate,
   ref
 }: TimeSelectProps): ReactNode {
+  const moment = useMoment()
   const refScroll = useRef<any>(null)
 
   // we are looking for 'a' in current locale
   // to figure out whether to apply 12 hour format
   const _is24Hour = useMemo(() => {
     if (is24Hour != null) return is24Hour
-    const lt = (moment().locale(exactLocale) as any)._locale._longDateFormat.LT
+    const lt = (moment().locale(exactLocale))._locale._longDateFormat.LT
     return !/a/i.test(lt)
   }, [is24Hour, exactLocale])
 
@@ -60,7 +61,7 @@ function TimeSelect ({
     const intervalTimestamp = timeInterval * 60 * 1000
 
     const format = _is24Hour
-      ? (moment.tz(date, timezone).locale(exactLocale) as any)._locale._longDateFormat.LT
+      ? (moment.tz(date, timezone).locale(exactLocale))._locale._longDateFormat.LT
       : 'hh:mm A'
 
     while (currentTimestamp < endTimestamp) {

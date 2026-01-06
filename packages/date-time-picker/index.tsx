@@ -19,8 +19,7 @@ import TextInput, { type UITextInputProps } from '@startupjs-ui/text-input'
 import AbstractPopover from '@startupjs-ui/abstract-popover'
 import Drawer from '@startupjs-ui/drawer'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons/faTimesCircle'
-import moment from 'moment-timezone'
-import { getLocale } from './helpers'
+import { getLocale, useMoment } from './helpers'
 import { Calendar, TimeSelect } from './components'
 import './index.cssx.styl'
 
@@ -101,7 +100,7 @@ function DateTimePicker ({
   renderInput,
   locale,
   range,
-  timezone = moment.tz.guess(),
+  timezone,
   disabledDays = [],
   date,
   disabled,
@@ -121,6 +120,8 @@ function DateTimePicker ({
   ref,
   ...props
 }: DateTimePickerProps): ReactNode {
+  const moment = useMoment()
+  timezone ??= moment.tz.guess()
   const media: any = useMedia()
   const [textInput, setTextInput] = useState('')
   const refTimeSelect = useRef<any>(null)
@@ -239,7 +240,7 @@ function DateTimePicker ({
   let { onChangeVisible } = bindProps
   ;({ visible, onChangeVisible } = useBind({ $visible, visible, onChangeVisible }) as any)
 
-  const [tempDate, setTempDate] = useTempDate({ visible: !!visible, date, timezone })
+  const [tempDate, setTempDate] = useTempDate({ visible: !!visible, date, timezone: timezone as any, moment })
 
   useEffect(() => {
     // Prevent crashes when custom renderer passed via props
@@ -260,12 +261,12 @@ function DateTimePicker ({
   const _dateFormat = useMemo(() => {
     if (dateFormat) return dateFormat
     if (mode === 'datetime') {
-      return (moment().locale(exactLocale) as any)._locale._longDateFormat.L + ' ' +
-      (moment().locale(exactLocale) as any)._locale._longDateFormat.LT
+      return (moment().locale(exactLocale))._locale._longDateFormat.L + ' ' +
+      (moment().locale(exactLocale))._locale._longDateFormat.LT
     }
 
-    if (mode === 'date') return (moment().locale(exactLocale) as any)._locale._longDateFormat.L
-    if (mode === 'time') return (moment().locale(exactLocale) as any)._locale._longDateFormat.LT
+    if (mode === 'date') return (moment().locale(exactLocale))._locale._longDateFormat.L
+    if (mode === 'time') return (moment().locale(exactLocale))._locale._longDateFormat.LT
   }, [mode, dateFormat, exactLocale])
 
   useEffect(() => {
@@ -462,23 +463,25 @@ function DateTimePicker ({
 function useTempDate ({
   visible,
   date,
-  timezone
+  timezone,
+  moment
 }: {
   visible: boolean
   date?: number
   timezone: string
+  moment: any
 }) {
-  const [tempDate, setTempDate] = useState(getTempDate(date, timezone))
+  const [tempDate, setTempDate] = useState(getTempDate(date, timezone, moment))
 
   useEffect(() => {
-    const tempDate = getTempDate(date, timezone)
+    const tempDate = getTempDate(date, timezone, moment)
     setTempDate(tempDate)
-  }, [visible, date, timezone])
+  }, [visible, date, timezone, moment])
 
   return [tempDate, setTempDate] as const
 }
 
-function getTempDate (date: number | undefined, timezone: string) {
+function getTempDate (date: number | undefined, timezone: string, moment: any) {
   return date
     ? new Date(+moment.tz(date, timezone).seconds(0).milliseconds(0))
     : new Date()

@@ -2,7 +2,7 @@ import { useMemo, useCallback, type ReactNode } from 'react'
 import { pug, observer } from 'startupjs'
 import Span from '@startupjs-ui/span'
 import Div from '@startupjs-ui/div'
-import moment from 'moment-timezone'
+import { useMoment } from '../../../helpers'
 import './index.cssx.styl'
 
 interface DaysProps {
@@ -28,10 +28,11 @@ function Days ({
   range,
   onChangeDate
 }: DaysProps): ReactNode {
+  const moment = useMoment()
   const weekdaysShort = useMemo(() => {
     const data = (moment
       .tz(uiDate, timezone)
-      .locale(exactLocale) as any)
+      .locale(exactLocale))
       ._locale
       ._weekdaysShort
 

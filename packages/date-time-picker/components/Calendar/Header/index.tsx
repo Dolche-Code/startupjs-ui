@@ -9,7 +9,7 @@ import Span from '@startupjs-ui/span'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons/faAngleLeft'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown'
-import moment from 'moment-timezone'
+import { useMoment } from '../../../helpers'
 import STYLES from './index.cssx.styl'
 
 const yearsItemStyle = STYLES['years-item']
@@ -32,6 +32,7 @@ function Header ({
   maxDate,
   $uiDate
 }: HeaderProps): ReactNode {
+  const moment = useMoment()
   const monthName = moment.tz(uiDate, timezone).locale(exactLocale).format('MMM')
 
   const onChangeMonth = useCallback((value: number) => {
@@ -92,6 +93,7 @@ const Years = observer(function YearsComponent ({
   timezone,
   $uiDate
 }: YearsProps): ReactNode {
+  const moment = useMoment()
   const $visible = $(false)
   const minYear = minDate ? moment.tz(minDate, timezone).year() : 1950
   const maxYear = maxDate ? moment.tz(maxDate, timezone).year() : 2050
