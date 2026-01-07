@@ -32,8 +32,11 @@ export default observer(({ children }) => {
           onChangeText=setSearch
         )
         ScrollView.items
-          each component in filteredComponents
-            Item(key=component)= component
+          Category(name='Tutorial')
+          Category(name='Foundations')
+          Category(name='Components' defaultOpen=true)
+            each component in filteredComponents
+              Item(key=component path=component)= component
       ScrollView.contentWrapper
         View.content
           Slot
@@ -70,14 +73,57 @@ export default observer(({ children }) => {
   `
 })
 
-const Item = observer(({ children }) => {
+const Category = observer(({ children, name, defaultOpen = false }) => {
+  const [open, setOpen] = useState(defaultOpen)
+  const [isHover, setIsHover] = useState(false)
+  const onHoverIn = useCallback(() => setIsHover(true), [])
+  const onHoverOut = useCallback(() => setIsHover(false), [])
+  return pug`
+    View.root
+      Pressable.header(onPress=() => setOpen(!open) onHoverIn=onHoverIn onHoverOut=onHoverOut)
+        View.header-content(styleName={ isHover })
+          Text.arrow(selectable=false)= open ? '-' : '+'
+          Text.title(selectable=false)= name.toUpperCase()
+      if open
+        View.items
+          = children
+  `
+  styl`
+    .header
+      user-select none
+      flex-direction row
+      align-items center
+      padding 5px 0
+    .header-content
+      padding 7px 20px 5px 20px
+      flex 1
+      flex-direction row
+      align-items center
+      border-bottom-width 2px
+      border-bottom-color #eee
+      &.isHover
+        background-color rgba(black, 0.03)
+    .title, .arrow
+      font-size 12px
+      font-weight bold
+      color #aaa
+      font-family monospace
+      letter-spacing 1px
+    .arrow
+      margin-right 10px
+    .items
+      margin-bottom 20px
+  `
+})
+
+const Item = observer(({ children, path }) => {
   const [isHover, setIsHover] = useState(false)
   const onHoverIn = useCallback(() => setIsHover(true), [])
   const onHoverOut = useCallback(() => setIsHover(false), [])
   const pathname = usePathname()
   if (typeof children !== 'string') return 'NO_NAME'
   const name = children
-  const href = '/docs/' + children
+  const href = '/docs/' + path
   const isActive = pathname === href
   return pug`
     Link(href=href asChild)
