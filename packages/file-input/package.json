@@ -9,6 +9,7 @@
   "type": "module",
   "exports": {
     ".": "./index.tsx",
+    "./server": "./server/index.js",
     "./constants": "./constants.js",
     "./deleteFile": "./deleteFile.ts",
     "./uploadFile": "./uploadFile.ts",

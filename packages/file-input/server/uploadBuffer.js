@@ -1,6 +1,7 @@
+import { $, sub } from 'startupjs'
 import { deleteFile, getDefaultStorageType, saveFileBlob } from '../providers/index.js'
 
-async function uploadBuffer (buff, options = {}) {
+export default async function uploadBuffer (buff, options = {}) {
   let { fileId, meta = {} } = options
 
   let storageType = meta.storageType

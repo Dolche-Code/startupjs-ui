@@ -1,1 +1,1 @@
-export { uploadBuffer } from '@startupjs-ui/file-input/server/helpers'
+export { uploadBuffer } from '@startupjs-ui/file-input/server'
