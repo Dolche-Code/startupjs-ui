@@ -9,6 +9,7 @@
   "exports": {
     ".": "./index.tsx",
     "./plugin": "./plugin.js",
+    "./server": "./server/index.js",
     "./Alert": "./exports/Alert.tsx",
     "./AutoSuggest": "./exports/AutoSuggest.tsx",
     "./Avatar": "./exports/Avatar.tsx",
