@@ -28,6 +28,7 @@
     "sharp": "^0.34.5"
   },
   "peerDependencies": {
+    "@aws-sdk/client-s3": "*",
     "@azure/storage-blob": "*",
     "mongodb": "*",
     "react": "*",
@@ -35,6 +36,9 @@
     "startupjs": "*"
   },
   "peerDependenciesMeta": {
+    "@aws-sdk/client-s3": {
+      "optional": true
+    },
     "@azure/storage-blob": {
       "optional": true
     },

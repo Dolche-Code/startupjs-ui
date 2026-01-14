@@ -192,6 +192,14 @@ export default createPlugin({
         }
         const bb = busboy({ headers: req.headers })
 
+        let path
+        bb.on('field', (fieldname, value) => {
+          if (fieldname === 'path') {
+            path = value
+            console.log('[FileInput] Received path:', path)
+          }
+        })
+
         let blob
         let meta
         bb.on('file', (fieldname, file, { filename, mimeType, encoding }) => {
@@ -227,7 +235,7 @@ export default createPlugin({
             const extension = meta.filename?.match(/\.([^.]+)$/)?.[1]
             if (extension) meta.extension = extension
             try {
-              fileId = await uploadBuffer(blob, { fileId, meta })
+              fileId = await uploadBuffer(blob, { fileId, meta, path })
             } catch (err) {
               console.error(err)
               return res.status(500).send(err.message)

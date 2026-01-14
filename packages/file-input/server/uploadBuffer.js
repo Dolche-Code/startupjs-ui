@@ -1,8 +1,8 @@
 import { $, sub } from 'startupjs'
-import { deleteFile, getDefaultStorageType, saveFileBlob } from '../providers/index.js'
+import { deleteFile, getDefaultStorageType, saveFileBlob, isPathOptionAvailable } from '../providers/index.js'
 
 export default async function uploadBuffer (buff, options = {}) {
-  let { fileId, meta = {} } = options
+  let { fileId, meta = {}, path } = options
 
   let storageType = meta.storageType
   try {
@@ -15,15 +15,21 @@ export default async function uploadBuffer (buff, options = {}) {
   const create = !fileId
   if (!fileId) fileId = $.id()
 
+  // Build storage path for S3
+  const savePath = getSavePath(fileId, { path, storageType, filename: meta?.filename })
+
   // try to save file to sqlite first to do an early exit if it fails
   try {
-    await saveFileBlob(storageType, fileId, buff)
+    await saveFileBlob(storageType, savePath, buff)
   } catch (err) {
     console.error(err)
     throw new Error('Error saving file')
   }
+
+  const _isPathOptionAvailable = isPathOptionAvailable(storageType)
   if (create) {
     const doc = { id: fileId, ...meta, storageType }
+    if (_isPathOptionAvailable && path) doc.path = path
     // if some of the meta fields were undefined, remove them from the doc
     for (const key in meta) {
       if (meta[key] == null) delete doc[key]
@@ -44,11 +50,18 @@ export default async function uploadBuffer (buff, options = {}) {
     }
 
     const doc = { ...$file.get(), ...meta, storageType, updatedAt: Date.now() }
+    if (_isPathOptionAvailable && path) doc.path = path
     // if some of the meta fields were undefined, remove them from the doc
     for (const key in meta) {
       if (meta[key] == null) delete doc[key]
     }
     await $file.set(doc)
   }
+  return fileId
+}
+
+function getSavePath (fileId, options = {}) {
+  const { path, filename, storageType } = options
+  if (isPathOptionAvailable(storageType) && path) return `${path}/${filename || fileId}`
   return fileId
 }

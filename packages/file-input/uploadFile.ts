@@ -16,6 +16,7 @@ export default async function uploadFile (asset: any, fileId?: string): Promise<
       if (asset.type === 'image') type = getImageMimeType(uri || asset.fileName || asset.name || '')
     }
 
+    if (asset.path) formData.append('path', asset.path)
     if (isWeb) {
       // on web we'll receive it as a uri blob
       const blob = await (await fetch(uri)).blob()

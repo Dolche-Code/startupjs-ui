@@ -1,11 +1,14 @@
+import { $, sub } from 'startupjs'
 import { mongo, sqlite } from 'startupjs/server'
 
 export async function getFileBlob (storageType, fileId, range) {
-  return (await getStorageProvider(storageType)).getFileBlob(fileId, range)
+  const storageFileId = await getActualStoragePath(storageType, fileId)
+  return (await getStorageProvider(storageType)).getFileBlob(storageFileId, range)
 }
 
 export async function getFileSize (storageType, fileId) {
-  return (await getStorageProvider(storageType)).getFileSize(fileId)
+  const storageFileId = await getActualStoragePath(storageType, fileId)
+  return (await getStorageProvider(storageType)).getFileSize(storageFileId)
 }
 
 export async function saveFileBlob (storageType, fileId, blob) {
@@ -13,7 +16,28 @@ export async function saveFileBlob (storageType, fileId, blob) {
 }
 
 export async function deleteFile (storageType, fileId) {
-  return (await getStorageProvider(storageType)).deleteFile(fileId)
+  const storageFileId = await getActualStoragePath(storageType, fileId)
+  return (await getStorageProvider(storageType)).deleteFile(storageFileId)
+}
+
+async function getActualStoragePath (storageType, fileId) {
+  if (!isPathOptionAvailable(storageType)) return fileId
+
+  const $file = await sub($.files[fileId])
+  const file = $file.get()
+  if (!file) return fileId
+
+  const { path, filename } = file
+  if (path) return `${path}/${filename || fileId}`
+
+  return fileId
+}
+
+export function isPathOptionAvailable (storageType) {
+  switch (storageType) {
+    case 's3': return true
+    default: return false
+  }
 }
 
 export async function getDefaultStorageType () {
@@ -37,6 +61,8 @@ async function getStorageProvider (storageType) {
     theModule = await import('./mongo.js')
   } else if (storageType === 'azureblob') {
     theModule = await import('./azureblob.js')
+  } else if (storageType === 's3') {
+    theModule = await import('./awsS3.js')
   } else {
     throw Error(ERRORS.unsupportedStorageType(storageType))
   }
