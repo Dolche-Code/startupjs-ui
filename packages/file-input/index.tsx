@@ -9,9 +9,6 @@ export interface FileInputProps {
   ref?: RefObject<FileInputRef>
   /** Current fileId (stored in `files` model on the server) */
   value?: string
-  /** File path for storage provider. ex: 'profile/images' */
-  /** Available for providers: 's3'  */
-  path?: string
   /** MIME types accepted by the picker (passed to `expo-document-picker`) */
   mimeTypes?: string | string[]
   /** When true, opens image picker instead of document picker */

@@ -1,3 +1,4 @@
+import { $, sub } from 'startupjs'
 import { S3Client, GetObjectCommand, PutObjectCommand, DeleteObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3'
 
 // AWS S3 Configuration from environment variables
@@ -51,12 +52,14 @@ export function validateSupport () {
   }
 }
 
-export async function getFileBlob (fileId, range) {
+export async function getFileBlob (fileId, options = {}) {
   validateSupport()
 
+  const { range } = options
+  const filePath = await getFilePath(fileId)
   const params = {
     Bucket: bucketName,
-    Key: fileId
+    Key: filePath
   }
 
   try {
@@ -66,7 +69,7 @@ export async function getFileBlob (fileId, range) {
     const actualFileSize = headResponse.ContentLength
 
     if (range) {
-      console.log('[AWS S3] Using Range request for optimal streaming:', { fileId, range })
+      console.log('[AWS S3] Using Range request for optimal streaming:', { fileId, range, filePath })
 
       // Validate range boundaries
       if (range.start >= actualFileSize || range.start < 0) {
@@ -109,7 +112,8 @@ export async function getFileBlob (fileId, range) {
         actual: result.length,
         start: range.start,
         end: adjustedEnd,
-        fileId
+        fileId,
+        filePath
       })
 
       if (result.length === 0) {
@@ -138,12 +142,13 @@ export async function getFileBlob (fileId, range) {
   }
 }
 
-export async function getFileSize (fileId) {
+export async function getFileSize (fileId, options) {
   validateSupport()
 
+  const filePath = await getFilePath(fileId)
   const params = {
     Bucket: bucketName,
-    Key: fileId
+    Key: filePath
   }
 
   try {
@@ -159,12 +164,12 @@ export async function getFileSize (fileId) {
   }
 }
 
-export async function saveFileBlob (fileId, blob) {
+export async function saveFileBlob (fileId, blob, options = {}) {
   validateSupport()
-
+  const filePath = options?.path || fileId
   const params = {
     Bucket: bucketName,
-    Key: fileId,
+    Key: filePath,
     Body: blob
   }
 
@@ -172,25 +177,26 @@ export async function saveFileBlob (fileId, blob) {
     // Upload object (overwrites if exists)
     const command = new PutObjectCommand(params)
     await s3Client.send(command)
-    console.log('[AWS S3] Object uploaded successfully:', fileId)
+    console.log('[AWS S3] Object uploaded successfully:', filePath)
   } catch (error) {
     console.error('[AWS S3] Error uploading object:', error)
     throw error
   }
 }
 
-export async function deleteFile (fileId) {
+export async function deleteFile (fileId, options) {
   validateSupport()
 
+  const filePath = await getFilePath(fileId)
   const params = {
     Bucket: bucketName,
-    Key: fileId
+    Key: filePath
   }
 
   try {
     const command = new DeleteObjectCommand(params)
     await s3Client.send(command)
-    console.log('[AWS S3] Object deleted successfully:', fileId)
+    console.log('[AWS S3] Object deleted successfully:', filePath)
   } catch (error) {
     if (error.name === 'NoSuchKey' || error.$metadata?.httpStatusCode === 404) {
       throw new Error(ERRORS.fileNotFound)
@@ -198,6 +204,12 @@ export async function deleteFile (fileId) {
     console.error('[AWS S3] Error deleting object:', error)
     throw error
   }
+}
+
+async function getFilePath (fileId) {
+  const $file = await sub($.files[fileId])
+  const file = $file.get()
+  return file?.path || fileId
 }
 
 const ERRORS = {

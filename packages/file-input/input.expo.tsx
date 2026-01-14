@@ -16,7 +16,6 @@ export default observer(themed('FileInput', FileInput))
 function FileInput ({
   value: initialFileId,
   mimeTypes,
-  path,
   image,
   uploadImmediately = true,
   beforeUpload,
@@ -62,8 +61,7 @@ function FileInput ({
     let handled
     for (const asset of assets) {
       if (handled) throw Error('Only one file is allowed')
-      const extendedAsset = { ...asset, path }
-      fileId = await uploadFileApi(extendedAsset, fileId)
+      fileId = await uploadFileApi(asset, fileId)
       if (!fileId) return
       onChange(fileId)
       handled = true
