@@ -166,7 +166,7 @@ export async function getFileSize (fileId, options) {
 
 export async function saveFileBlob (fileId, blob, options = {}) {
   validateSupport()
-  const filePath = options?.path || fileId
+  const filePath = generateFilePath(fileId, options)
   const params = {
     Bucket: bucketName,
     Key: filePath,
@@ -209,7 +209,13 @@ export async function deleteFile (fileId, options) {
 async function getFilePath (fileId) {
   const $file = await sub($.files[fileId])
   const file = $file.get()
-  return file?.path || fileId
+  return generateFilePath(fileId, file)
+}
+
+function generateFilePath (fileId, options) {
+  const { filename, path, setUniqName } = options
+  const newFilename = setUniqName ? fileId : filename || fileId
+  return path ? path + newFilename : newFilename
 }
 
 const ERRORS = {
