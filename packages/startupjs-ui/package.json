@@ -95,7 +95,6 @@
     "./User": "./exports/User.tsx",
     "./colorToRGBA": "./exports/colorToRGBA.tsx",
     "./CssVariables": "./exports/CssVariables.tsx",
-    "./palette": "./exports/palette.tsx",
     "./generateColors": "./exports/generateColors.tsx",
     "./getCssVariable": "./exports/getCssVariable.tsx",
     "./Palette": "./exports/Palette.tsx",

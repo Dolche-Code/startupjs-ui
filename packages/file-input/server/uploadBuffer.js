@@ -17,11 +17,12 @@ export default async function uploadBuffer (buff, options = {}) {
 
   // try to save file to sqlite first to do an early exit if it fails
   try {
-    await saveFileBlob(storageType, fileId, buff)
+    await saveFileBlob(storageType, fileId, buff, meta)
   } catch (err) {
     console.error(err)
     throw new Error('Error saving file')
   }
+
   if (create) {
     const doc = { id: fileId, ...meta, storageType }
     // if some of the meta fields were undefined, remove them from the doc
