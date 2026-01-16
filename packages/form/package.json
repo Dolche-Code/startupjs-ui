@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/form",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "publishConfig": {
     "access": "public"
   },
@@ -9,8 +9,8 @@
   "type": "module",
   "dependencies": {
     "@startupjs-ui/core": "^0.1.5",
-    "@startupjs-ui/input": "^0.1.8",
-    "@startupjs-ui/object-input": "^0.1.8",
+    "@startupjs-ui/input": "^0.1.9",
+    "@startupjs-ui/object-input": "^0.1.9",
     "lodash": "^4.17.20"
   },
   "peerDependencies": {
