@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/startupjs/startupjs-ui/compare/v0.1.9...v0.1.10) (2026-01-18)
+
+
+### Bug Fixes
+
+* **startupjs-ui:** add 'palette' as a named export ([9c03e44](https://github.com/startupjs/startupjs-ui/commit/9c03e445cf5291b499d07f8ad082521563a1a782))
+
+
+### Features
+
+* **div:** add automatic Reanimated support for animations and transitions ([#3](https://github.com/startupjs/startupjs-ui/issues/3)) ([043c39a](https://github.com/startupjs/startupjs-ui/commit/043c39aafd332276082bcbe3233ad0355b85e38a))
+
+
+
+
+
 ## [0.1.9](https://github.com/startupjs/startupjs-ui/compare/v0.1.8...v0.1.9) (2026-01-16)
 
 **Note:** Version bump only for package startupjs-ui

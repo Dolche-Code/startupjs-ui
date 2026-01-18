@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/content",
-  "version": "0.1.5",
+  "version": "0.1.10",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "type": "module",
   "dependencies": {
     "@startupjs-ui/core": "^0.1.5",
-    "@startupjs-ui/div": "^0.1.5"
+    "@startupjs-ui/div": "^0.1.10"
   },
   "peerDependencies": {
     "react": "*",
