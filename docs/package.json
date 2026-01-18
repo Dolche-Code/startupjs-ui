@@ -9,7 +9,6 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "postinstall": "npx startupjs postinstall",
     "build": "npx startupjs build",
     "build-static": "yarn switch-to-static && npx startupjs build && yarn switch-to-single || yarn switch-to-single",
     "switch-to-static": "node -e \"require('fs').writeFileSync('./app.json', JSON.stringify((json = require('./app.json'), json.expo.web.output = 'static', json), null, 2) + '\\n')\"",
