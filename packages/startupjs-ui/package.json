@@ -98,6 +98,7 @@
     "./generateColors": "./exports/generateColors.tsx",
     "./getCssVariable": "./exports/getCssVariable.tsx",
     "./Palette": "./exports/Palette.tsx",
+    "./palette": "./exports/_palette.tsx",
     "./Colors": "./exports/Colors.tsx",
     "./themed": "./exports/themed.tsx",
     "./ThemeProvider": "./exports/ThemeProvider.tsx",
