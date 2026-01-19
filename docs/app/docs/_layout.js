@@ -1,8 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { View, ScrollView, TextInput, Pressable, Text } from 'react-native'
+import Animated from 'react-native-reanimated'
 import { pug, styl, observer } from 'startupjs'
 import { Slot, Link, usePathname, Stack } from 'expo-router'
 import GitHubIcon from '../../svg/github-mark.svg'
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export default observer(({ children }) => {
   const [search, setSearch] = useState('')
@@ -20,7 +23,7 @@ export default observer(({ children }) => {
       Stack.Screen(
         options={ title: 'Docs' + (component ? ' / ' + component : '') }
       )
-      View.sidebar
+      Animated.View.sidebar
         View.header
           Link.title(href='/') StartupJS UI
           Link(href='https://github.com/startupjs/startupjs-ui' target='_blank' accessibilityLabel='GitHub repository')
@@ -51,6 +54,7 @@ export default observer(({ children }) => {
       font-family monospace
     .sidebar
       max-width: 200px
+      animation: slideInLeft 0.5s ease-out
     .contentWrapper
       flex: 1
     .content
@@ -67,6 +71,15 @@ export default observer(({ children }) => {
       background-color #f5f5f5
       border-radius 999px
       outline none
+    @keyframes slideInLeft
+      0%
+        transform: translateX(-100%)
+        opacity: 0
+      50%
+        opacity: 0.7
+        transform: translateX(0)
+      100%
+        opacity: 1
   `
 })
 
@@ -81,16 +94,20 @@ const Item = observer(({ children }) => {
   const isActive = pathname === href
   return pug`
     Link(href=href asChild)
-      Pressable.item(styleName={ isHover, isActive } onHoverIn=onHoverIn onHoverOut=onHoverOut)
+      AnimatedPressable.item(styleName={ isHover, isActive } onHoverIn=onHoverIn onHoverOut=onHoverOut)
         Text.text(styleName={ isHover, isActive })= name
   `
   styl`
     .item
       padding: 10px 20px
       border-radius: 0 999px 999px 0
+      background-color: rgba(black, 0)
+      transition: background-color 0.2s
       &.isHover
+        transition: none
         background-color: rgba(black, 0.03)
       &.isActive
+        transition: background-color 0.2s
         background-color: rgba(black, 0.05)
     .text
       color #777
