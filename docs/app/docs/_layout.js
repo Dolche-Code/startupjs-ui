@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { View, ScrollView, TextInput, Pressable, Text } from 'react-native'
+import { View, ScrollView, TextInput, Pressable } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { pug, styl, observer } from 'startupjs'
 import { Slot, Link, usePathname, Stack } from 'expo-router'
@@ -112,7 +112,7 @@ const Item = observer(({ children }) => {
   return pug`
     Link(href=href asChild)
       AnimatedPressable.item(styleName={ isHover, isActive } onHoverIn=onHoverIn onHoverOut=onHoverOut)
-        Text.text(styleName={ isHover, isActive })= name
+        Animated.Text.text(styleName={ isHover, isActive })= name
   `
   styl`
     .item
@@ -127,7 +127,9 @@ const Item = observer(({ children }) => {
         transition: background-color 0.2s
         background-color: rgba(black, 0.05)
     .text
+      font-family monospace
       color #777
+      transition: color 0.2s
       &.isActive
         font-weight bold
         color black
