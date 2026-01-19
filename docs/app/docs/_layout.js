@@ -26,8 +26,7 @@ export default observer(({ children }) => {
       Animated.View.sidebar
         View.header
           Link.title(href='/') StartupJS UI
-          Link(href='https://github.com/startupjs/startupjs-ui' target='_blank' accessibilityLabel='GitHub repository')
-            GitHubIcon(width=24 height=24)
+          GitHubLink
         TextInput.search(
           placeholder='Search...'
           placeholderTextColor='#999'
@@ -79,6 +78,24 @@ export default observer(({ children }) => {
         opacity: 0.7
         transform: translateX(0)
       100%
+        opacity: 1
+  `
+})
+
+const GitHubLink = observer(() => {
+  const [isHover, setIsHover] = useState(false)
+  const onHoverIn = useCallback(() => setIsHover(true), [])
+  const onHoverOut = useCallback(() => setIsHover(false), [])
+  return pug`
+    AnimatedPressable.show(styleName={ isHover } onHoverIn=onHoverIn onHoverOut=onHoverOut)
+      Link(href='https://github.com/startupjs/startupjs-ui' target='_blank' accessibilityLabel='GitHub repository')
+        GitHubIcon(width=24 height=24)
+  `
+  styl`
+    .show
+      opacity: 0.5
+      transition: opacity 0.2s
+      &.isHover
         opacity: 1
   `
 })
