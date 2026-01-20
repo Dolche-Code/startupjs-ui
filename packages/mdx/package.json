@@ -25,7 +25,7 @@
     "refractor": "^3.0.0"
   },
   "peerDependencies": {
-    "@react-native-clipboard/clipboard": "*",
+    "expo-clipboard": "*",
     "react": "*",
     "react-native": "*",
     "startupjs": "*"

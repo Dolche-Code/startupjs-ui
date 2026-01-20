@@ -1,13 +1,18 @@
-import { useState, useEffect, useCallback } from 'react'
-import { View, ScrollView, TextInput, Pressable } from 'react-native'
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import { View, ScrollView, TextInput, Pressable, Dimensions } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { pug, styl, observer } from 'startupjs'
 import { Slot, Link, usePathname, Stack } from 'expo-router'
 import GitHubIcon from '../../svg/github-mark.svg'
 
+const TABLET_BREAKPOINT = 768
+
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export default observer(({ children }) => {
+  const initialWidth = useMemo(() => Dimensions.get('window').width, [])
+  const [showSidebar, setShowSidebar] = useState(initialWidth >= TABLET_BREAKPOINT)
+  const toggleSidebar = useCallback(() => setShowSidebar(!showSidebar), [showSidebar])
   const [search, setSearch] = useState('')
   const pathname = usePathname()
   const component = pathname.startsWith('/docs/')
@@ -23,7 +28,11 @@ export default observer(({ children }) => {
       Stack.Screen(
         options={ title: 'Docs' + (component ? ' / ' + component : '') }
       )
-      Animated.View.sidebar
+      Pressable.toggleSidebar(styleName={ showSidebar } onPress=toggleSidebar)
+        View.line
+        View.line
+        View.line
+      Animated.View.sidebar(styleName={ show: showSidebar })
         View.header
           Link.title(href='/') StartupJS UI
           GitHubLink
@@ -35,7 +44,7 @@ export default observer(({ children }) => {
         )
         ScrollView.items
           each component in filteredComponents
-            Item(key=component)= component
+            Item(key=component setShowSidebar=setShowSidebar)= component
       ScrollView.contentWrapper
         View.content
           Slot
@@ -45,17 +54,59 @@ export default observer(({ children }) => {
       flex-direction: row
       flex: 1
     .header
-      padding 15px 20px
+      padding 15px 20px 15px 45px
       flex-direction: row
       align-items: center
       justify-content: space-between
     .title
       font-family monospace
+    .toggleSidebar
+      $topOffset = 5px // hacky way to align with header
+      $togglePadding = 10px
+      position: absolute
+      top: 15px + $topOffset - $togglePadding
+      left: 15px - $togglePadding
+      z-index: 2
+      height: 16px + $togglePadding * 2
+      width: @height
+      align-items: center
+      justify-content: center
+      border-radius: 5px
+      background-color: white
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+      user-select: none
+      &.showSidebar
+        box-shadow: none
+    .line
+      height: 1.5px
+      width: 15px
+      background-color: #888
+      margin: 2px 0
     .sidebar
-      max-width: 200px
+      $sidebarWidth = 200px
+      width: $sidebarWidth
+      max-width: @width
       animation: slideInLeft 0.5s ease-out
+      background-color white
+      left 0
+      top 0
+      bottom 0
+      z-index 1
+      position absolute
+      display: none
+      border-right-width 1px
+      border-right-color #eee
+      &.show
+        display: flex
+      // sidebar pushes content only if there is not enough space for it
+      // to show in the left padding of content
+      +between($UI.media.tablet, $UI.media.tablet + $sidebarWidth * 2 + 10px * 2)
+        position relative
+        border-right-width 0
     .contentWrapper
       flex: 1
+      +to($UI.media.tablet)
+        padding-top: 20px
     .content
       flex: 1
       max-width: 800px
@@ -100,7 +151,7 @@ const GitHubLink = observer(() => {
   `
 })
 
-const Item = observer(({ children }) => {
+const Item = observer(({ children, setShowSidebar }) => {
   const [isHover, setIsHover] = useState(false)
   const onHoverIn = useCallback(() => setIsHover(true), [])
   const onHoverOut = useCallback(() => setIsHover(false), [])
@@ -109,9 +160,16 @@ const Item = observer(({ children }) => {
   const name = children
   const href = '/docs/' + children
   const isActive = pathname === href
+  const onPress = useCallback(() => {
+    if (Dimensions.get('window').width < TABLET_BREAKPOINT) {
+      // close sidebar on item press for small screens
+      // to give more space for content
+      setShowSidebar(false)
+    }
+  }, [setShowSidebar])
   return pug`
     Link(href=href asChild)
-      AnimatedPressable.item(styleName={ isHover, isActive } onHoverIn=onHoverIn onHoverOut=onHoverOut)
+      AnimatedPressable.item(styleName={ isHover, isActive } onHoverIn=onHoverIn onHoverOut=onHoverOut onPress=onPress)
         Animated.Text.text(styleName={ isHover, isActive })= name
   `
   styl`

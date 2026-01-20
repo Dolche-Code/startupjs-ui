@@ -4450,23 +4450,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-clipboard/clipboard@npm:^1.16.3":
-  version: 1.16.3
-  resolution: "@react-native-clipboard/clipboard@npm:1.16.3"
-  peerDependencies:
-    react: ">= 16.9.0"
-    react-native: ">= 0.61.5"
-    react-native-macos: ">= 0.61.0"
-    react-native-windows: ">= 0.61.0"
-  peerDependenciesMeta:
-    react-native-macos:
-      optional: true
-    react-native-windows:
-      optional: true
-  checksum: 10c0/4e6478a3dfc8862f93dd47790d1357082966c59bc6624f58a2281f3de4e7dfd57a4655e16f6c0310e46924eac654558b88fb726187c19ed3fc47c67235a1ae07
-  languageName: node
-  linkType: hard
-
 "@react-native-community/datetimepicker@npm:8.4.4":
   version: 8.4.4
   resolution: "@react-native-community/datetimepicker@npm:8.4.4"
@@ -6129,7 +6112,7 @@ __metadata:
     "@startupjs-ui/table": "npm:^0.1.10"
     refractor: "npm:^3.0.0"
   peerDependencies:
-    "@react-native-clipboard/clipboard": "*"
+    expo-clipboard: "*"
     react: "*"
     react-native: "*"
     startupjs: "*"
@@ -6589,9 +6572,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/bundler@npm:^0.61.3":
-  version: 0.61.3
-  resolution: "@startupjs/bundler@npm:0.61.3"
+"@startupjs/bundler@npm:^0.61.7":
+  version: 0.61.7
+  resolution: "@startupjs/bundler@npm:0.61.7"
   dependencies:
     "@babel/core": "npm:^7.9.0"
     "@babel/plugin-syntax-jsx": "npm:^7.0.0"
@@ -6609,7 +6592,7 @@ __metadata:
   peerDependencies:
     cssxjs: "*"
     react-native-svg: "*"
-  checksum: 10c0/232f1e6ffd569794af1391a68ca67eadef950243092220957b5e6782327ccdc6e867089f3b0806fb63edf0caa8d66b7127e8dff495665785c53b32aceb20902a
+  checksum: 10c0/b53100dbba6b81b52d11dc02f10c1f2b8868a8d6979c241cdf9db3713d4a6c9e4dbef14af42e063fbeb50edaeeb7312d4332f55d3d6659ef27fae79e878335fe
   languageName: node
   linkType: hard
 
@@ -10750,7 +10733,6 @@ __metadata:
     "@aws-sdk/client-s3": "npm:^3.967.0"
     "@expo/vector-icons": "npm:^15.0.3"
     "@react-native-async-storage/async-storage": "npm:2.2.0"
-    "@react-native-clipboard/clipboard": "npm:^1.16.3"
     "@react-native-community/datetimepicker": "npm:8.4.4"
     "@react-native-picker/picker": "npm:2.11.1"
     "@react-navigation/bottom-tabs": "npm:^7.4.0"
@@ -10764,6 +10746,7 @@ __metadata:
     eslint-config-cssxjs: "npm:^0.2.0"
     eslint-config-expo: "npm:~10.0.0"
     expo: "npm:~54.0.30"
+    expo-clipboard: "npm:~8.0.8"
     expo-constants: "npm:~18.0.12"
     expo-document-picker: "npm:~14.0.8"
     expo-font: "npm:~14.0.10"
@@ -10791,7 +10774,7 @@ __metadata:
     react-native-web: "npm:~0.21.0"
     react-native-worklets: "npm:0.5.1"
     serve: "npm:^14.2.5"
-    startupjs: "npm:^0.61.6"
+    startupjs: "npm:^0.61.7"
     typescript: "npm:~5.9.2"
   languageName: unknown
   linkType: soft
@@ -11979,6 +11962,17 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/303b7e08126edbddd3235a6803ffa6ff98b1cc0fb7bfa019d1ad891560bbbe9a9b84db7275ced33011330a8f4f225175d3780f4771a925d8e1c3782a343b9796
+  languageName: node
+  linkType: hard
+
+"expo-clipboard@npm:~8.0.8":
+  version: 8.0.8
+  resolution: "expo-clipboard@npm:8.0.8"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/afd16183bee237c825ed594320dd4eccd1b8cbcdf6fa993b80c946a7dc26adcdd48a847bd57e7150f176866a6e351a898efe87188793ef0982382ba1e32fb6fb
   languageName: node
   linkType: hard
 
@@ -21316,12 +21310,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"startupjs@npm:^0.61.6":
-  version: 0.61.6
-  resolution: "startupjs@npm:0.61.6"
+"startupjs@npm:^0.61.7":
+  version: 0.61.7
+  resolution: "startupjs@npm:0.61.7"
   dependencies:
     "@startupjs/auth": "npm:^0.61.2"
-    "@startupjs/bundler": "npm:^0.61.3"
+    "@startupjs/bundler": "npm:^0.61.7"
     "@startupjs/cli": "npm:^0.61.6"
     "@startupjs/hooks": "npm:^0.61.0"
     "@startupjs/isomorphic-helpers": "npm:^0.61.0"
@@ -21343,7 +21337,7 @@ __metadata:
       optional: true
   bin:
     startupjs: cli.js
-  checksum: 10c0/3823ca2ba3f42f6b641b173b724353c7b4b2bb2aae0872c34615d65373af71d8a1e04340af3fda9f80b2da0ad51c0b08f0cd2bcec503b46b52a132dcafc3ec28
+  checksum: 10c0/968a6ba7fe761b2b9681e05cd024b59a0a527f393819046e78490087574fb84a8f0b5c4428495098e6dd03a2e4960d8aaff1ae055d8855ec8653e1a8eeb3ada2
   languageName: node
   linkType: hard
 
