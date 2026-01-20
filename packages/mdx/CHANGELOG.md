@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/startupjs/startupjs-ui/compare/v0.1.10...v0.1.11) (2026-01-20)
+
+
+### Bug Fixes
+
+* **docs:** fix mobile and implement mobile layout ([0f8beff](https://github.com/startupjs/startupjs-ui/commit/0f8beff32210f5666ce7f65583291b503f7c7b86))
+
+
+
+
+
 ## [0.1.10](https://github.com/startupjs/startupjs-ui/compare/v0.1.9...v0.1.10) (2026-01-18)
 
 **Note:** Version bump only for package @startupjs-ui/mdx

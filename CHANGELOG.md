@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/startupjs/startupjs-ui/compare/v0.1.10...v0.1.11) (2026-01-20)
+
+
+### Bug Fixes
+
+* **core:** change shadow() stylus helper to have a constant black color for different levels ([5a49a24](https://github.com/startupjs/startupjs-ui/commit/5a49a24fcb52b147467fb528f4f432470f640794))
+* **docs:** fix mobile and implement mobile layout ([0f8beff](https://github.com/startupjs/startupjs-ui/commit/0f8beff32210f5666ce7f65583291b503f7c7b86))
+
+
+### Features
+
+* **docs:** animate hover of the github link icon ([c6b9be1](https://github.com/startupjs/startupjs-ui/commit/c6b9be1738cffb54657b309b08121c1c82067961))
+* **docs:** animate sidebar and links ([9bead57](https://github.com/startupjs/startupjs-ui/commit/9bead57cf3db990a175d2e416075066f4bb0cb22))
+* **docs:** change links font-family to monospace ([cf06ef0](https://github.com/startupjs/startupjs-ui/commit/cf06ef0fc4a78719d1e59688c9ff82cb4e7a1b8f))
+
+
+
+
+
 ## [0.1.10](https://github.com/startupjs/startupjs-ui/compare/v0.1.9...v0.1.10) (2026-01-18)
 
 
