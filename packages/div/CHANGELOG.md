@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.12](https://github.com/startupjs/startupjs-ui/compare/v0.1.11...v0.1.12) (2026-01-21)
+
+
+### Features
+
+* **span:** add animation and transition support ([d8336e2](https://github.com/startupjs/startupjs-ui/commit/d8336e259573e09c8302265b57bc993d04567e62))
+
+
+
+
+
 ## [0.1.11](https://github.com/startupjs/startupjs-ui/compare/v0.1.10...v0.1.11) (2026-01-20)
 
 **Note:** Version bump only for package @startupjs-ui/div

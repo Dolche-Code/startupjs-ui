@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/auto-suggest",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "publishConfig": {
     "access": "public"
   },
@@ -12,8 +12,8 @@
     "@startupjs-ui/core": "^0.1.11",
     "@startupjs-ui/flat-list": "^0.1.11",
     "@startupjs-ui/loader": "^0.1.11",
-    "@startupjs-ui/menu": "^0.1.11",
-    "@startupjs-ui/text-input": "^0.1.11"
+    "@startupjs-ui/menu": "^0.1.12",
+    "@startupjs-ui/text-input": "^0.1.12"
   },
   "peerDependencies": {
     "react": "*",
