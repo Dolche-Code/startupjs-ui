@@ -6394,6 +6394,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+    react-native-reanimated: ">=4.0.0"
     startupjs: "*"
   languageName: unknown
   linkType: soft
