@@ -102,6 +102,7 @@ export default observer(({ children }) => {
       // to show in the left padding of content
       +between($UI.media.tablet, $UI.media.tablet + $sidebarWidth * 2 + 10px * 2)
         position relative
+      +tablet()
         border-right-width 0
     .contentWrapper
       flex: 1
