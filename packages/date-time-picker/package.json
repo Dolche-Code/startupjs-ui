@@ -8,7 +8,7 @@
   "types": "index.d.ts",
   "type": "module",
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@react-native-community/datetimepicker": "^8.4.4",
     "@startupjs-ui/abstract-popover": "^0.1.5",
     "@startupjs-ui/button": "^0.1.5",
