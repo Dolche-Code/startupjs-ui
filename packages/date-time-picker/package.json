@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/date-time-picker",
-  "version": "0.1.7",
+  "version": "0.1.12",
   "publishConfig": {
     "access": "public"
   },
@@ -10,17 +10,17 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@react-native-community/datetimepicker": "^8.4.4",
-    "@startupjs-ui/abstract-popover": "^0.1.5",
-    "@startupjs-ui/button": "^0.1.5",
-    "@startupjs-ui/core": "^0.1.5",
-    "@startupjs-ui/div": "^0.1.5",
-    "@startupjs-ui/divider": "^0.1.5",
-    "@startupjs-ui/drawer": "^0.1.5",
-    "@startupjs-ui/flat-list": "^0.1.5",
-    "@startupjs-ui/icon": "^0.1.5",
-    "@startupjs-ui/popover": "^0.1.5",
-    "@startupjs-ui/span": "^0.1.5",
-    "@startupjs-ui/text-input": "^0.1.5",
+    "@startupjs-ui/abstract-popover": "^0.1.11",
+    "@startupjs-ui/button": "^0.1.12",
+    "@startupjs-ui/core": "^0.1.11",
+    "@startupjs-ui/div": "^0.1.12",
+    "@startupjs-ui/divider": "^0.1.11",
+    "@startupjs-ui/drawer": "^0.1.11",
+    "@startupjs-ui/flat-list": "^0.1.11",
+    "@startupjs-ui/icon": "^0.1.11",
+    "@startupjs-ui/popover": "^0.1.12",
+    "@startupjs-ui/span": "^0.1.12",
+    "@startupjs-ui/text-input": "^0.1.12",
     "moment-timezone": "^0.5.31",
     "react-native-safe-area-context": "^5.6.0"
   },

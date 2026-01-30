@@ -1,7 +1,7 @@
 {
   "name": "@startupjs-ui/mdx",
   "description": "MDX provider with a set of custom components for react-native support and syntax highlighting",
-  "version": "0.1.5",
+  "version": "0.1.12",
   "publishConfig": {
     "access": "public"
   },
@@ -12,20 +12,20 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@mdx-js/react": "^3.0.0",
-    "@startupjs-ui/alert": "^0.1.5",
-    "@startupjs-ui/br": "^0.1.5",
-    "@startupjs-ui/collapse": "^0.1.5",
-    "@startupjs-ui/div": "^0.1.5",
-    "@startupjs-ui/divider": "^0.1.5",
-    "@startupjs-ui/icon": "^0.1.5",
-    "@startupjs-ui/link": "^0.1.5",
-    "@startupjs-ui/scroll-view": "^0.1.5",
-    "@startupjs-ui/span": "^0.1.5",
-    "@startupjs-ui/table": "^0.1.5",
+    "@startupjs-ui/alert": "^0.1.12",
+    "@startupjs-ui/br": "^0.1.11",
+    "@startupjs-ui/collapse": "^0.1.12",
+    "@startupjs-ui/div": "^0.1.12",
+    "@startupjs-ui/divider": "^0.1.11",
+    "@startupjs-ui/icon": "^0.1.11",
+    "@startupjs-ui/link": "^0.1.12",
+    "@startupjs-ui/scroll-view": "^0.1.11",
+    "@startupjs-ui/span": "^0.1.12",
+    "@startupjs-ui/table": "^0.1.12",
     "refractor": "^3.0.0"
   },
   "peerDependencies": {
-    "@react-native-clipboard/clipboard": "*",
+    "expo-clipboard": "*",
     "react": "*",
     "react-native": "*",
     "startupjs": "*"

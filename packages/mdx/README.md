@@ -5,7 +5,7 @@
 ## Installation
 
 ```sh
-yarn @startupjs-ui/mdx @react-native-clipboard/clipboard
+yarn @startupjs-ui/mdx expo-clipboard
 ```
 
 ## Usage

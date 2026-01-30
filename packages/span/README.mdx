@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { pug } from 'startupjs'
+import { pug, styl } from 'startupjs'
 import Span, { _PropsJsonSchema as SpanPropsJsonSchema } from './index'
+import { View, Pressable } from 'react-native'
 import { Sandbox } from '@startupjs-ui/docs'
 
 # Span
@@ -44,6 +45,56 @@ Use `description` prop for secondary text.
 
 ```jsx example
 <Span description>Description text</Span>
+```
+
+## Animations
+
+Span automatically uses React Native Reanimated when a `transition` or `animation` property is detected in the style. This allows you to create smooth animations without any additional setup.
+
+**Note:** When using modifier classes to add transitions/animations dynamically, set `animation: none` in the base styles. This ensures Span uses the animated component from the start.
+
+```jsx example
+const [isActive, setIsActive] = useState(false)
+return (
+  <View styleName='root'>
+    <Span styleName={['text', { isActive }]}>Hello World!</Span>
+    <Pressable styleName='button' onPress={() => setIsActive(!isActive)}>
+      <Span style={{ color: 'white' }}>Activate</Span>
+    </Pressable>
+  </View>
+)
+styl`
+  .text
+    color red
+    transition color 1s
+    animation none
+    &.isActive
+      color green
+      animation shake 0.5s infinite, pulse 1s infinite, highlight 1s infinite
+  .root
+    height 60px
+    flex-direction row
+    align-items center
+    gap 16px
+  .button
+    padding 8px 16px
+    background-color #2962FF
+    border-radius 4px
+  @keyframes shake
+    0%, 100%
+      transform translateX(0) translateY(0)
+    25%
+      transform translateX(-10px) translateY(-10px)
+    75%
+      transform translateX(10px) translateY(10px)
+  @keyframes pulse
+    50%
+      font-size 24px
+  @keyframes highlight
+    50%
+      background-color rgba(green, 0.2)
+      box-shadow 0px 0px 10px rgba(green, 1)
+`
 ```
 
 ## Sandbox

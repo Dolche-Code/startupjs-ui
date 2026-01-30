@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { pug, u } from 'startupjs'
+import { pug, u, styl } from 'startupjs'
 import { Sandbox } from '@startupjs-ui/docs'
-import { styl } from 'startupjs'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import Div, { _PropsJsonSchema as DivPropsJsonSchema } from './index.tsx'
 import Span from '@startupjs-ui/span'
@@ -184,6 +183,61 @@ return pug`
 styl`
   .root
     align-self flex-start
+`
+```
+
+## Animations
+
+Div automatically uses React Native Reanimated when a `transition` or `animation` property is detected in the style. This allows you to create smooth animations without any additional setup.
+
+**Note:** When using modifier classes to add transitions/animations dynamically, set `animation: none` in the base styles. This ensures Div uses the animated component from the start.
+
+```jsx example
+const [isActive, setIsActive] = useState(false)
+return (
+  <Div styleName='root' row align='left' vAlign='center' gap>
+    <Div styleName={['box', { isActive }]} />
+    <Div styleName='button' onPress={() => setIsActive(!isActive)}>
+      <Span style={{ color: 'white' }}>Activate</Span>
+    </Div>
+  </Div>
+)
+styl`
+  .box
+    width 50px
+    height 50px
+    background-color red
+    border-color red
+    transition background-color 1s, border-width 1s, border-color 1s
+    animation none
+    &.isActive
+      border-width 10px
+      border-color lime
+      background-color green
+      animation shake 0.5s infinite, pulse 1s infinite, radius 1s forwards, shadow 1s infinite
+  .root
+    height 60px
+  .button
+    padding 8px 16px
+    background-color #2962FF
+    border-radius 4px
+  @keyframes shake
+    0%, 100%
+      transform translateX(0) translateY(0)
+    25%
+      transform translateX(-10px) translateY(-10px)
+    75%
+      transform translateX(10px) translateY(10px)
+  @keyframes pulse
+    50%
+      width 60px
+      height 60px
+  @keyframes radius
+    100%
+      border-radius 30px
+  @keyframes shadow
+    50%
+      box-shadow 0px 0px 10px rgba(green, 1)
 `
 ```
 
