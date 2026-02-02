@@ -8,7 +8,7 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@startupjs-ui/alert": "^0.1.12",
     "@startupjs-ui/br": "^0.1.11",
     "@startupjs-ui/button": "^0.1.12",
