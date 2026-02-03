@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/dialogs",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "publishConfig": {
     "access": "public"
   },
@@ -17,9 +17,9 @@
   "dependencies": {
     "@startupjs-ui/br": "^0.1.11",
     "@startupjs-ui/core": "^0.1.11",
-    "@startupjs-ui/modal": "^0.1.12",
-    "@startupjs-ui/span": "^0.1.12",
-    "@startupjs-ui/text-input": "^0.1.12"
+    "@startupjs-ui/modal": "^0.1.13",
+    "@startupjs-ui/span": "^0.1.13",
+    "@startupjs-ui/text-input": "^0.1.13"
   },
   "peerDependencies": {
     "react": "*",

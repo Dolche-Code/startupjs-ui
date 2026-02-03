@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/avatar",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "publishConfig": {
     "access": "public"
   },
@@ -9,8 +9,8 @@
   "type": "module",
   "dependencies": {
     "@startupjs-ui/core": "^0.1.11",
-    "@startupjs-ui/div": "^0.1.12",
-    "@startupjs-ui/span": "^0.1.12",
+    "@startupjs-ui/div": "^0.1.13",
+    "@startupjs-ui/span": "^0.1.13",
     "randomcolor": "^0.5.4"
   },
   "peerDependencies": {
