@@ -5596,7 +5596,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/auto-suggest@npm:^0.1.13, @startupjs-ui/auto-suggest@workspace:packages/auto-suggest":
+"@startupjs-ui/auto-suggest@npm:^0.1.14, @startupjs-ui/auto-suggest@workspace:packages/auto-suggest":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/auto-suggest@workspace:packages/auto-suggest"
   dependencies:
@@ -21256,7 +21256,7 @@ __metadata:
     "@startupjs-ui/abstract-popover": "npm:^0.1.11"
     "@startupjs-ui/alert": "npm:^0.1.13"
     "@startupjs-ui/array-input": "npm:^0.1.13"
-    "@startupjs-ui/auto-suggest": "npm:^0.1.13"
+    "@startupjs-ui/auto-suggest": "npm:^0.1.14"
     "@startupjs-ui/avatar": "npm:^0.1.13"
     "@startupjs-ui/badge": "npm:^0.1.13"
     "@startupjs-ui/br": "npm:^0.1.11"

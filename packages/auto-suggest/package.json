@@ -1,6 +1,6 @@
 {
   "name": "@startupjs-ui/auto-suggest",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "publishConfig": {
     "access": "public"
   },

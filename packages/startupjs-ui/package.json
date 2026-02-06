@@ -1,7 +1,7 @@
 {
   "name": "startupjs-ui",
   "description": "Universal React-Native and Web UI components",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "publishConfig": {
     "access": "public"
   },
@@ -114,7 +114,7 @@
     "@startupjs-ui/abstract-popover": "^0.1.11",
     "@startupjs-ui/alert": "^0.1.13",
     "@startupjs-ui/array-input": "^0.1.13",
-    "@startupjs-ui/auto-suggest": "^0.1.13",
+    "@startupjs-ui/auto-suggest": "^0.1.14",
     "@startupjs-ui/avatar": "^0.1.13",
     "@startupjs-ui/badge": "^0.1.13",
     "@startupjs-ui/br": "^0.1.11",

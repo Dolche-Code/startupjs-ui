@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/startupjs/startupjs-ui/compare/v0.1.13...v0.1.14) (2026-02-06)
+
+
+### Features
+
+* add size for AutoSuggestProps ([#8](https://github.com/startupjs/startupjs-ui/issues/8)) ([c0cd5b0](https://github.com/startupjs/startupjs-ui/commit/c0cd5b0d84513e98c0e70cbcb0a5073db334c762))
+
+
+
+
+
 ## [0.1.13](https://github.com/startupjs/startupjs-ui/compare/v0.1.12...v0.1.13) (2026-02-03)
 
 **Note:** Version bump only for package @startupjs-ui/auto-suggest
