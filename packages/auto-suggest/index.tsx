@@ -229,7 +229,7 @@ function AutoSuggest ({
       testID=testID
     )
 
-    AbstractPopover(
+    AbstractPopover.attachment(
       visible=(isShow || isLoading)
       anchorRef=inputRef
       matchAnchorWidth=matchAnchorWidth
