@@ -100,19 +100,18 @@ function ProjectButton ({ project, isActive, colorScheme }: { project: Project, 
     ? (isDark ? '#ffffff' : '#000000')
     : project.color
 
+  const buttonStyle = StyleSheet.flatten([styles.button, { backgroundColor: buttonBg }])
   return (
-    <Pressable
-      onHoverIn={onHoverIn}
-      onHoverOut={onHoverOut}
-      style={[styles.button, { backgroundColor: buttonBg }]}
-      accessibilityLabel={project.fullName}
-      accessibilityRole='link'
-    >
-      <Link href={project.url as ExternalPathString} style={[styles.buttonText, { color: textColor }]}>
-        {project.label}
-      </Link>
-      <Tooltip text={project.fullName} visible={isHover} colorScheme={colorScheme} />
-    </Pressable>
+    <Link asChild href={project.url as ExternalPathString} accessibilityLabel={project.fullName}>
+      <Pressable
+        onHoverIn={onHoverIn}
+        onHoverOut={onHoverOut}
+        style={buttonStyle}
+      >
+        <Text style={[styles.buttonText, { color: textColor }]}>{project.label}</Text>
+        <Tooltip text={project.fullName} visible={isHover} colorScheme={colorScheme} />
+      </Pressable>
+    </Link>
   )
 }
 
