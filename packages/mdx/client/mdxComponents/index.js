@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Image, ScrollView, Platform } from 'react-native'
+import { Image, ScrollView, Platform, Text } from 'react-native'
 import { pug, observer, $, BASE_URL } from 'startupjs'
 import Alert from '@startupjs-ui/alert'
 import Div from '@startupjs-ui/div'
@@ -112,10 +112,10 @@ export default {
     `
   },
   strong: ({ children }) => pug`
-    P(bold)= children
+    Text(style={ fontWeight: 'bold' })= children
   `,
   em: ({ children }) => pug`
-    P(italic)= children
+    Text(style={ fontStyle: 'italic' })= children
   `,
   hr: ({ children }) => pug`
     Divider(size='l')
