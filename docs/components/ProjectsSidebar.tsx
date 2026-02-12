@@ -21,7 +21,7 @@ const PROJECTS: Project[] = [
     id: 'startupjs',
     label: 'SJS',
     fullName: 'StartupJS fullstack framework',
-    url: 'https://startupjs-ui.dev.dmapper.co/',
+    url: 'https://startupjs.org/',
     color: '#5f6ff6',
     activeBg: 'rgba(95,111,246,0.25)',
     hoverBg: 'rgba(99,102,241,0.1)'
