@@ -11,7 +11,7 @@ $this = merge({
   &:part(track)
     height 1u
     background-color $this.trackColor
-    border-radius 4px
+    radius()
 
   &:part(selected)
     background-color $this.selectedColor
@@ -20,7 +20,7 @@ $this = merge({
     top 4px
     width 16px
     height @width
-    border-radius 10px
+    radius(circle)
     shadow(1)
 
   &:part(stepLabel)
