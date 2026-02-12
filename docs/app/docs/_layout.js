@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import { View, ScrollView, TextInput, Pressable, Dimensions } from 'react-native'
+import { View, ScrollView, TextInput, Pressable, Dimensions, Text } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { pug, styl, observer } from 'startupjs'
 import { Slot, Link, usePathname, Stack } from 'expo-router'
@@ -25,7 +25,17 @@ export default observer(({ children }) => {
   useEffect(() => {
     setSearch('')
   }, [component])
-  const filteredComponents = DOC_COMPONENT_NAMES.filter(name => name.toLowerCase().includes(search.toLowerCase()))
+
+  const filteredCategories = useMemo(() => {
+    if (!search) return DOC_COMPONENT_CATEGORIES
+    const lower = search.toLowerCase()
+    return DOC_COMPONENT_CATEGORIES
+      .map(cat => ({
+        ...cat,
+        items: cat.items.filter(name => name.toLowerCase().includes(lower))
+      }))
+      .filter(cat => cat.items.length > 0)
+  }, [search])
 
   return pug`
     View.root
@@ -49,8 +59,10 @@ export default observer(({ children }) => {
             onChangeText=setSearch
           )
           ScrollView.items
-            each component in filteredComponents
-              Item(key=component setShowSidebar=setShowSidebar)= component
+            each cat in filteredCategories
+              Category(key=cat.name name=cat.name defaultOpen=true)
+                each component in cat.items
+                  Item(key=component path=component setShowSidebar=setShowSidebar)= component
         ScrollView.contentWrapper
           View.content
             Slot
@@ -161,14 +173,57 @@ const GitHubLink = observer(() => {
   `
 })
 
-const Item = observer(({ children, setShowSidebar }) => {
+const Category = observer(({ children, name, defaultOpen = false }) => {
+  const [open, setOpen] = useState(defaultOpen)
+  const [isHover, setIsHover] = useState(false)
+  const onHoverIn = useCallback(() => setIsHover(true), [])
+  const onHoverOut = useCallback(() => setIsHover(false), [])
+  return pug`
+    View.root
+      Pressable.header(onPress=() => setOpen(!open) onHoverIn=onHoverIn onHoverOut=onHoverOut)
+        View.header-content(styleName={ isHover })
+          Text.arrow(selectable=false)= open ? '-' : '+'
+          Text.title(selectable=false)= name.toUpperCase()
+      if open
+        View.items
+          = children
+  `
+  styl`
+    .header
+      user-select none
+      flex-direction row
+      align-items center
+      padding 5px 0
+    .header-content
+      padding 7px 20px 5px 20px
+      flex 1
+      flex-direction row
+      align-items center
+      border-bottom-width 2px
+      border-bottom-color #eee
+      &.isHover
+        background-color rgba(black, 0.03)
+    .title, .arrow
+      font-size 12px
+      font-weight bold
+      color #aaa
+      font-family monospace
+      letter-spacing 1px
+    .arrow
+      margin-right 10px
+    .items
+      margin-bottom 20px
+  `
+})
+
+const Item = observer(({ children, path, setShowSidebar }) => {
   const [isHover, setIsHover] = useState(false)
   const onHoverIn = useCallback(() => setIsHover(true), [])
   const onHoverOut = useCallback(() => setIsHover(false), [])
   const pathname = usePathname()
   if (typeof children !== 'string') return 'NO_NAME'
   const name = children
-  const href = '/docs/' + children
+  const href = '/docs/' + path
   const isActive = pathname === href
   const onPress = useCallback(() => {
     if (Dimensions.get('window').width < TABLET_BREAKPOINT) {
@@ -204,62 +259,41 @@ const Item = observer(({ children, setShowSidebar }) => {
   `
 })
 
-const DOC_COMPONENT_NAMES = [
-  'AbstractPopover',
-  'Alert',
-  'ArrayInput',
-  'AutoSuggest',
-  'Avatar',
-  'Badge',
-  'Br',
-  'Breadcrumbs',
-  'Button',
-  'Card',
-  'Carousel',
-  'Checkbox',
-  'Collapse',
-  'ColorPicker',
-  'Content',
-  'DateTimePicker',
-  'Dialogs',
-  'Div',
-  'Divider',
-  'Draggable',
-  'Drawer',
-  'DrawerSidebar',
-  'Dropdown',
-  'FileInput',
-  'FlatList',
-  'Form',
-  'Icon',
-  'Input',
-  'Item',
-  'Layout',
-  'Link',
-  'Loader',
-  'Menu',
-  'Modal',
-  'MultiSelect',
-  'NumberInput',
-  'ObjectInput',
-  'Pagination',
-  'PasswordInput',
-  'Popover',
-  'Portal',
-  'Progress',
-  'Radio',
-  'RangeInput',
-  'Rank',
-  'Rating',
-  'ScrollView',
-  'Select',
-  'Sidebar',
-  'SmartSidebar',
-  'Span',
-  'Table',
-  'Tabs',
-  'Tag',
-  'TextInput',
-  'Toast',
-  'User'
+const DOC_COMPONENT_CATEGORIES = [
+  {
+    name: 'Layout & Structure',
+    items: ['Div', 'Content', 'Card', 'Layout', 'Sidebar', 'SmartSidebar', 'DrawerSidebar', 'Drawer', 'ScrollView', 'FlatList', 'Portal', 'Divider', 'Br']
+  },
+  {
+    name: 'Typography',
+    items: ['Span']
+  },
+  {
+    name: 'Buttons & Actions',
+    items: ['Button', 'Link', 'Tag']
+  },
+  {
+    name: 'Form Inputs',
+    items: ['TextInput', 'Checkbox', 'NumberInput', 'PasswordInput', 'Select', 'MultiSelect', 'Radio', 'RangeInput', 'ColorPicker', 'DateTimePicker', 'FileInput', 'Input', 'ArrayInput', 'ObjectInput', 'Form', 'Rank', 'Rating', 'AutoSuggest']
+  },
+  {
+    name: 'Feedback & Overlays',
+    items: ['Alert', 'Modal', 'Popover', 'Dropdown', 'Loader', 'Progress', 'Toast', 'Badge', 'Collapse']
+  },
+  {
+    name: 'Navigation & Data',
+    items: ['Tabs', 'Breadcrumbs', 'Pagination', 'Menu', 'Item', 'Table']
+  },
+  {
+    name: 'Display',
+    items: ['Avatar', 'Icon', 'User', 'Carousel', 'AbstractPopover']
+  },
+  {
+    name: 'Drag & Drop',
+    items: ['Draggable']
+  },
+  {
+    name: 'Providers',
+    items: ['Dialogs']
+  }
 ]
