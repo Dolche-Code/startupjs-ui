@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/startupjs/startupjs-ui/compare/v0.1.17...v0.1.18) (2026-02-23)
+
+
+### Features
+
+* add rounded progress ([#16](https://github.com/startupjs/startupjs-ui/issues/16)) ([d219deb](https://github.com/startupjs/startupjs-ui/commit/d219deb050cd352852d8fad2c09044ead1106bb7))
+
+
+
+
+
 ## [0.1.16](https://github.com/startupjs/startupjs-ui/compare/v0.1.15...v0.1.16) (2026-02-10)
 
 **Note:** Version bump only for package @startupjs-ui/progress

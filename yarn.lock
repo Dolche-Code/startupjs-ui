@@ -6263,7 +6263,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@startupjs-ui/progress@npm:^0.1.16, @startupjs-ui/progress@workspace:packages/progress":
+"@startupjs-ui/progress@npm:^0.1.18, @startupjs-ui/progress@workspace:packages/progress":
   version: 0.0.0-use.local
   resolution: "@startupjs-ui/progress@workspace:packages/progress"
   dependencies:
@@ -21295,7 +21295,7 @@ __metadata:
     "@startupjs-ui/password-input": "npm:^0.1.16"
     "@startupjs-ui/popover": "npm:^0.1.16"
     "@startupjs-ui/portal": "npm:^0.1.16"
-    "@startupjs-ui/progress": "npm:^0.1.16"
+    "@startupjs-ui/progress": "npm:^0.1.18"
     "@startupjs-ui/radio": "npm:^0.1.17"
     "@startupjs-ui/range-input": "npm:^0.1.17"
     "@startupjs-ui/rank": "npm:^0.1.16"
