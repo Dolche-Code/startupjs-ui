@@ -1,22 +1,26 @@
 // ----- CONFIG: $UI.Progress
 
 $this = merge({
-  duration: 300
+  duration: 300,
+  filler: {
+    backgroundColor: var(--color-bg-main-subtle-alt),
+    color: var(--color-bg-success)
+  }
 }, $UI.Progress, true)
 
 // ----- COMPONENT
 
-_backgroundColor = var(--color-bg-main-subtle-alt)
-_fillerColor = var(--color-bg-success)
 _duration = $this.duration
 
 .progress
-  background-color _backgroundColor
   overflow hidden
+
+  &.linear
+    background-color $this.filler.backgroundColor
 
 .filler
   height _size
-  background-color _fillerColor
+  background-color $this.filler.color
 
   +web()
     transition width (_duration/1000)s
