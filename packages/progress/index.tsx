@@ -5,6 +5,7 @@ import { themed } from '@startupjs-ui/core'
 import Div, { type DivProps } from '@startupjs-ui/div'
 import Span from '@startupjs-ui/span'
 import Filler from './filler'
+import CircleFiller from './circleFiller'
 import './index.cssx.styl'
 
 export default observer(themed('Progress', Progress))
@@ -38,13 +39,22 @@ function Progress ({
   shape = 'rounded',
   width = u(0.5)
 }: ProgressProps): ReactNode {
-  const extraStyle = { height: width }
+  const isCircular = variant === 'circular'
+  const extraStyle = isCircular ? {} : { height: width }
 
   return pug`
     View(style=style)
-      Div.progress(part='progress' style=extraStyle shape=shape)
+      Div.progress(
+        part='progress'
+        style=extraStyle
+        styleName=[variant]
+        shape=shape
+      )
         //- To normalize value pass value=Math.min(value, 100)
-        Filler(part='filler' style=extraStyle value=value)
+        if isCircular
+          CircleFiller(part='filler' style=extraStyle value=value width=width)
+        else
+          Filler(part='filler' style=extraStyle value=value)
       if typeof children === 'string'
         Span.label= children
       else
