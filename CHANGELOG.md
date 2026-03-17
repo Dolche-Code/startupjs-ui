@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.19](https://github.com/startupjs/startupjs-ui/compare/v0.1.18...v0.1.19) (2026-03-17)
+
+
+### Bug Fixes
+
+* **docs:** don't load all icons to keep bundle small ([#17](https://github.com/startupjs/startupjs-ui/issues/17)) ([d7eb70b](https://github.com/startupjs/startupjs-ui/commit/d7eb70bc11f5b15923f2e43b7ef1f86ea066494e))
+* **draggable:** placeholder position from ghost (element), not cursor ([#18](https://github.com/startupjs/startupjs-ui/issues/18)) ([fbb8d9a](https://github.com/startupjs/startupjs-ui/commit/fbb8d9a012e94f40fd93c2cc07b407f78399106e))
+
+
+
+
+
 ## [0.1.18](https://github.com/startupjs/startupjs-ui/compare/v0.1.17...v0.1.18) (2026-02-23)
 
 
