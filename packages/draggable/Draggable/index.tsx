@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, type ReactNode } from 'react'
-import { Animated, View, StyleSheet, type StyleProp, type ViewStyle } from 'react-native'
+import { View, StyleSheet, Platform, type StyleProp, type ViewStyle } from 'react-native'
 import { State, PanGestureHandler } from 'react-native-gesture-handler'
 import { pug, observer } from 'startupjs'
 import { themed } from '@startupjs-ui/core'
@@ -51,81 +51,117 @@ function Draggable ({
   const ref = useRef<any>(null)
   const $dndContext = useContext(DragDropContext)
 
-  const animateStates = {
-    left: new Animated.Value(0),
-    top: new Animated.Value(0)
-  }
-
-  // init drags.dragId
   useEffect(() => {
-    $dndContext.drags[dragId].set({ ref, style: {} })
-  }, [ // eslint-disable-line react-hooks/exhaustive-deps
-    dragId,
-    _dropId,
-    _index,
-    $dndContext.drags[dragId].ref.current.get() // eslint-disable-line react-hooks/exhaustive-deps
-  ])
+    if (!$dndContext) return
+    if ($dndContext.drags[dragId]) {
+      $dndContext.drags[dragId].set({ ref, style: {} })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dragId, _dropId, _index])
 
-  if (_dropId == null || _index == null) {
-    return pug`
-      View(style=style)= children
-    `
+  if (_dropId == null || _index == null || !$dndContext) {
+    return pug`View(style=style)= children`
   }
 
   const dropId = _dropId
   const index = _index
 
-  function onHandlerStateChange ({ nativeEvent }: any) {
-    const data = {
-      type,
-      dragId,
-      dropId,
-      dragStyle: { ...StyleSheet.flatten(style) },
-      startPosition: {
-        x: nativeEvent.x,
-        y: nativeEvent.y
-      }
-    }
+  async function onHandlerStateChange ({ nativeEvent }: any) {
+    const startAbsoluteX = nativeEvent.absoluteX ?? 0
+    const startAbsoluteY = nativeEvent.absoluteY ?? 0
 
     if (nativeEvent.state === State.BEGAN) {
-      ref.current.measure((dragX: any, dragY: any, dragWidth: any, dragHeight: any) => {
-        data.dragStyle.height = dragHeight
+      const offsetX = nativeEvent.x ?? 0
+      const offsetY = nativeEvent.y ?? 0
+      const ghostLeft = startAbsoluteX - offsetX
+      const ghostTop = startAbsoluteY - offsetY
 
-        $dndContext.drops[dropId].ref.current.get().measure((dx: any, dy: any, dw: any, dropHeight: any) => {
-          // init states
-          $dndContext.drags[dragId].style.set({ display: 'none' })
-          $dndContext.assign({
-            activeData: data,
-            dropHoverId: dropId,
-            dragHoverIndex: index
-          })
+      const flatStyle = StyleSheet.flatten(style) || {} as any
+      const data: Record<string, any> = {
+        type,
+        dragId,
+        dropId,
+        dragStyle: {
+          ...flatStyle,
+          height: flatStyle.height ?? 0,
+          width: flatStyle.width ?? 0
+        },
+        startPosition: { x: offsetX, y: offsetY },
+        startGhostTop: ghostTop,
+        x: startAbsoluteX,
+        y: startAbsoluteY,
+        ghostLeft,
+        ghostTop
+      }
 
-          onDragBegin && onDragBegin({
+      const applyDragStart = (measuredHeight: number | null, measuredWidth: number | null) => {
+        if (measuredHeight != null || measuredWidth != null) {
+          data.dragStyle = {
+            ...data.dragStyle,
+            ...(typeof measuredHeight === 'number' && { height: measuredHeight }),
+            ...(typeof measuredWidth === 'number' && { width: measuredWidth })
+          }
+        }
+        $dndContext.drags[dragId].style.set({ display: 'none' })
+        $dndContext.assign({
+          activeData: data,
+          dropHoverId: dropId,
+          dragHoverIndex: index
+        })
+
+        if (onDragBegin) {
+          onDragBegin({
             dragId: data.dragId,
             dropId: data.dropId,
             dropHoverId: dropId,
             hoverIndex: index
           })
+        }
+      }
+
+      if (ref.current?.measure) {
+        ref.current.measure((_x: number, _y: number, dragWidth: number, dragHeight: number) => {
+          applyDragStart(dragHeight, dragWidth)
         })
-      })
+      } else {
+        applyDragStart(null, null)
+      }
     }
 
     if (nativeEvent.state === State.END) {
-      animateStates.left.setValue(0)
-      animateStates.top.setValue(0)
+      const clearDragState = () => {
+        $dndContext.assign({
+          drags: { [dragId]: { style: {} } },
+          activeData: {},
+          dropHoverId: '',
+          dragHoverIndex: null
+        })
+      }
+      try {
+        const finalY = nativeEvent.absoluteY ?? $dndContext.activeData.y.get()
+        const finalX = nativeEvent.absoluteX ?? $dndContext.activeData.x.get()
+        $dndContext.activeData.x.set(finalX)
+        $dndContext.activeData.y.set(finalY)
+        const activeDataSnap = { ...$dndContext.activeData.get(), y: finalY, x: finalX }
+        const finalHoverIndex = await checkPosition(activeDataSnap)
+        const hoverIndex = finalHoverIndex ?? $dndContext.dragHoverIndex.get()
 
-      onDragEnd && onDragEnd({
-        dragId: $dndContext.activeData.dragId.get(),
-        dropId: $dndContext.activeData.dropId.get(),
-        dropHoverId: $dndContext.dropHoverId.get(),
-        hoverIndex: $dndContext.dragHoverIndex.get()
-      })
+        if (onDragEnd) {
+          onDragEnd({
+            dragId: $dndContext.activeData.dragId.get(),
+            dropId: $dndContext.activeData.dropId.get(),
+            dropHoverId: $dndContext.dropHoverId.get(),
+            hoverIndex
+          })
+        }
+      } finally {
+        clearDragState()
+      }
+    }
 
-      // reset states
+    if (nativeEvent.state === State.CANCELLED || nativeEvent.state === State.FAILED) {
       $dndContext.assign({
-        drags: {
-          [dragId]: { style: {} }
-        },
+        drags: { [dragId]: { style: {} } },
         activeData: {},
         dropHoverId: '',
         dragHoverIndex: null
@@ -136,116 +172,173 @@ function Draggable ({
   function onGestureEvent ({ nativeEvent }: any) {
     if (!$dndContext.dropHoverId.get()) return
 
-    animateStates.left.setValue(
-      nativeEvent.absoluteX - $dndContext.activeData.startPosition.x.get()
-    )
-    animateStates.top.setValue(
-      nativeEvent.absoluteY - $dndContext.activeData.startPosition.y.get()
-    )
-
+    const left = nativeEvent.absoluteX - $dndContext.activeData.startPosition.x.get()
+    const top = nativeEvent.absoluteY - $dndContext.activeData.startPosition.y.get()
+    $dndContext.activeData.ghostLeft.set(left)
+    $dndContext.activeData.ghostTop.set(top)
     $dndContext.activeData.x.set(nativeEvent.absoluteX)
     $dndContext.activeData.y.set(nativeEvent.absoluteY)
     checkPosition($dndContext.activeData.get())
   }
 
-  function checkPosition (activeData: any) {
-    $dndContext.drops[dropId].ref.current.get().measure(async (dX: any, dY: any, dWidth: any, dHeight: any, dPageX: any, dPageY: any) => {
-      const positions: any[] = []
-      let startPosition = dPageY
-      let endPosition = dPageY
+  async function checkPosition (activeData: any): Promise<number | null> {
+    const ghostTopNow = activeData.ghostTop
+    const ghostLeftNow = activeData.ghostLeft
+    const ghostHeight = activeData.dragStyle?.height ?? 0
+    const ghostWidth = activeData.dragStyle?.width ?? 0
+    const refY = ghostTopNow != null ? ghostTopNow + ghostHeight / 2 : activeData.y
+    const refX = ghostLeftNow != null ? ghostLeftNow + ghostWidth / 2 : activeData.x
+    if (refY == null) return await Promise.resolve(null)
 
-      const dragsLength = $dndContext.drops[$dndContext.dropHoverId.get()].items.get()?.length || 0
+    const dropIds = Object.keys($dndContext.drops.get() ?? {})
+    if (dropIds.length === 0) return await Promise.resolve(null)
 
-      for (let index = 0; index < dragsLength; index++) {
-        if (!$dndContext.dropHoverId.get()) break
-
-        const iterDragId = $dndContext.drops[$dndContext.dropHoverId.get()].items[index].get()
-
-        await new Promise<void>(resolve => {
-          const currentElement = $dndContext.drags[iterDragId].ref.current.get()
-          if (!currentElement) {
-            positions.push(null)
-            resolve()
-            return
-          }
-          currentElement.measure((x: any, y: any, width: any, height: any, pageX: any, pageY: any) => {
-            if (index === 0) {
-              startPosition = dPageY
-              endPosition = dPageY + y + (height / 2)
-            } else {
-              startPosition = endPosition
-              endPosition = pageY + (height / 2)
-            }
-
-            if (iterDragId === dragId) {
-              positions.push(null)
-            } else {
-              positions.push({ start: startPosition, end: endPosition })
-            }
-
-            resolve()
+    const measureDrop = async (id: string) => {
+      const dref = $dndContext.drops[id].ref.current?.get()
+      if (!dref?.measureInWindow && !dref?.measure) return await Promise.resolve(null)
+      return await new Promise<{ id: string, left: number, right: number, top: number, bottom: number } | null>((resolve) => {
+        if (typeof dref.measureInWindow === 'function') {
+          dref.measureInWindow((x: number, y: number, w: number, h: number) => { resolve({ id, left: x, right: x + (w ?? 0), top: y, bottom: y + (h ?? 0) }) })
+        } else {
+          dref.measure((_x: number, _y: number, _w: number, dH: number, px: number, py: number) => {
+            const top = py ?? _y
+            const left = px ?? _x
+            resolve({ id, left, right: left + (_w ?? 0), top, bottom: top + (dH ?? 0) })
           })
+        }
+      })
+    }
+
+    return await Promise.all(dropIds.map(measureDrop)).then((results) => {
+      const hit = results.find((r) => r && refY >= r.top && refY < r.bottom && (refX == null || (refX >= r.left && refX < r.right)))
+      const targetDropId = hit ? hit.id : dropIds[0]
+      const fallback = results.find((r) => r && r.id === targetDropId)
+      const dropTop = (hit ?? fallback)?.top ?? 0
+      const dropBottom = (hit ?? fallback)?.bottom ?? 0
+      $dndContext.dropHoverId.set(targetDropId)
+
+      const items = $dndContext.drops[targetDropId].items.get() ?? []
+      if (items.length === 0) {
+        $dndContext.dragHoverIndex.set(0)
+        return 0
+      }
+
+      const n = items.length
+      const dropHeight = dropBottom - dropTop
+      const slotHeight = dropHeight / n
+      const rects: Array<{ top: number, bottom: number, height: number }> = []
+      for (let i = 0; i < n; i++) {
+        rects.push({
+          top: dropTop + i * slotHeight,
+          bottom: dropTop + (i + 1) * slotHeight,
+          height: slotHeight
         })
       }
 
-      positions.push({ start: endPosition, end: dPageY + dHeight })
+      if (refY < rects[0].top) {
+        $dndContext.dragHoverIndex.set(0)
+        return 0
+      }
+      if (refY >= rects[n - 1].bottom) {
+        $dndContext.dragHoverIndex.set(n)
+        return n
+      }
 
-      for (let index = 0; index < positions.length; index++) {
-        const position = positions[index]
-        if (!position) continue
-
-        if (activeData.y > position.start && activeData.y < position.end) {
-          $dndContext.dragHoverIndex.set(index)
+      const startGhostTop = activeData.startGhostTop ?? activeData.ghostTop
+      const movingDown = ghostTopNow >= startGhostTop
+      const upThreshold = 0.001
+      let hoverIndex = 0
+      for (let i = 0; i < n; i++) {
+        const r = rects[i]
+        if (refY >= r.top && refY < r.bottom) {
+          const relY = r.height > 0 ? (refY - r.top) / r.height : 0
+          if (movingDown) {
+            hoverIndex = Math.min(i + 1, n)
+          } else {
+            hoverIndex = relY < upThreshold && i > 0 ? i - 1 : i
+          }
           break
         }
+        if (refY < r.top) {
+          hoverIndex = i
+          break
+        }
+        hoverIndex = i + 1
       }
-    })
+
+      $dndContext.dragHoverIndex.set(hoverIndex)
+      return hoverIndex
+    }).then(async (hoverIndex) => await Promise.resolve(hoverIndex))
   }
 
-  const contextStyle = $dndContext.drags[dragId].style.get() || {}
-  const _style: any = StyleSheet.flatten([style, animateStates])
+  const contextStyle = $dndContext.drags[dragId] ? ($dndContext.drags[dragId].style.get() ?? {}) : {}
+  const flatStyle = StyleSheet.flatten(style) || {} as any
 
-  const isShowPlaceholder = $dndContext.activeData.get() &&
+  const dragStyleRaw = $dndContext.activeData.dragStyle?.get()
+  const dragStyle = dragStyleRaw && typeof dragStyleRaw === 'object' ? dragStyleRaw : null
+  const getNum = (v: any): number | undefined =>
+    v == null
+      ? undefined
+      : typeof v?.get === 'function'
+        ? v.get()
+        : typeof v === 'number'
+          ? v
+          : undefined
+  const phHeight = dragStyle ? getNum(dragStyle.height) : undefined
+  const phWidth = dragStyle ? getNum(dragStyle.width) : undefined
+
+  const isActiveDrag = $dndContext.activeData.dragId.get() === dragId
+  const ghostLeft = isActiveDrag ? ($dndContext.activeData.ghostLeft.get() ?? 0) : 0
+  const ghostTop = isActiveDrag ? ($dndContext.activeData.ghostTop.get() ?? 0) : 0
+  const ghostStyle: ViewStyle = {
+    ...flatStyle,
+    position: Platform.OS === 'web' ? ('fixed' as any) : 'absolute',
+    left: ghostLeft,
+    top: ghostTop,
+    ...(typeof phWidth === 'number' && phWidth > 0 && { width: phWidth }),
+    ...(typeof phHeight === 'number' && phHeight > 0 && { height: phHeight })
+  }
+  if (Platform.OS === 'web') {
+    (ghostStyle as Record<string, unknown>).cursor = 'default'
+  }
+
+  const isShowPlaceholder =
+    $dndContext.activeData.get() &&
     $dndContext.dropHoverId.get() === dropId &&
     $dndContext.dragHoverIndex.get() === index
 
-  const isShowLastPlaceholder = $dndContext.activeData.get() &&
+  const isShowLastPlaceholder =
+    $dndContext.activeData.get() &&
     $dndContext.dropHoverId.get() === dropId &&
-    $dndContext.drops[dropId].items.get().length - 1 === index &&
+    ($dndContext.drops[dropId].items.get() ?? []).length - 1 === index &&
     $dndContext.dragHoverIndex.get() === index + 1
 
-  const placeholder = pug`
-    View.placeholder(
-      style={
-        height: $dndContext.activeData.get() && $dndContext.activeData.dragStyle.get() && $dndContext.activeData.dragStyle.height.get(),
-        marginTop: $dndContext.activeData.get() && $dndContext.activeData.dragStyle.get() && $dndContext.activeData.dragStyle.marginTop.get(),
-        marginBottom: $dndContext.activeData.get() && $dndContext.activeData.dragStyle.get() && $dndContext.activeData.dragStyle.marginBottom.get()
-      }
-    )
-  `
+  const placeholderStyle: ViewStyle = {
+    ...flatStyle,
+    backgroundColor: 'var(--color-bg-main-subtle-alt, #e5e7eb)' as any,
+    minHeight: 32,
+    borderRadius: flatStyle.borderRadius ?? 4,
+    ...(typeof phHeight === 'number' && phHeight > 0 && { height: phHeight }),
+    ...(typeof phWidth === 'number' && phWidth > 0 && { width: phWidth })
+  }
 
   return pug`
     if isShowPlaceholder
-      = placeholder
+      View(style=placeholderStyle)
 
     Portal
-      if $dndContext.activeData.dragId.get() === dragId
-        Animated.View(style=[
-          _style,
-          { position: 'absolute', cursor: 'default' }
-        ])= children
+      if isActiveDrag
+        View(style=ghostStyle)= children
 
     PanGestureHandler(
       onHandlerStateChange=onHandlerStateChange
       onGestureEvent=onGestureEvent
     )
-      Animated.View(
-        ref=ref
-        style=[style, contextStyle]
-      )= children
+      View(ref=ref style=[style, contextStyle])
+        = children
 
     if isShowLastPlaceholder
-      = placeholder
+      View(style=placeholderStyle)
   `
 }
 
