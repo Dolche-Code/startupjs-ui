@@ -3268,7 +3268,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/gen-mapping@npm:^0.3.12, @jridgewell/gen-mapping@npm:^0.3.2, @jridgewell/gen-mapping@npm:^0.3.5":
+"@jridgewell/gen-mapping@npm:^0.3.12, @jridgewell/gen-mapping@npm:^0.3.13, @jridgewell/gen-mapping@npm:^0.3.2, @jridgewell/gen-mapping@npm:^0.3.5":
   version: 0.3.13
   resolution: "@jridgewell/gen-mapping@npm:0.3.13"
   dependencies:
@@ -4793,6 +4793,63 @@ __metadata:
   dependencies:
     nanoid: "npm:^3.3.11"
   checksum: 10c0/eb22a8ce464595fc78d2f748d4397dfce5acae5f9b6afa9e0361142e69399ad8346019d1f6af7ba7a4404d54f71fc99e120ae113f5c827a4a6435bf201e349b5
+  languageName: node
+  linkType: hard
+
+"@react-pug/check-types@npm:^0.1.4":
+  version: 0.1.7
+  resolution: "@react-pug/check-types@npm:0.1.7"
+  dependencies:
+    "@react-pug/typescript-plugin-react-pug": "npm:^0.1.7"
+  peerDependencies:
+    typescript: "*"
+  bin:
+    check-pug-types: src/cli.js
+  checksum: 10c0/2554045c878f3f9c72404c53c83318697d0ddeff2b0598cc3506c083d0387b48e8561ac63537698ecfade5184bb26c931629124598ca8da16cfe6621de2c40f0
+  languageName: node
+  linkType: hard
+
+"@react-pug/is-expression@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "@react-pug/is-expression@npm:0.1.7"
+  dependencies:
+    "@babel/parser": "npm:^7.0.0"
+    object-assign: "npm:^4.1.1"
+  checksum: 10c0/6df3ea76dd419c1eba6bee3eed5a00284fb14d6b3103507789047c4a45690b4c5adb85c9cd47e1ed0aa2cdad517d64f48bdf091a6c08d9dc3183ec2be58e5933
+  languageName: node
+  linkType: hard
+
+"@react-pug/pug-lexer@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "@react-pug/pug-lexer@npm:0.1.7"
+  dependencies:
+    "@react-pug/is-expression": "npm:^0.1.7"
+    character-parser: "npm:^4.0.0"
+    pug-error: "npm:^1.3.3"
+  checksum: 10c0/4271ec4e05785c8870728f478f4c3cbb6e4c6e3edc383d52cbe7bee6878671b74d63bb43807c3c65c4928d216690c41878ac135dc770868f53ed215321778839
+  languageName: node
+  linkType: hard
+
+"@react-pug/react-pug-core@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "@react-pug/react-pug-core@npm:0.1.7"
+  dependencies:
+    "@babel/parser": "npm:^7.0.0"
+    "@jridgewell/gen-mapping": "npm:^0.3.13"
+    "@react-pug/pug-lexer": "npm:^0.1.7"
+    "@volar/source-map": "npm:^2.4.28"
+    pug-parser: "npm:^6.0.0"
+    pug-strip-comments: "npm:^2.0.0"
+  checksum: 10c0/83e54f333f3f4c0a556bef1878af1d2dc9359b898b6ee1e0d6596e07dc11079bc57cfd5f2cfe7b92307a545d51f260a36095ef7427c0f77093e7c06fa750b460
+  languageName: node
+  linkType: hard
+
+"@react-pug/typescript-plugin-react-pug@npm:^0.1.7":
+  version: 0.1.7
+  resolution: "@react-pug/typescript-plugin-react-pug@npm:0.1.7"
+  dependencies:
+    "@react-pug/react-pug-core": "npm:^0.1.7"
+  checksum: 10c0/824ac900d7bff8a93fca304d3bbf89ed09ca47e11d320b4747c92047ed61661c421a2939dd9c520bdf8b0777563ce79ae2477f12375b27b8c0015e3e6fa2639f
   languageName: node
   linkType: hard
 
@@ -6604,17 +6661,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/cli@npm:^0.61.6":
-  version: 0.61.6
-  resolution: "@startupjs/cli@npm:0.61.6"
+"@startupjs/cli@npm:^0.61.11":
+  version: 0.61.11
+  resolution: "@startupjs/cli@npm:0.61.11"
   dependencies:
-    "@startupjs/patches": "npm:^0.61.4"
+    "@react-pug/check-types": "npm:^0.1.4"
+    "@startupjs/patches": "npm:^0.61.10"
     "@startupjs/pm": "npm:^0.61.0"
     chalk: "npm:^5.3.0"
     commander: "npm:^12.0.0"
     create-startupjs: "npm:^0.61.6"
     execa: "npm:^8.0.1"
-  checksum: 10c0/8f94f028dc03f9e93df1d105875264dfef5f425d4f81907718c7cc5692addfbf2c47bd32bfae844a7badd46c1cb00b5cd597809463a70e54483f56c14657d91c
+  checksum: 10c0/f8b98ecee7ca96d0cf4a081ba230f1485e1b8c168ff9210b5a13e0516955311aaa0374ab8aa3d809de40349bb6d1d8f4c6a6a138cc50a90130963999b674cfa2
   languageName: node
   linkType: hard
 
@@ -6675,12 +6733,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@startupjs/patches@npm:^0.61.4":
-  version: 0.61.4
-  resolution: "@startupjs/patches@npm:0.61.4"
+"@startupjs/patches@npm:^0.61.10":
+  version: 0.61.10
+  resolution: "@startupjs/patches@npm:0.61.10"
   dependencies:
     patch-package: "npm:^7.0.0"
-  checksum: 10c0/f258abedddec35aa040992d670f6e5fa987ce202a01f37cd83a338a86feef5e9f64f575d4b19f21e27661e74d54abfb7283170b4192bb010699f8c18810aab01
+  checksum: 10c0/eaa5fe85cfba4bdb77e8ef02816e48d445223d7813c3fc52598dea6ceb8d0d42f2c2fadbde60e9982096dc8156d470f6963ef47c87a815b38054482f4dba1c34
   languageName: node
   linkType: hard
 
@@ -6967,9 +7025,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@teamplay/backend@npm:^0.3.34":
-  version: 0.3.34
-  resolution: "@teamplay/backend@npm:0.3.34"
+"@teamplay/backend@npm:^0.3.35":
+  version: 0.3.35
+  resolution: "@teamplay/backend@npm:0.3.35"
   dependencies:
     "@startupjs/sharedb-mingo-memory": "npm:^4.0.0-2"
     "@teamplay/schema": "npm:^0.3.34"
@@ -6987,7 +7045,7 @@ __metadata:
     sharedb-mongo: "npm:^4.1.2"
     sharedb-redis-pubsub: "npm:^5.1.0"
     sqlite3: "npm:^5.1.6"
-  checksum: 10c0/b1db3562e28bc6a45666dc8df477ba594bdab618f57337f1882560ee66eb778b2c2ba3097b3e2512c459d8a2d32d0e735f225a0415a8e8b6fc7051030d20e98e
+  checksum: 10c0/cb33892635210a5695524154c852a5ef6335d3bc3fcb5e746885c4b988e0eab18b254624bcb72f0804f9e78ce95028b26c6262e0fde5b98dd9f798e4bfad1cbf
   languageName: node
   linkType: hard
 
@@ -7945,6 +8003,13 @@ __metadata:
   peerDependencies:
     "@urql/core": ^5.0.0
   checksum: 10c0/3d7e9879aef81714ca04c8b4dc1633d61b2090f5a6d5b8aac538633d41c26e8749e18bf66bed2936b209d038b3acdd21f20bc5ec4229a449b5a0b13d5694effe
+  languageName: node
+  linkType: hard
+
+"@volar/source-map@npm:^2.4.28":
+  version: 2.4.28
+  resolution: "@volar/source-map@npm:2.4.28"
+  checksum: 10c0/24b0b02c7f66febe47f0bfda4a5ed4beaf949041eddc6325c7478b900faeb071795b696d97a4f326dde47217d06e40b67129300bc544f054772c5cb84c2f254e
   languageName: node
   linkType: hard
 
@@ -10782,7 +10847,7 @@ __metadata:
     react-native-web: "npm:~0.21.0"
     react-native-worklets: "npm:0.5.1"
     serve: "npm:^14.2.5"
-    startupjs: "npm:^0.61.9"
+    startupjs: "npm:^0.61.14"
     typescript: "npm:~5.9.2"
   languageName: unknown
   linkType: soft
@@ -19051,6 +19116,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pug-error@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "pug-error@npm:2.1.0"
+  checksum: 10c0/bbce339b17fab9890de84975c0cd8723a847bf65f35653d3ebcf77018e8ad91529d56e978ab80f4c64c9f4f07ef9e56e7a9fda3be44249c344a93ba11fccff79
+  languageName: node
+  linkType: hard
+
 "pug-filters@npm:^3.0.1":
   version: 3.1.1
   resolution: "pug-filters@npm:3.1.1"
@@ -19076,6 +19148,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pug-parser@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "pug-parser@npm:6.0.0"
+  dependencies:
+    pug-error: "npm:^2.0.0"
+    token-stream: "npm:1.0.0"
+  checksum: 10c0/faa6cec43afdeb2705eb8c68dfdb2e65836238df8043ae55295ffb72450b8c7a990ea1be60adbde19f58988b9e1d18a84ea42453e2c4f104d0031f78fda737b2
+  languageName: node
+  linkType: hard
+
 "pug-runtime@npm:^2.0.5":
   version: 2.0.5
   resolution: "pug-runtime@npm:2.0.5"
@@ -19089,6 +19171,15 @@ __metadata:
   dependencies:
     pug-error: "npm:^1.3.3"
   checksum: 10c0/23289805ef8eecb9fc8b6d8bb3065eed381455451ab84e83e83f11a99a90ca5d8db92db67b3363bbcebdc159fa12b447f09dcfe225ae7840bac2ac044a24a210
+  languageName: node
+  linkType: hard
+
+"pug-strip-comments@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "pug-strip-comments@npm:2.0.0"
+  dependencies:
+    pug-error: "npm:^2.0.0"
+  checksum: 10c0/ca498adedaeba51dd836b20129bbd161e2d5a397a2baaa553b1e74e888caa2258dcd7326396fc6f8fed8c7b7f906cfebc4c386ccbee8888a27b2ca0d4d86d206
   languageName: node
   linkType: hard
 
@@ -21318,13 +21409,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"startupjs@npm:^0.61.9":
-  version: 0.61.9
-  resolution: "startupjs@npm:0.61.9"
+"startupjs@npm:^0.61.14":
+  version: 0.61.14
+  resolution: "startupjs@npm:0.61.14"
   dependencies:
     "@startupjs/auth": "npm:^0.61.2"
     "@startupjs/bundler": "npm:^0.61.7"
-    "@startupjs/cli": "npm:^0.61.6"
+    "@startupjs/cli": "npm:^0.61.11"
     "@startupjs/hooks": "npm:^0.61.0"
     "@startupjs/isomorphic-helpers": "npm:^0.61.0"
     "@startupjs/registry": "npm:^0.61.0"
@@ -21333,7 +21424,7 @@ __metadata:
     babel-preset-startupjs: "npm:^0.61.3"
     cssxjs: "npm:^0.2.32"
     lodash: "npm:^4.17.20"
-    teamplay: "npm:0.3.34"
+    teamplay: "npm:0.3.35"
   peerDependencies:
     "@startupjs/worker": "*"
     react: "*"
@@ -21345,7 +21436,7 @@ __metadata:
       optional: true
   bin:
     startupjs: cli.js
-  checksum: 10c0/8afa674860c1909588f4902aee8d0777f264e215b1db5fcf4f01679ebec7895d711d7d8939bd83866b59d6fce99b18c7a2c3409ad270e26170db7ea7f021f11b
+  checksum: 10c0/a103316b87db81d574c22810b1f8f317f501583ff9997bbffdfa318ca86d2060c3390ab551bb913cf1f713e60e3bd998d1fa452e87b17accc6360902739bdf10
   languageName: node
   linkType: hard
 
@@ -21814,13 +21905,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"teamplay@npm:0.3.34":
-  version: 0.3.34
-  resolution: "teamplay@npm:0.3.34"
+"teamplay@npm:0.3.35":
+  version: 0.3.35
+  resolution: "teamplay@npm:0.3.35"
   dependencies:
     "@nx-js/observer-util": "npm:^4.1.3"
     "@startupjs/sharedb-mingo-memory": "npm:^4.0.0-2"
-    "@teamplay/backend": "npm:^0.3.34"
+    "@teamplay/backend": "npm:^0.3.35"
     "@teamplay/cache": "npm:^0.3.34"
     "@teamplay/channel": "npm:^0.3.34"
     "@teamplay/debug": "npm:^0.3.34"
@@ -21842,7 +21933,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10c0/8baed6a13379b4810254ffdf5be91f971913a6f6d0a8f5d83cafdd5a2536b750ad9c21d2e0a7a08c4c919e042d011f3c4d3b752e8c3be5f745bbba29b79adbca
+  checksum: 10c0/baacd876fefeb0252566a61c8205c704b9815b61cdad4ace48666b1c68add83b62ac3f70fb5eee708822a8195ceb1b78ffafcd978701fe44c63763bc99228017
   languageName: node
   linkType: hard
 
@@ -22028,6 +22119,13 @@ __metadata:
   version: 0.0.1
   resolution: "token-stream@npm:0.0.1"
   checksum: 10c0/cf4020b5ca9c2acbf3a1382d84ca36830809d08fea4a295dee08c534a955c84cb9711802c7a7c916a904824bdc49300b60e9a26d29800680c2404f8c419845c8
+  languageName: node
+  linkType: hard
+
+"token-stream@npm:1.0.0":
+  version: 1.0.0
+  resolution: "token-stream@npm:1.0.0"
+  checksum: 10c0/c1924a89686fc035d579cbe856da12306571d5fe7408eeeebe80df7c25c5cc644b8ae102d5cbc0f085d0e105f391d1a48dc0e568520434c5b444ea6c7de2b822
   languageName: node
   linkType: hard
 
