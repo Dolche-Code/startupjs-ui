@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.23](https://github.com/startupjs/startupjs-ui/compare/v0.1.22...v0.1.23) (2026-03-27)
+
+
+### Bug Fixes
+
+* **Checkbox:** add prop for background color ([#23](https://github.com/startupjs/startupjs-ui/issues/23)) ([613a522](https://github.com/startupjs/startupjs-ui/commit/613a5226e15d9a682f7652155f084c26c747ea4d))
+
+
+
+
+
 ## [0.1.22](https://github.com/startupjs/startupjs-ui/compare/v0.1.21...v0.1.22) (2026-03-25)
 
 **Note:** Version bump only for package @startupjs-ui/checkbox

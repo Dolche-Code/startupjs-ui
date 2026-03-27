@@ -1,7 +1,7 @@
 {
   "name": "startupjs-ui",
   "description": "Universal React-Native and Web UI components",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "publishConfig": {
     "access": "public"
   },
@@ -113,7 +113,7 @@
   "dependencies": {
     "@startupjs-ui/abstract-popover": "^0.1.22",
     "@startupjs-ui/alert": "^0.1.22",
-    "@startupjs-ui/array-input": "^0.1.22",
+    "@startupjs-ui/array-input": "^0.1.23",
     "@startupjs-ui/auto-suggest": "^0.1.22",
     "@startupjs-ui/avatar": "^0.1.22",
     "@startupjs-ui/badge": "^0.1.22",
@@ -122,7 +122,7 @@
     "@startupjs-ui/button": "^0.1.22",
     "@startupjs-ui/card": "^0.1.22",
     "@startupjs-ui/carousel": "^0.1.22",
-    "@startupjs-ui/checkbox": "^0.1.22",
+    "@startupjs-ui/checkbox": "^0.1.23",
     "@startupjs-ui/collapse": "^0.1.22",
     "@startupjs-ui/color-picker": "^0.1.22",
     "@startupjs-ui/content": "^0.1.22",
@@ -137,9 +137,9 @@
     "@startupjs-ui/dropdown": "^0.1.22",
     "@startupjs-ui/file-input": "^0.1.22",
     "@startupjs-ui/flat-list": "^0.1.22",
-    "@startupjs-ui/form": "^0.1.22",
+    "@startupjs-ui/form": "^0.1.23",
     "@startupjs-ui/icon": "^0.1.22",
-    "@startupjs-ui/input": "^0.1.22",
+    "@startupjs-ui/input": "^0.1.23",
     "@startupjs-ui/item": "^0.1.22",
     "@startupjs-ui/layout": "^0.1.22",
     "@startupjs-ui/link": "^0.1.22",
@@ -148,7 +148,7 @@
     "@startupjs-ui/modal": "^0.1.22",
     "@startupjs-ui/multi-select": "^0.1.22",
     "@startupjs-ui/number-input": "^0.1.22",
-    "@startupjs-ui/object-input": "^0.1.22",
+    "@startupjs-ui/object-input": "^0.1.23",
     "@startupjs-ui/pagination": "^0.1.22",
     "@startupjs-ui/password-input": "^0.1.22",
     "@startupjs-ui/popover": "^0.1.22",
